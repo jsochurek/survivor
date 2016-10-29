@@ -1,5 +1,7 @@
 <teams>
-        //South
+
+
+
         <team id="1">
             <name>Kansas</name>
             <region>South</region>
@@ -81,7 +83,8 @@
             <seed>15</seed>
         </team>
 
-        //West
+
+
         <team id="17">
             <name>Oregon</name>
             <region>West</region>
@@ -165,7 +168,7 @@
 
 
 
-        //East
+
         <team id="33">
             <name>North Carolina</name>
             <region>East</region>
@@ -249,7 +252,7 @@
 
 
 
-        //Midwest
+
         <team id="49">
             <name>Viriginia</name>
             <region>Midwest</region>

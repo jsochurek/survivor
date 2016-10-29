@@ -1,0 +1,333 @@
+<teams>
+        //South
+        <team id="1">
+            <name>Kansas</name>
+            <region>South</region>
+            <seed>1</seed>
+        </team>
+        <team id="2">
+            <name>Austin Peay</name>
+            <region>South</region>
+            <seed>16</seed>
+        </team>
+        <team id="3">
+            <name>Colorado</name>
+            <region>South</region>
+            <seed>8</seed>
+        </team>
+        <team id="4">
+            <name>Connecticut</name>
+            <region>South</region>
+            <seed>9</seed>
+        </team>
+        <team id="5">
+            <name>Maryland</name>
+            <region>South</region>
+            <seed>5</seed>
+        </team>
+        <team id="6">
+            <name>South Dakota State</name>
+            <region>South</region>
+            <seed>12</seed>
+        </team>
+        <team id="7">
+            <name>California</name>
+            <region>South</region>
+            <seed>4</seed>
+        </team>
+        <team id="8">
+            <name>Hawaii</name>
+            <region>South</region>
+            <seed>13</seed>
+        </team>
+        <team id="9">
+            <name>Arizona</name>
+            <region>South</region>
+            <seed>6</seed>
+        </team>
+        <team id="10">
+            <name>Wichita State</name>
+            <region>South</region>
+            <seed>11</seed>
+        </team>
+        <team id="11">
+            <name>Miami (FL)</name>
+            <region>South</region>
+            <seed>3</seed>
+        </team>
+        <team id="12">
+            <name>Buffalo</name>
+            <region>South</region>
+            <seed>14</seed>
+        </team>
+        <team id="13">
+            <name>Iowa</name>
+            <region>South</region>
+            <seed>7</seed>
+        </team>
+        <team id="14">
+            <name>Temple</name>
+            <region>South</region>
+            <seed>10</seed>
+        </team>
+        <team id="15">
+            <name>Villanova</name>
+            <region>South</region>
+            <seed>2</seed>
+        </team>
+        <team id="16">
+            <name>UNC Asheville</name>
+            <region>South</region>
+            <seed>15</seed>
+        </team>
+
+        //West
+        <team id="17">
+            <name>Oregon</name>
+            <region>West</region>
+            <seed>1</seed>
+        </team>
+        <team id="18">
+            <name>Holy Cross</name>
+            <region>West</region>
+            <seed>16</seed>
+        </team>
+        <team id="19">
+            <name>Saint Joseph's</name>
+            <region>West</region>
+            <seed>8</seed>
+        </team>
+        <team id="20">
+            <name>Cincinnati</name>
+            <region>West</region>
+            <seed>9</seed>
+        </team>
+        <team id="21">
+            <name>Baylor</name>
+            <region>West</region>
+            <seed>5</seed>
+        </team>
+        <team id="22">
+            <name>Yale</name>
+            <region>West</region>
+            <seed>12</seed>
+        </team>
+        <team id="23">
+            <name>Duke</name>
+            <region>West</region>
+            <seed>4</seed>
+        </team>
+        <team id="24">
+            <name>UNC Wilmington</name>
+            <region>West</region>
+            <seed>13</seed>
+        </team>
+        <team id="25">
+            <name>Texas</name>
+            <region>West</region>
+            <seed>6</seed>
+        </team>
+        <team id="26">
+            <name>Northern Iowa</name>
+            <region>West</region>
+            <seed>11</seed>
+        </team>
+        <team id="27">
+            <name>Texas AM</name>
+            <region>West</region>
+            <seed>3</seed>
+        </team>
+        <team id="28">
+            <name>Green Bay</name>
+            <region>West</region>
+            <seed>14</seed>
+        </team>
+        <team id="29">
+            <name>Oregon State</name>
+            <region>West</region>
+            <seed>7</seed>
+        </team>
+        <team id="30">
+            <name>VCU</name>
+            <region>West</region>
+            <seed>10</seed>
+        </team>
+        <team id="31">
+            <name>Oklahoma</name>
+            <region>West</region>
+            <seed>2</seed>
+        </team>
+        <team id="32">
+            <name>CSU Bakersfield</name>
+            <region>West</region>
+            <seed>15</seed>
+        </team>
+
+
+
+        //East
+        <team id="33">
+            <name>North Carolina</name>
+            <region>East</region>
+            <seed>1</seed>
+        </team>
+        <team id="34">
+            <name>FGCU</name>
+            <region>East</region>
+            <seed>16</seed>
+        </team>
+        <team id="35">
+            <name>USCs</name>
+            <region>East</region>
+            <seed>8</seed>
+        </team>
+        <team id="36">
+            <name>Providence</name>
+            <region>East</region>
+            <seed>9</seed>
+        </team>
+        <team id="37">
+            <name>Indiana</name>
+            <region>East</region>
+            <seed>5</seed>
+        </team>
+        <team id="38">
+            <name>Chattanooga</name>
+            <region>East</region>
+            <seed>12</seed>
+        </team>
+        <team id="39">
+            <name>Kentucky</name>
+            <region>East</region>
+            <seed>4</seed>
+        </team>
+        <team id="40">
+            <name>Stony Brook</name>
+            <region>East</region>
+            <seed>13</seed>
+        </team>
+        <team id="41">
+            <name>Notre Dame</name>
+            <region>East</region>
+            <seed>6</seed>
+        </team>
+        <team id="42">
+            <name>Michigan</name>
+            <region>East</region>
+            <seed>11</seed>
+        </team>
+        <team id="43">
+            <name>West Viriginia</name>
+            <region>East</region>
+            <seed>3</seed>
+        </team>
+        <team id="44">
+            <name>Stephen F. Austin</name>
+            <region>East</region>
+            <seed>14</seed>
+        </team>
+        <team id="45">
+            <name>Wisconsin</name>
+            <region>East</region>
+            <seed>7</seed>
+        </team>
+        <team id="46">
+            <name>Pittsburgh</name>
+            <region>East</region>
+            <seed>10</seed>
+        </team>
+        <team id="47">
+            <name>Xavier</name>
+            <region>East</region>
+            <seed>2</seed>
+        </team>
+        <team id="48">
+            <name>Weber State</name>
+            <region>East</region>
+            <seed>15</seed>
+        </team>
+
+
+
+        //Midwest
+        <team id="49">
+            <name>Viriginia</name>
+            <region>Midwest</region>
+            <seed>1</seed>
+        </team>
+        <team id="50">
+            <name>Hampton</name>
+            <region>Midwest</region>
+            <seed>16</seed>
+        </team>
+        <team id="51">
+            <name>Texas Tech</name>
+            <region>Midwest</region>
+            <seed>8</seed>
+        </team>
+        <team id="52">
+            <name>Butler</name>
+            <region>Midwest</region>
+            <seed>9</seed>
+        </team>
+        <team id="53">
+            <name>Purdue</name>
+            <region>Midwest</region>
+            <seed>5</seed>
+        </team>
+        <team id="54">
+            <name>Little Rock</name>
+            <region>Midwest</region>
+            <seed>12</seed>
+        </team>
+        <team id="55">
+            <name>Iowa State</name>
+            <region>Midwest</region>
+            <seed>4</seed>
+        </team>
+        <team id="56">
+            <name>Iona</name>
+            <region>Midwest</region>
+            <seed>13</seed>
+        </team>
+        <team id="57">
+            <name>Seton Hall</name>
+            <region>Midwest</region>
+            <seed>6</seed>
+        </team>
+        <team id="58">
+            <name>Gonzaga</name>
+            <region>Midwest</region>
+            <seed>11</seed>
+        </team>
+        <team id="59">
+            <name>Utah</name>
+            <region>Midwest</region>
+            <seed>3</seed>
+        </team>
+        <team id="60">
+            <name>Fresno State</name>
+            <region>Midwest</region>
+            <seed>14</seed>
+        </team>
+        <team id="61">
+            <name>Dayton</name>
+            <region>Midwest</region>
+            <seed>7</seed>
+        </team>
+        <team id="62">
+            <name>Syracuse</name>
+            <region>Midwest</region>
+            <seed>10</seed>
+        </team>
+        <team id="63">
+            <name>Michigan State</name>
+            <region>Midwest</region>
+            <seed>2</seed>
+        </team>
+        <team id="64">
+            <name>Middle Tennessee</name>
+            <region>Midwest</region>
+            <seed>15</seed>
+        </team>
+    </teams>

@@ -1,8 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+
 
 import React, { Component } from 'react';
 import {
@@ -11,8 +7,35 @@ import {
   Text,
   View
 } from 'react-native';
+var XMLParser = require('react-xml-parser');
+
+//let xmlText = require('c:/projects/survivor/survivor/2016/teams2016.xml');
+
 
 export default class survivor extends Component {
+  constructor() {
+    super();
+    var xmlText = "<?xml version='1.0' encoding='utf-8'?>\
+<Library>\
+   <Books count='1'>\
+       <Book id='1'>\
+           <Name>Me Before You</Name>\
+           <Author>Jojo Moyes</Author>\
+       </Book>\
+   </Books>\
+   <Music count=1>\
+       <CD id='2'>\
+           <Name>Houses of the Holy</Name>\
+           <Artist>Led Zeppelin</Artist>\
+       </CD>\
+   </Music>\
+</Library>"
+    console.log(xmlText);
+    //need to define xmlText
+    var xml = new XMLParser().parseFromString(xmlText);    // Assume xmlText contains the example XML
+    console.log(xml);
+    console.log(xml.getElementsByTagName('Name'));
+  }
   render() {
     return (
       <View style={styles.container}>

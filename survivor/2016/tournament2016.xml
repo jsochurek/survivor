@@ -1,3 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+
 <tournament>
     <year>2016</year>
     
@@ -7,41 +9,49 @@
                 <home>1</home>
                 <away>2</away>
                 <winner>1</winner>
+                <day>3/17/2016</day>
             </game>
             <game id="2">
                 <home>3</home>
                 <away>4</away>
                 <winner>3</winner>
+                <day>3/17/2016</day>
             </game>
             <game id="3">
                 <home>5</home>
                 <away>6</away>
                 <winner>5</winner>
+                <day>3/18/2016</day>
             </game>
             <game id="4">
                 <home>7</home>
                 <away>8</away>
                 <winner>8</winner>
+                <day>3/18/2016</day>
             </game>
             <game id="5">
                 <home>9</home>
                 <away>10</away>
                 <winner>10</winner>
+                <day>3/17/2016</day>
             </game>
             <game id="6">
                 <home>11</home>
                 <away>12</away>
                 <winner>11</winner>
+                <day>3/17/2016</day>
             </game>
             <game id="7">
                 <home>13</home>
                 <away>14</away>
                 <winner>13</winner>
+                <day>3/18/2016</day>
             </game>
             <game id="8">
                 <home>15</home>
                 <away>16</away>
                 <winner>15</winner>
+                <day>3/18/2016</day>
             </game>
         </round>
         <round name="32">
@@ -49,21 +59,25 @@
                 <home>1</home>
                 <away>4</away>
                 <winner>1</winner>
+                <day>3/19/2016</day>
             </game>
             <game id="2">
                 <home>5</home>
                 <away>8</away>
                 <winner>5</winner>
+                <day>3/20/2016</day>
             </game>
             <game id="3">
                 <home>10</home>
                 <away>11</away>
                 <winner>11</winner>
+                <day>3/19/2016</day>
             </game>
             <game id="4">
                 <home>13</home>
                 <away>15</away>
                 <winner>15</winner>
+                <day>3/20/2016</day>
             </game>
         </round>
         <round name="16">
@@ -71,11 +85,13 @@
                 <home>1</home>
                 <away>5</away>
                 <winner>1</winner>
+                <day>3/24/2016</day>
             </game>
             <game id="2">
                 <home>11</home>
                 <away>15</away>
                 <winner>15</winner>
+                <day>3/24/2016</day>
             </game>
         </round>
         <round name="8">
@@ -83,6 +99,7 @@
                 <home>1</home>
                 <away>15</away>
                 <winner>15</winner>
+                <day>3/26/2016</day>
             </game>
         </round>
     </region>
@@ -95,41 +112,49 @@
                 <home>17</home>
                 <away>18</away>
                 <winner>17</winner>
+                <day>3/18/2016</day>
             </game>
             <game id="2">
                 <home>19</home>
                 <away>20</away>
                 <winner>19</winner>
+                <day>3/18/2016</day>
             </game>
             <game id="3">
                 <home>21</home>
                 <away>22</away>
                 <winner>22</winner>
+                <day>3/17/2016</day>
             </game>
             <game id="4">
                 <home>23</home>
                 <away>24</away>
                 <winner>23</winner>
+                <day>3/17/2016</day>
             </game>
             <game id="5">
                 <home>25</home>
                 <away>26</away>
                 <winner>26</winner>
+                <day>3/18/2016</day>
             </game>
             <game id="6">
                 <home>27</home>
                 <away>28</away>
                 <winner>27</winner>
+                <day>3/18/2016</day>
             </game>
             <game id="7">
                 <home>29</home>
                 <away>30</away>
                 <winner>30</winner>
+                <day>3/18/2016</day>
             </game>
             <game id="8">
                 <home>31</home>
                 <away>32</away>
                 <winner>31</winner>
+                <day>3/18/2016</day>
             </game>
         </round>
         <round name="32">
@@ -137,21 +162,25 @@
                 <home>17</home>
                 <away>19</away>
                 <winner>17</winner>
+                <day>3/20/2016</day>
             </game>
             <game id="2">
                 <home>22</home>
                 <away>23</away>
                 <winner>23</winner>
+                <day>3/19/2016</day>
             </game>
             <game id="3">
                 <home>26</home>
                 <away>27</away>
                 <winner>27</winner>
+                <day>3/20/2016</day>
             </game>
             <game id="4">
                 <home>30</home>
                 <away>31</away>
                 <winner>31</winner>
+                <day>3/20/2016</day>
             </game>
         </round>
         <round name="16">
@@ -159,11 +188,13 @@
                 <home>17</home>
                 <away>23</away>
                 <winner>17</winner>
+                <day>3/24/2016</day>
             </game>
             <game id="2">
                 <home>27</home>
                 <away>31</away>
                 <winner>31</winner>
+                <day>3/24/2016</day>
             </game>
         </round>
         <round name="8">
@@ -171,6 +202,7 @@
                 <home>17</home>
                 <away>31</away>
                 <winner>31</winner>
+                <day>3/26/2016</day>
             </game>
         </round>
     </region>
@@ -184,41 +216,49 @@
                 <home>33</home>
                 <away>34</away>
                 <winner>33</winner>
+                <day>3/17/2016</day>
             </game>
             <game id="2">
                 <home>35</home>
                 <away>36</away>
                 <winner>36</winner>
+                <day>3/17/2016</day>
             </game>
             <game id="3">
                 <home>37</home>
                 <away>38</away>
                 <winner>37</winner>
+                <day>3/17/2016</day>
             </game>
             <game id="4">
                 <home>39</home>
                 <away>40</away>
                 <winner>39</winner>
+                <day>3/17/2016</day>
             </game>
             <game id="5">
                 <home>41</home>
                 <away>42</away>
                 <winner>41</winner>
+                <day>3/18/2016</day>
             </game>
             <game id="6">
                 <home>43</home>
                 <away>44</away>
                 <winner>44</winner>
+                <day>3/18/2016</day>
             </game>
             <game id="7">
                 <home>45</home>
                 <away>46</away>
                 <winner>45</winner>
+                <day>3/18/2016</day>
             </game>
             <game id="8">
                 <home>47</home>
                 <away>48</away>
                 <winner>47</winner>
+                <day>3/18/2016</day>
             </game>
         </round>
         <round name="32">
@@ -226,21 +266,25 @@
                 <home>33</home>
                 <away>36</away>
                 <winner>33</winner>
+                <day>3/19/2016</day>
             </game>
             <game id="2">
                 <home>37</home>
                 <away>39</away>
                 <winner>37</winner>
+                <day>3/19/2016</day>
             </game>
             <game id="3">
                 <home>41</home>
                 <away>44</away>
                 <winner>41</winner>
+                <day>3/20/2016</day>
             </game>
             <game id="4">
                 <home>45</home>
                 <away>47</away>
                 <winner>45</winner>
+                <day>3/20/2016</day>
             </game>
         </round>
         <round name="16">
@@ -248,11 +292,13 @@
                 <home>33</home>
                 <away>37</away>
                 <winner>33</winner>
+                <day>3/25/2016</day>
             </game>
             <game id="2">
                 <home>41</home>
                 <away>45</away>
                 <winner>41</winner>
+                <day>3/25/2016</day>
             </game>
         </round>
         <round name="8">
@@ -260,6 +306,7 @@
                 <home>33</home>
                 <away>41</away>
                 <winner>33</winner>
+                <day>3/27/2016</day>
             </game>
         </round>
     </region>
@@ -272,41 +319,49 @@
                 <home>49</home>
                 <away>50</away>
                 <winner>49</winner>
+                <day>3/17/2016</day>
             </game>
             <game id="2">
                 <home>51</home>
                 <away>52</away>
                 <winner>52</winner>
+                <day>3/17/2016</day>
             </game>
             <game id="3">
                 <home>53</home>
                 <away>54</away>
                 <winner>54</winner>
+                <day>3/17/2016</day>
             </game>
             <game id="4">
                 <home>55</home>
                 <away>56</away>
                 <winner>55</winner>
+                <day>3/17/2016</day>
             </game>
             <game id="5">
                 <home>57</home>
                 <away>58</away>
                 <winner>58</winner>
+                <day>3/17/2016</day>
             </game>
             <game id="6">
                 <home>59</home>
                 <away>60 </away>
                 <winner>59</winner>
+                <day>3/17/2016</day>
             </game>
             <game id="7">
                 <home>61</home>
                 <away>62</away>
                 <winner>62</winner>
+                <day>3/18/2016</day>
             </game>
             <game id="8">
                 <home>63</home>
                 <away>64</away>
                 <winner>64</winner>
+                <day>3/18/2016</day>
             </game>
         </round>
         <round name="32">
@@ -314,21 +369,25 @@
                 <home>49</home>
                 <away>52</away>
                 <winner>49</winner>
+                <day>3/19/2016</day>
             </game>
             <game id="2">
                 <home>54</home>
                 <away>55</away>
                 <winner>55</winner>
+                <day>3/19/2016</day>
             </game>
             <game id="3">
                 <home>58</home>
                 <away>59</away>
                 <winner>58</winner>
+                <day>3/19/2016</day>
             </game>
             <game id="4">
                 <home>62</home>
                 <away>64</away>
                 <winner>62</winner>
+                <day>3/20/2016</day>
             </game>
         </round>
         <round name="16">
@@ -336,11 +395,13 @@
                 <home>49</home>
                 <away>55</away>
                 <winner>49</winner>
+                <day>3/25/2016</day>
             </game>
             <game id="2">
                 <home>62</home>
                 <away>58</away>
                 <winner>62</winner>
+                <day>3/25/2016</day>
             </game>
         </round>
         <round name="8">
@@ -348,6 +409,7 @@
                 <home>49</home>
                 <away>62</away>
                 <winner>62</winner>
+                <day>3/27/2016</day>
             </game>
         </round>
     </region>
@@ -357,11 +419,13 @@
                 <home>15</home>
                 <away>31</away>
                 <winner>15</winner>
+                <day>4/2/2016</day>
             </game>
             <game id="2">
                 <home>33</home>
                 <away>62</away>
                 <winner>33</winner>
+                <day>4/2/2016</day>
             </game>
         </round>
         <round name="2">
@@ -369,6 +433,7 @@
                 <home>15</home>
                 <away>33</away>
                 <winner>15</winner>
+                <day>4/4/2016</day>
             </game>
         </round>
     </region>

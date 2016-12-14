@@ -47,7 +47,7 @@ export default class GameComponent extends React.Component<Props, State> {
 
     render() {
         return(
-            <View>
+            <View style={styles.game}>
                 <TeamComponent 
                     textStyle={this.state.homeStyle}
                     team={this.props.game.home} 

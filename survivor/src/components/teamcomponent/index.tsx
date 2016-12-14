@@ -29,10 +29,18 @@ export default class TeamComponent extends React.Component<Props, State> {
         };
     }
 
+    formatSeed = () => {
+        let sd: string = this.props.team.seed.toString();
+        if (this.props.team.seed < 10) {
+            sd = `  ${this.props.team.seed.toString()}`;
+        }
+        return sd;
+    }
+
     render() {
         return(
             <View>
-                <Text style={this.props.textStyle}>{`${this.props.team.seed.toString()}  ${this.props.team.name}`}</Text>
+                <Text style={this.props.textStyle}>{`${this.formatSeed()}  ${this.props.team.name}`}</Text>
             </View>
         );
     }

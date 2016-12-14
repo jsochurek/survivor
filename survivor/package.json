@@ -4,21 +4,40 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "build": "gulp && cd html && gulp && cd ../"
   },
   "dependencies": {
+    "gulp": "^3.9.1",
     "react": "15.3.2",
     "react-native": "^0.36.0",
     "react-router-native": "^2.0.0-beta.0"
   },
-  "jest": {
-    "preset": "jest-react-native"
-  },
   "devDependencies": {
     "babel-jest": "16.0.0",
     "babel-preset-react-native": "1.9.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.1",
+    "enzyme": "^2.4.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-notify": "^2.2.0",
+    "gulp-typescript": "^3.0.2",
+    "gulp-util": "^3.0.7",
     "jest": "16.0.2",
     "jest-react-native": "16.0.0",
-    "react-test-renderer": "15.3.2"
+    "ntypescript": "^1.201609302242.1",
+    "react-test-renderer": "15.3.2",
+    "sinon": "^1.17.6",
+    "ts-jest": "^0.1.11",
+    "tsify": "^2.0.3",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "jest": {
+    "preset": "jest-react-native",
+    "notify": true,
+    "testRegex": "(\\.(test))\\.js$",
+    "verbose": true
   }
 }

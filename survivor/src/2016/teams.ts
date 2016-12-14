@@ -1,13 +1,6 @@
-// export type Team = {
-//     name: string,
-//     region: string,
-//     seed: number
-// };
+import {Team} from '../types'; 
 
-export const teams = [
-
-
-
+export const teams:Team[] = [
         {
             name: "Kansas",
             region: "South",

@@ -1,13 +1,13 @@
 export type Team = {
     name: string,
     region: string,
-    seed: string
+    seed: number
 };
 
 export type Game = {
     id: number,
-    home: string,
-    away: string,
+    home: Team,
+    away: Team,
     winner: string,
     day: Date
 };

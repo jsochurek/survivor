@@ -2,7 +2,7 @@
 import * as React from "react";
 import {BackAndroid} from "react-native";
 import { Route, StackRoute, TabsRoute, Router, nativeHistory, IndexRoute, withRouter} from "react-router-native";
-import Main from './scenes/main';
+import Main from './scenes/main/index';
 import Comp1 from './scenes/comp1';
 import Comp2 from './scenes/comp2';
 

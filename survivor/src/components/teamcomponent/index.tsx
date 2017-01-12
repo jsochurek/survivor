@@ -7,7 +7,8 @@ import {
   View,
   ScrollView,
   ViewStyle,
-  TextStyle
+  TextStyle,
+  TouchableOpacity
 } from 'react-native';
 import {Team} from '../../types';
 type State = {
@@ -39,9 +40,9 @@ export default class TeamComponent extends React.Component<Props, State> {
 
     render() {
         return(
-            <View>
+            <TouchableOpacity onPress={() => {console.log(`Pressed ${this.props.team.name}`)}}>
                 <Text style={this.props.textStyle}>{`${this.formatSeed()}  ${this.props.team.name}`}</Text>
-            </View>
+            </TouchableOpacity>
         );
     }
 }

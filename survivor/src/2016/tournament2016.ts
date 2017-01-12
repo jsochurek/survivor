@@ -1,126 +1,377 @@
 export const tournament = {
-    South: [
-        {
-            id: 1,
-            home: {
-                name: "Kansas",
-                region: "South",
-                seed: 1
+    South: {
+            roundOf64: [
+                {
+                    id: 1,
+                    home: {
+                        name: "Kansas",
+                        region: "South",
+                        seed: 1
+                    },
+                    away: { 
+                        name: "Austin Peay",
+                        region: "South",
+                        seed: 16
+                    },
+                    winner: "Kansas",
+                    day: new Date('2016-03-17')
+                },
+                {
+                    id: 2,
+                    home: {
+                        name: "Colorado",
+                        region: "South",
+                        seed: 8
+                    },
+                    away: { 
+                        name: "Connecticut",
+                        region: "South",
+                        seed: 9
+                    },
+                    winner: "Colorado",
+                    day: new Date('2016-03-17')
+                },
+                {
+                    id: 3,
+                    home: {
+                        name: "Maryland",
+                        region: "South",
+                        seed: 5
+                    },
+                    away: { 
+                        name: "South Dakota State",
+                        region: "South",
+                        seed: 12
+                    },
+                    winner: "Maryland",
+                    day: new Date('2016-03-18')
+                },
+                {
+                    id: 4,
+                    home: {
+                        name: "California",
+                        region: "South",
+                        seed: 4
+                    },
+                    away: { 
+                        name: "Hawaii",
+                        region: "South",
+                        seed: 13
+                    },
+                    winner: "Hawaii",
+                    day: new Date('2016-03-18')
+                },
+                {
+                    id: 5,
+                    home: {
+                        name: "Arizona",
+                        region: "South",
+                        seed: 4
+                    },
+                    away: { 
+                        name: "Wichita State",
+                        region: "South",
+                        seed: 13
+                    },
+                    winner: "Wichita State",
+                    day: new Date('2016-03-17')
+                },
+                {
+                    id: 6,
+                    home: {
+                        name: "Miami (FL)",
+                        region: "South",
+                        seed: 4
+                    },
+                    away: { 
+                        name: "Buffalo",
+                        region: "South",
+                        seed: 13
+                    },
+                    winner: "Miami (FL)",
+                    day: new Date('2016-03-17')
+                },
+                {
+                    id: 7,
+                    home: {
+                        name: "Iowa",
+                        region: "South",
+                        seed: 7
+                    },
+                    away: { 
+                        name: "Temple",
+                        region: "South",
+                        seed: 10
+                    },
+                    winner: "Iowa",
+                    day: new Date('2016-03-18')
+                },
+                {
+                    id: 8,
+                    home: {
+                        name: "Villanova",
+                        region: "South",
+                        seed: 2
+                    },
+                    away: { 
+                        name: "UNC Asheville",
+                        region: "South",
+                        seed: 15
+                    },
+                    winner: "Villanova",
+                    day: new Date('2016-03-18')
+                },
+            ],
+        roundOf32:[
+            {
+                id: 9,
+                home: {
+                    name: "Kansas",
+                    region: "South",
+                    seed: 1
+                },
+                away: { 
+                    name: "Connecticut",
+                    region: "South",
+                    seed: 9
+                },
+                winner: "Kansas",
+                day: new Date('2016-03-19')
             },
-            away: { 
-                name: "Austin Peay",
-                region: "South",
-                seed: 16
+            {
+                id: 10,
+                home: {
+                    name: "Maryland",
+                    region: "South",
+                    seed: 5
+                },
+                away: { 
+                    name: "Hawaii",
+                    region: "South",
+                    seed: 13
+                },
+                winner: "Maryland",
+                day: new Date('2016-03-19')
             },
-            winner: "Kansas",
-            day: new Date('2016-03-17')
-        },
-        {
-            id: 2,
-            home: {
-                name: "Colorado",
-                region: "South",
-                seed: 8
+            {
+                id: 11,
+                home: {
+                    name: "Wichita State",
+                    region: "South",
+                    seed: 11
+                },
+                away: { 
+                    name: "Miami (FL)",
+                    region: "South",
+                    seed: 3
+                },
+                winner: "Miami (FL)",
+                day: new Date('2016-03-20')
             },
-            away: { 
-                name: "Connecticut",
-                region: "South",
-                seed: 9
+            {
+                id: 12,
+                home: {
+                    name: "Iowa",
+                    region: "South",
+                    seed: 7
+                },
+                away: { 
+                    name: "Villanova",
+                    region: "South",
+                    seed: 2
+                },
+                winner: "Villanova",
+                day: new Date('2016-03-20')
             },
-            winner: "Colorado",
-            day: new Date('2016-03-17')
-        },
-        {
-            id: 3,
-            home: {
-                name: "Maryland",
-                region: "South",
-                seed: 5
+        ],
+    },
+
+    West: {
+        roundOf64: [
+            {
+                id: 1,
+                home: {
+                    name: "Oregon",
+                    region: "West",
+                    seed: 1
+                },
+                away: { 
+                    name: "Holy Cross",
+                    region: "West",
+                    seed: 16
+                },
+                winner: "Oregon",
+                day: new Date('2016-03-18')
             },
-            away: { 
-                name: "South Dakota State",
-                region: "South",
-                seed: 12
+            {
+                id: 2,
+                home: {
+                    name: "Saint Joseph's",
+                    region: "West",
+                    seed: 8
+                },
+                away: { 
+                    name: "Cincinnati",
+                    region: "West",
+                    seed: 9
+                },
+                winner: "Saint Joseph's",
+                day: new Date('2016-03-18')
             },
-            winner: "Maryland",
-            day: new Date('2016-03-18')
-        },
-        {
-            id: 4,
-            home: {
-                name: "California",
-                region: "South",
-                seed: 4
+            {
+                id: 3,
+                home: {
+                    name: "Baylor",
+                    region: "West",
+                    seed: 5
+                },
+                away: { 
+                    name: "Yale",
+                    region: "West",
+                    seed: 12
+                },
+                winner: "Yale",
+                day: new Date('2016-03-17')
             },
-            away: { 
-                name: "Hawaii",
-                region: "South",
-                seed: 13
+            {
+                id: 4,
+                home: {
+                    name: "Duke",
+                    region: "West",
+                    seed: 4
+                },
+                away: { 
+                    name: "UNC Wilmington",
+                    region: "West",
+                    seed: 13
+                },
+                winner: "Duke",
+                day: new Date('2016-03-17')
             },
-            winner: "Hawaii",
-            day: new Date('2016-03-18')
-        },
-        {
-            id: 5,
-            home: {
-                name: "Arizona",
-                region: "South",
-                seed: 4
+            {
+                id: 5,
+                home: {
+                    name: "Texas",
+                    region: "West",
+                    seed: 4
+                },
+                away: { 
+                    name: "Northern Iowa",
+                    region: "West",
+                    seed: 13
+                },
+                winner: "Northern Iowa",
+                day: new Date('2016-03-18')
             },
-            away: { 
-                name: "Wichita State",
-                region: "South",
-                seed: 13
+            {
+                id: 6,
+                home: {
+                    name: "Texas A&M",
+                    region: "West",
+                    seed: 4
+                },
+                away: { 
+                    name: "Green Bay",
+                    region: "West",
+                    seed: 13
+                },
+                winner: "Texas A&M",
+                day: new Date('2016-03-18')
             },
-            winner: "Wichita State",
-            day: new Date('2016-03-17')
-        },
-        {
-            id: 6,
-            home: {
-                name: "Miami (FL)",
-                region: "South",
-                seed: 4
+            {
+                id: 7,
+                home: {
+                    name: "Oregon State",
+                    region: "West",
+                    seed: 7
+                },
+                away: { 
+                    name: "VCU",
+                    region: "West",
+                    seed: 10
+                },
+                winner: "VCU",
+                day: new Date('2016-03-18')
             },
-            away: { 
-                name: "Buffalo",
-                region: "South",
-                seed: 13
+            {
+                id: 8,
+                home: {
+                    name: "Oklahoma",
+                    region: "West",
+                    seed: 2
+                },
+                away: { 
+                    name: "CSU Bakersfield",
+                    region: "West",
+                    seed: 15
+                },
+                winner: "Oklahoma",
+                day: new Date('2016-03-18')
+            }
+        ],
+        roundOf32: [
+            {
+                id: 1,
+                home: {
+                    name: "Oregon",
+                    region: "West",
+                    seed: 1
+                },
+                away: { 
+                    name: "Saint Joseph's",
+                    region: "West",
+                    seed: 8
+                },
+                winner: "Oregon",
+                day: new Date('2016-03-20')
             },
-            winner: "Miami (FL)",
-            day: new Date('2016-03-17')
-        },
-        {
-            id: 7,
-            home: {
-                name: "Iowa",
-                region: "South",
-                seed: 7
+            {
+                id: 2,
+                home: {
+                    name: "Yale",
+                    region: "West",
+                    seed: 12
+                },
+                away: { 
+                    name: "Duke",
+                    region: "West",
+                    seed: 4
+                },
+                winner: "Duke",
+                day: new Date('2016-03-19')
             },
-            away: { 
-                name: "Temple",
-                region: "South",
-                seed: 10
+            {
+                id: 3,
+                home: {
+                    name: "Northern Iowa",
+                    region: "West",
+                    seed: 11
+                },
+                away: { 
+                    name: "Texas A&M",
+                    region: "West",
+                    seed: 3
+                },
+                winner: "Texas A&M",
+                day: new Date('2016-03-20')
             },
-            winner: "Iowa",
-            day: new Date('2016-03-18')
-        },
-        {
-            id: 8,
-            home: {
-                name: "Villanova",
-                region: "South",
-                seed: 2
-            },
-            away: { 
-                name: "UNC Asheville",
-                region: "South",
-                seed: 15
-            },
-            winner: "Villanova",
-            day: new Date('2016-03-18')
-        },
-    ]
+            {
+                id: 4,
+                home: {
+                    name: "VCU",
+                    region: "West",
+                    seed: 10
+                },
+                away: { 
+                    name: "Oklahoma",
+                    region: "West",
+                    seed: 2
+                },
+                winner: "Oklahoma",
+                day: new Date('2016-03-20')
+            }
+        ]
+    }
 };    
     
 //     <region name="South">

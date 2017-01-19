@@ -184,6 +184,55 @@ export const tournament = {
                 day: new Date('2016-03-20')
             },
         ],
+        roundOf16:[
+            {
+                id:13,
+                home: {
+                    name: "Kansas",
+                    region: "South",
+                    seed: 1
+                },
+                away: { 
+                    name: "Maryland",
+                    region: "South",
+                    seed: 5
+                },
+                winner: "Kansas",
+                day: new Date('2016-03-24')
+            },
+            {
+                id: 14,
+                home: {
+                    name: "Miami (FL)",
+                    region: "South",
+                    seed: 3
+                },
+                away: { 
+                    name: "Villanova",
+                    region: "South",
+                    seed: 2
+                },
+                winner: "Villanova",
+                day: new Date('2016-03-24')
+            },
+        ],
+        roundOf8:[
+            {
+                id: 15,
+                home: {
+                    name: "Kansas",
+                    region: "South",
+                    seed: 1
+                },
+                away: { 
+                    name: "Villanova",
+                    region: "South",
+                    seed: 2
+                },
+                winner: "Villanova",
+                day: new Date('2016-03-26')
+            },
+        ]
     },
 
     West: {
@@ -370,6 +419,55 @@ export const tournament = {
                 winner: "Oklahoma",
                 day: new Date('2016-03-20')
             }
+        ],
+        roundOf16:[
+            {
+                id:13,
+                home: {
+                    name: "Oregon",
+                    region: "West",
+                    seed: 1
+                },
+                away: { 
+                    name: "Duke",
+                    region: "West",
+                    seed: 4
+                },
+                winner: "Oregon",
+                day: new Date('2016-03-24')
+            },
+            {
+                id: 14,
+                home: {
+                    name: "Texas A&M",
+                    region: "West",
+                    seed: 3
+                },
+                away: { 
+                    name: "Oklahoma",
+                    region: "West",
+                    seed: 2
+                },
+                winner: "Oklahoma",
+                day: new Date('2016-03-24')
+            },
+        ],
+        roundOf8:[
+            {
+                id: 15,
+                home: {
+                    name: "Oregon",
+                    region: "West",
+                    seed: 1
+                },
+                away: { 
+                    name: "Oklahoma",
+                    region: "West",
+                    seed: 2
+                },
+                winner: "Oklahoma",
+                day: new Date('2016-03-26')
+            },
         ]
     }
 };    

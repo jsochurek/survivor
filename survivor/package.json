@@ -11,7 +11,8 @@
     "gulp": "^3.9.1",
     "react": "15.3.2",
     "react-native": "^0.36.0",
-    "react-router-native": "^2.0.0-beta.0"
+    "react-router-native": "^2.0.0-beta.0",
+    "realm": "^0.14.3"
   },
   "devDependencies": {
     "babel-jest": "16.0.0",

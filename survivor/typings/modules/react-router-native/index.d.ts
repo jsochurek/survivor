@@ -4,7 +4,8 @@ declare module "react-router-native" {
 
     interface RouterInterface {
       pop(): void,
-      push(route: string): void
+      push(route: string): void,
+      replace(route: string): void
     }
     
     let Route: any;

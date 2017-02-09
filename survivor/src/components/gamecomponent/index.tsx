@@ -20,7 +20,9 @@ type State = {
 }
 type Props = {
     // style?: ViewStyle,
-    game: Game
+    game: Game,
+    picks: string[],
+    addPick: (team: string) => void
 }
 type Context = {
     
@@ -45,16 +47,28 @@ export default class GameComponent extends React.Component<Props, State> {
         };
     }
 
+    isPicked = (team: string) => {
+        return ( this.props.picks.indexOf(team) > -1 );
+    }
+
+    addPick = (team: string) => {
+        //
+    }
+
     render() {
         return(
             <View style={styles.game}>
                 <TeamComponent 
                     textStyle={this.state.homeStyle}
                     team={this.props.game.home} 
+                    picked={this.isPicked(this.props.game.home.name)}
+                    addPick={this.addPick}
                 />
                 <TeamComponent 
                     textStyle={this.state.awayStyle}
                     team={this.props.game.away} 
+                    picked={this.isPicked(this.props.game.home.name)}
+                    addPick={this.addPick}
                 />
             </View>
         );

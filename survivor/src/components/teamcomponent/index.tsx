@@ -17,7 +17,9 @@ type State = {
 type Props = {
     // style: ViewStyle,
     textStyle: TextStyle,
-    team: Team
+    team: Team,
+    picked: boolean,
+    addPick: (team: string) => void
 }
 type Context = {
     
@@ -38,10 +40,17 @@ export default class TeamComponent extends React.Component<Props, State> {
         return sd;
     }
 
+    onPress = () => {
+        console.log(`Pressed ${this.props.team.name}`);
+        // add pick
+        this.props.addPick(this.props.team.name);
+    }
+
     render() {
+        let textStyle = this.props.picked ? [this.props.picked, {textDecorationLine: "line-through"}] : this.props.picked
         return(
-            <TouchableOpacity onPress={() => {console.log(`Pressed ${this.props.team.name}`)}}>
-                <Text style={this.props.textStyle}>{`${this.formatSeed()}  ${this.props.team.name}`}</Text>
+            <TouchableOpacity onPress={this.onPress}>
+                <Text style={textStyle}>{`${this.formatSeed()}  ${this.props.team.name}`}</Text>
             </TouchableOpacity>
         );
     }

@@ -22,14 +22,17 @@ type Props = {
     // style?: ViewStyle,
     game: Game,
     picks: string[],
-    addPick: (team: string) => void
+    togglePick: (team: string) => void
 }
 type Context = {
-    
 }
 export default class GameComponent extends React.Component<Props, State> {
-    constructor(props: Props) {
-        super(props);
+    context: Context;
+
+    static contextTypes = {
+    };
+    constructor(props: Props, context: Context) {
+        super(props, context);
         let awayStyle: TextStyle;
         let homeStyle: TextStyle;
         if (this.props.game.winner === this.props.game.away.name) {
@@ -51,8 +54,9 @@ export default class GameComponent extends React.Component<Props, State> {
         return ( this.props.picks.indexOf(team) > -1 );
     }
 
-    addPick = (team: string) => {
-        //
+    togglePick = (team: string) => {
+        //TODO need checks on rounds, whether can still change pick
+        this.props.togglePick(team);
     }
 
     render() {
@@ -62,13 +66,13 @@ export default class GameComponent extends React.Component<Props, State> {
                     textStyle={this.state.homeStyle}
                     team={this.props.game.home} 
                     picked={this.isPicked(this.props.game.home.name)}
-                    addPick={this.addPick}
+                    togglePick={this.togglePick}
                 />
                 <TeamComponent 
                     textStyle={this.state.awayStyle}
                     team={this.props.game.away} 
                     picked={this.isPicked(this.props.game.home.name)}
-                    addPick={this.addPick}
+                    togglePick={this.togglePick}
                 />
             </View>
         );

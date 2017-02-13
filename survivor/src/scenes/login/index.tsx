@@ -49,7 +49,7 @@ export default class Login extends React.Component<Props, State> {
             picks: []
         };
         this.context.db.addUser(user);
-        this.context.db.addPickToUser(user.name, "test");
+        //this.context.db.addPickToUser(user.name, "test");
 
         console.log("current users", this.context.db.getUsers());
         this.setState({users: this.context.db.getUsers()});

@@ -12,14 +12,14 @@ import {
 } from 'react-native';
 import {Team} from '../../types';
 type State = {
-
+    strikethrough?: boolean
 }
 type Props = {
     // style: ViewStyle,
     textStyle: TextStyle,
     team: Team,
     picked: boolean,
-    addPick: (team: string) => void
+    togglePick: (team: string) => void
 }
 type Context = {
     
@@ -43,11 +43,11 @@ export default class TeamComponent extends React.Component<Props, State> {
     onPress = () => {
         console.log(`Pressed ${this.props.team.name}`);
         // add pick
-        this.props.addPick(this.props.team.name);
+        this.props.togglePick(this.props.team.name);
     }
 
     render() {
-        let textStyle = this.props.picked ? [this.props.picked, {textDecorationLine: "line-through"}] : this.props.picked
+        let textStyle = this.props.picked ? [this.props.textStyle, {textDecorationLine: "line-through"}] : this.props.textStyle
         return(
             <TouchableOpacity onPress={this.onPress}>
                 <Text style={textStyle}>{`${this.formatSeed()}  ${this.props.team.name}`}</Text>

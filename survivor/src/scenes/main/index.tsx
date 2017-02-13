@@ -34,6 +34,10 @@ export default class Main extends React.Component<Props, State> {
         db: React.PropTypes.instanceOf(RealmDB),
         currentUser: React.PropTypes.object
     };
+
+    static childContextTypes = {
+    };
+
     constructor(props: Props, context: Context) {
         super(props, context);
         console.log("Main constructor");
@@ -44,9 +48,25 @@ export default class Main extends React.Component<Props, State> {
         }
     }
 
-    addPick = (team: string) => {
+    togglePick = (team: string) => {
         // add to db
-        this.context.db.addPickToUser(this.context.currentUser.name, team);
+        // this.context.db.addPickToUser(this.context.currentUser.name, team);
+
+        let index: number = this.context.currentUser.picks.indexOf(team);
+        if (index > -1) {
+            this.context.currentUser.picks = this.context.currentUser.picks.slice(index, 1);
+        }
+        else {
+            this.context.currentUser.picks.push(team);
+        }
+        console.log (`toggled ${team} in ${JSON.stringify(this.context.currentUser)}`);
+        this.context.db.updateUserPicks(this.context.currentUser);
+        this.setState({user: this.context.currentUser});
+    }
+
+    getChildContext(): Object {
+        return {
+        };
     }
 
     render() {
@@ -61,7 +81,7 @@ export default class Main extends React.Component<Props, State> {
                                         key={index}
                                         game={item} 
                                         picks={this.state.user.picks}
-                                        addPick={this.addPick}/>
+                                        togglePick={this.togglePick}/>
                                 </View>
                             );
                         })
@@ -76,7 +96,7 @@ export default class Main extends React.Component<Props, State> {
                                         key={index}
                                         game={item}
                                         picks={this.state.user.picks}
-                                        addPick={this.addPick}/>
+                                        togglePick={this.togglePick}/>
                                 </View>
                             );
                         })

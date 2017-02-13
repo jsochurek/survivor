@@ -89,5 +89,21 @@ export default class RealmDB {
         }
     }
 
+    updateUserPicks = (user: {name: string, picks: string[]}) => {
+        try {
+            this.realm.write( () => {
+                console.log("user", user);
+                let picks: {value: string}[] = [];
+                for (let i = 0; i < user.picks.length; i++) {
+                    picks.push({value: user.picks[i]});
+                }
+                this.realm.create("User", {name: user.name, picks}, true);
+            });
+        }
+        catch (e) {
+            console.log("error while updating picks " + user.picks + "to User: " + user.name + "---" + e);
+        }
+    }
+
 
 }

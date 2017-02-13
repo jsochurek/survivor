@@ -3,4 +3,4 @@ WHERE I LEFT OFF
 -formatting broken on team names, need to have the strikethrough conditional on whether or not it's picked
 -when a team is picked, add the pick to the user db
 -don't allow a previously picked team to be picked again (or unpick them)
--
+-crossing out isn't working properly

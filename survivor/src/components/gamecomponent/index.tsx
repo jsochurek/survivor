@@ -25,11 +25,13 @@ type Props = {
     togglePick: (team: string) => void
 }
 type Context = {
+    getCurrentUser: () => {name: string, picks: string[]}
 }
 export default class GameComponent extends React.Component<Props, State> {
     context: Context;
 
     static contextTypes = {
+        getCurrentUser: React.PropTypes.func
     };
     constructor(props: Props, context: Context) {
         super(props, context);
@@ -51,7 +53,7 @@ export default class GameComponent extends React.Component<Props, State> {
     }
 
     isPicked = (team: string) => {
-        return ( this.props.picks.indexOf(team) > -1 );
+        return ( this.context.getCurrentUser().picks.indexOf(team) > -1 );
     }
 
     togglePick = (team: string) => {
@@ -71,7 +73,7 @@ export default class GameComponent extends React.Component<Props, State> {
                 <TeamComponent 
                     textStyle={this.state.awayStyle}
                     team={this.props.game.away} 
-                    picked={this.isPicked(this.props.game.home.name)}
+                    picked={this.isPicked(this.props.game.away.name)}
                     togglePick={this.togglePick}
                 />
             </View>

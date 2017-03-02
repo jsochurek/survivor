@@ -36,21 +36,22 @@ export default class RealmDB {
     }
 
     getUser = (userID: string): {name: string, picks: string[]} => {
-        let user: {name: string, picks: string[]};
-        let dbObjects = this.realm.objects("User").filtered("id = $0", userID);
+        let user: {name: string, picks: string[]} = null;
+        let dbObjects = this.realm.objects("User").filtered("name = $0", userID);
         if (dbObjects.length > 0) {
             user = {
                 name: dbObjects[0].name,
                 picks: this.convertPicks(dbObjects[0])
             };
         }
+        console.log("getUser", user);
         return user;
     }
 
     convertPicks = (dbObject: any) => {
         let picks: string[] = [];
         for (let i = 0; i < dbObject.picks.length; i++) {
-            picks.push(dbObject.picks[i]);
+            picks.push(dbObject.picks[i].value);
         }
         return picks;
     }

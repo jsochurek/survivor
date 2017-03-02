@@ -25,14 +25,18 @@ type State = {
 }
 type Context = {
     db: RealmDB,
-    currentUser: {name: string, picks: string[]}
+    // currentUser: {name: string, picks: string[]},
+    getCurrentUser: () => {name: string, picks: string[]},
+    togglePick: (team: string) => {}
 }
 export default class Main extends React.Component<Props, State> {
     context: Context;
 
     static contextTypes = {
         db: React.PropTypes.instanceOf(RealmDB),
-        currentUser: React.PropTypes.object
+        currentUser: React.PropTypes.object,
+        getCurrentUser: React.PropTypes.func,
+        togglePick: React.PropTypes.func
     };
 
     static childContextTypes = {
@@ -44,7 +48,7 @@ export default class Main extends React.Component<Props, State> {
         this.state = {
             teams2016: teams,
             tournament2016: tournament,
-            user: this.context.currentUser
+            user: this.context.getCurrentUser()
         }
     }
 
@@ -52,16 +56,20 @@ export default class Main extends React.Component<Props, State> {
         // add to db
         // this.context.db.addPickToUser(this.context.currentUser.name, team);
 
-        let index: number = this.context.currentUser.picks.indexOf(team);
-        if (index > -1) {
-            this.context.currentUser.picks = this.context.currentUser.picks.slice(index, 1);
-        }
-        else {
-            this.context.currentUser.picks.push(team);
-        }
-        console.log (`toggled ${team} in ${JSON.stringify(this.context.currentUser)}`);
-        this.context.db.updateUserPicks(this.context.currentUser);
-        this.setState({user: this.context.currentUser});
+        // let index: number = this.context.currentUser.picks.indexOf(team);
+        // if (index > -1) {
+        //     this.context.currentUser.picks.slice(index, 1);
+        // }
+        // else {
+        //     this.context.currentUser.picks.push(team);
+        // }
+        // console.log (`toggled ${team} in ${JSON.stringify(this.context.currentUser)}`);
+        // this.context.db.updateUserPicks(this.context.currentUser);
+        // this.setState({user: this.context.currentUser});
+
+        this.context.togglePick(team);
+        let user: {name: string, picks: string[]} = this.context.getCurrentUser();
+        this.setState({user: user});
     }
 
     getChildContext(): Object {
@@ -80,7 +88,7 @@ export default class Main extends React.Component<Props, State> {
                                     <GameComponent 
                                         key={index}
                                         game={item} 
-                                        picks={this.state.user.picks}
+                                        picks={this.context.getCurrentUser().picks}
                                         togglePick={this.togglePick}/>
                                 </View>
                             );
@@ -95,7 +103,7 @@ export default class Main extends React.Component<Props, State> {
                                     <GameComponent 
                                         key={index}
                                         game={item}
-                                        picks={this.state.user.picks}
+                                        picks={this.context.getCurrentUser().picks}
                                         togglePick={this.togglePick}/>
                                 </View>
                             );

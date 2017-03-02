@@ -1,6 +1,9 @@
 WHERE I LEFT OFF
 
--formatting broken on team names, need to have the strikethrough conditional on whether or not it's picked
--when a team is picked, add the pick to the user db
--don't allow a previously picked team to be picked again (or unpick them)
--crossing out isn't working properly
+-users picks are loaded properly on init
+-strikethrough toggling works properly, though we may want to limit picking both teams in a game
+-
+
+
+TODO
+-need to display all 4 regions and final four

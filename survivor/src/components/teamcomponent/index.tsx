@@ -22,11 +22,16 @@ type Props = {
     togglePick: (team: string) => void
 }
 type Context = {
-    
+    getCurrentUser: () => {name: string, picks: string[]}
 }
 export default class TeamComponent extends React.Component<Props, State> {
-    constructor(props: Props) {
-        super(props);
+    context: Context;
+
+    static contextTypes = {
+        getCurrentUser: React.PropTypes.func
+    };
+    constructor(props: Props, context: Context) {
+        super(props, context);
         this.state = {
 
         };
@@ -42,12 +47,16 @@ export default class TeamComponent extends React.Component<Props, State> {
 
     onPress = () => {
         console.log(`Pressed ${this.props.team.name}`);
-        // add pick
+        // toggle pick
         this.props.togglePick(this.props.team.name);
     }
 
     render() {
-        let textStyle = this.props.picked ? [this.props.textStyle, {textDecorationLine: "line-through"}] : this.props.textStyle
+        // let textStyle = this.props.picked == true ? [this.props.textStyle, {textDecorationLine: "line-through"}] : [this.props.textStyle, {textDecorationLine: "none"}];
+        let textStyle = this.context.getCurrentUser().picks.indexOf(this.props.team.name) > -1 == true ? 
+            [this.props.textStyle, {textDecorationLine: "line-through"}] : 
+            [this.props.textStyle, {textDecorationLine: "none"}];
+        // console.log(`${this.props.team.name} is picked? ${this.props.picked}`);
         return(
             <TouchableOpacity onPress={this.onPress}>
                 <Text style={textStyle}>{`${this.formatSeed()}  ${this.props.team.name}`}</Text>

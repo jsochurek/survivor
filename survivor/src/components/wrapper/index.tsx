@@ -22,7 +22,9 @@ export default class Wrapper extends React.Component<Props, State> {
   static childContextTypes = {
       db: React.PropTypes.instanceOf(RealmDB),
       setCurrentUser: React.PropTypes.func,
-      currentUser: React.PropTypes.object
+    //   currentUser: React.PropTypes.shape({name: React.PropTypes.string, picks: React.PropTypes.arrayOf(React.PropTypes.string)}),
+      getCurrentUser: React.PropTypes.func,
+      togglePick: React.PropTypes.func
   };
 
   constructor(props: Props) {
@@ -38,7 +40,9 @@ export default class Wrapper extends React.Component<Props, State> {
     return {
         db: this.db,
         setCurrentUser: this.setCurrentUser,
-        currentUser: this.state.currentUser
+        // currentUser: this.state.currentUser,
+        getCurrentUser: this.getCurrentUser,
+        togglePick: this.togglePick,
     };
   }
 
@@ -53,6 +57,24 @@ export default class Wrapper extends React.Component<Props, State> {
       this.setState({currentUser: user});
       //navigate to bracket
       this.props.router.replace("/main");
+  }
+
+  getCurrentUser = () : {name: string, picks: string[]} => {
+    return this.state.currentUser;
+  }
+
+  togglePick = (team: string) => {
+    let picks: string[] = this.state.currentUser.picks;
+    let index: number = picks.indexOf(team);
+    if (index > -1) {
+        let spliced = picks.splice(index, 1);
+    }
+    else {
+        picks.push(team);
+    }
+    this.state.currentUser.picks = picks;
+    this.setState({currentUser: this.state.currentUser});
+    this.db.updateUserPicks({name: this.state.currentUser.name, picks});
   }
 
   render() {

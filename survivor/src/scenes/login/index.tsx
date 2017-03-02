@@ -44,12 +44,17 @@ export default class Login extends React.Component<Props, State> {
 
     submitNewUser = (e: any) => {
         console.log("e", e.nativeEvent.text);
-        let user: {name: string, picks: string[]} = {
-            name: e.nativeEvent.text,
-            picks: []
-        };
-        this.context.db.addUser(user);
-        //this.context.db.addPickToUser(user.name, "test");
+        let user : {name: string, picks: string[]} = this.context.db.getUser(e.nativeEvent.text);
+        if (!user) {
+            user = {
+                name: e.nativeEvent.text,
+                picks: []
+            };
+            this.context.db.addUser(user);
+        }
+        else {
+            console.log("found user", user);
+        }
 
         console.log("current users", this.context.db.getUsers());
         this.setState({users: this.context.db.getUsers()});

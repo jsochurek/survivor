@@ -14,6 +14,7 @@ import GameComponent from '../../components/gamecomponent/index';
 import { tournament } from '../../2016/tournament2016';
 import styles from './styles';
 import RealmDB from '../../database/index';
+import RoundOf64 from '../../components/roundOf64/index';
 
 type Props = {
     router: RouterInterface
@@ -80,38 +81,11 @@ export default class Main extends React.Component<Props, State> {
     render() {
         return(
             <View style={styles.container}>
-                <View style={styles.firstTwoRounds}>
-                    <View style={styles.round}>
-                        {this.state.tournament2016.South.roundOf64.map((item, index) => {
-                            return(
-                                <View style={styles.gameView} key={index}>
-                                    <GameComponent 
-                                        key={index}
-                                        game={item} 
-                                        picks={this.context.getCurrentUser().picks}
-                                        togglePick={this.togglePick}/>
-                                </View>
-                            );
-                        })
-
-                        }
-                    </View>
-                    <View style={styles.round}>
-                        {this.state.tournament2016.South.roundOf32.map((item, index) => {
-                            return(
-                                <View style={styles.gameView} key={index}>
-                                    <GameComponent 
-                                        key={index}
-                                        game={item}
-                                        picks={this.context.getCurrentUser().picks}
-                                        togglePick={this.togglePick}/>
-                                </View>
-                            );
-                        })
-
-                        }
-                    </View>
-                </View>
+                <RoundOf64 
+                    teams2016={this.state.teams2016}
+                    tournament2016={this.state.tournament2016}    
+                    user={this.state.user}
+                />
 
             </View>
 

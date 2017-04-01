@@ -1,33 +1,26 @@
 {
-  "compilerOptions": {
-    "module": "es6",
-    "noImplicitAny": false,
-    "removeComments": false,
-    "preserveConstEnums": true,
-    "sourceMap": false,
-    "allowJs": false,
-    "jsx": "react",
-    "target": "es6",
-    "experimentalDecorators": true,
-    "outDir": "build/"
-  },
-  "compileOnSave": false,
-  "filesGlob": [
-    "**/*.tsx",
-    "**/*.ts",
-    "!node_modules/**",
-    "!typings/**"
-  ],
-  "include": [
-    "**/*.tsx",
-    "**/*.ts",
-    "!node_modules/**",
-    "!typings/**"
-  ],
-  "files": [
-
-  ],
-  "atom": {
-    "rewriteTsconfig": true
-  }
+    "compilerOptions":
+    {
+        "module": "es6",
+        "jsx": "react",
+        "target": "es6",
+        "sourceMap": true,
+        "outDir": "dist/",
+        "allowJs": false,
+        "preserveConstEnums": true,
+        "experimentalDecorators": true,
+        "project": "./",
+        "pretty": true,
+        "allowSyntheticDefaultImports": true,
+        "moduleResolution": "node"
+    },
+    "include": [
+        "src/**/*.tsx",
+        "src/**/*.ts"
+    ],
+    "exclude":
+    [
+        "node_modules/**",
+        "typings/*"
+    ]
 }

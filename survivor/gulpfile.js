@@ -11,12 +11,11 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 
 // tsProject over all functions
-let tsProject = ts.createProject('tsconfig.json', {typescript: require('ntypescript')});
+let tsProject = ts.createProject('tsconfig.json', {rootDir: "", outDir: "build"});
 // src files for the project
 let srcFiles = [
   'src/**/*.tsx',
-  'src/**/*.ts',
-  "!node_modules/**"
+  'src/**/*.ts'
 ];
 
 // gulp task to build typescript files into build
@@ -26,7 +25,7 @@ gulp.task('watch', ['build'], createGulpWatch(srcFiles, ['build']));
 /**
  * Runs all the needed build scripts to copy and compile into build/
  */
- gulp.task('build', ['tsbuild']);//, 'bundleHtml', 'moveHtml']);
+ gulp.task('build', ['tsbuild']);
 /**
  * Builds the ts project with tsconfig.json and outputs to build
  */
@@ -39,7 +38,7 @@ gulp.task('tsbuild', function(){
   // include sourcemaps when react-native doesn't suck
   // https://github.com/ivogabe/gulp-typescript#source-maps
   // let tsResult = tsProject.src()
-  let tsResult = gulp.src(srcFiles)
+  let tsResult = gulp.src(srcFiles, {base: "src"})
     .pipe(sourcemaps.init()) // generate sourcemaps
     .pipe(tsProject()).js
     .pipe(sourcemaps.write('.')) // append sourcemap to each file

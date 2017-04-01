@@ -1,5 +1,5 @@
 declare module "react-router-native" {
-    import React = __React;
+    import * as React from "react";
     type Component = React.ReactType;
 
     interface RouterInterface {

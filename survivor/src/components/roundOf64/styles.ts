@@ -1,3 +1,4 @@
+import * as React from "react";
 import {StyleSheet, Dimensions} from "react-native";
 
 let {width, height} = Dimensions.get("window");
@@ -7,6 +8,7 @@ const styles = StyleSheet.create({
     },
     firstTwoRounds: {
         flexDirection: "row" as "row",
+        justifyContent: "center" as React.FlexJustifyType,
         flex: 1,
     },
     gameView: {

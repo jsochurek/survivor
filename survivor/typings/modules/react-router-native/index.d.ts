@@ -1,10 +1,20 @@
 declare module "react-router-native" {
-    import * as React from "react";
-    type Component = React.ReactType;
+
+    type LocationType = {
+      pathname: string,
+      search: string,
+      hash: string,
+      state: {stateKey: string}
+      action: string,
+      key: string
+      query: Object
+    }
 
     interface RouterInterface {
       pop(): void,
+      goBack(): void,
       push(route: string): void,
+      getCurrentLocation(): LocationType
       replace(route: string): void
     }
     

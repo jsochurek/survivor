@@ -6,7 +6,7 @@ import GameComponent from '../../components/gamecomponent/index';
 import { tournament } from '../../2016/tournament2016';
 import styles from './styles';
 import RealmDB from '../../database/index';
-export default class RoundOf64 extends React.Component {
+export default class RoundOf32 extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.togglePick = (team) => {
@@ -40,23 +40,6 @@ export default class RoundOf64 extends React.Component {
         return (React.createElement(ScrollView, { style: styles.container },
             React.createElement(View, { style: styles.firstTwoRounds },
                 React.createElement(View, { style: styles.round },
-                    this.props.tournament2016.South.roundOf64.map((item, index) => {
-                        return (React.createElement(View, { style: styles.gameView, key: index },
-                            React.createElement(GameComponent, { key: index, game: item, picks: this.context.getCurrentUser().picks, togglePick: this.togglePick })));
-                    }),
-                    this.props.tournament2016.West.roundOf64.map((item, index) => {
-                        return (React.createElement(View, { style: styles.gameView, key: index },
-                            React.createElement(GameComponent, { key: index, game: item, picks: this.context.getCurrentUser().picks, togglePick: this.togglePick })));
-                    }),
-                    this.props.tournament2016.East.roundOf64.map((item, index) => {
-                        return (React.createElement(View, { style: styles.gameView, key: index },
-                            React.createElement(GameComponent, { key: index, game: item, picks: this.context.getCurrentUser().picks, togglePick: this.togglePick })));
-                    }),
-                    this.props.tournament2016.Midwest.roundOf64.map((item, index) => {
-                        return (React.createElement(View, { style: styles.gameView, key: index },
-                            React.createElement(GameComponent, { key: index, game: item, picks: this.context.getCurrentUser().picks, togglePick: this.togglePick })));
-                    })),
-                React.createElement(View, { style: styles.round },
                     this.props.tournament2016.South.roundOf32.map((item, index) => {
                         return (React.createElement(View, { style: styles.gameView, key: index },
                             React.createElement(GameComponent, { key: index, game: item, picks: this.context.getCurrentUser().picks, togglePick: this.togglePick })));
@@ -72,14 +55,31 @@ export default class RoundOf64 extends React.Component {
                     this.props.tournament2016.Midwest.roundOf32.map((item, index) => {
                         return (React.createElement(View, { style: styles.gameView, key: index },
                             React.createElement(GameComponent, { key: index, game: item, picks: this.context.getCurrentUser().picks, togglePick: this.togglePick })));
+                    })),
+                React.createElement(View, { style: styles.round },
+                    this.props.tournament2016.South.roundOf16.map((item, index) => {
+                        return (React.createElement(View, { style: styles.gameView, key: index },
+                            React.createElement(GameComponent, { key: index, game: item, picks: this.context.getCurrentUser().picks, togglePick: this.togglePick })));
+                    }),
+                    this.props.tournament2016.West.roundOf16.map((item, index) => {
+                        return (React.createElement(View, { style: styles.gameView, key: index },
+                            React.createElement(GameComponent, { key: index, game: item, picks: this.context.getCurrentUser().picks, togglePick: this.togglePick })));
+                    }),
+                    this.props.tournament2016.East.roundOf16.map((item, index) => {
+                        return (React.createElement(View, { style: styles.gameView, key: index },
+                            React.createElement(GameComponent, { key: index, game: item, picks: this.context.getCurrentUser().picks, togglePick: this.togglePick })));
+                    }),
+                    this.props.tournament2016.Midwest.roundOf16.map((item, index) => {
+                        return (React.createElement(View, { style: styles.gameView, key: index },
+                            React.createElement(GameComponent, { key: index, game: item, picks: this.context.getCurrentUser().picks, togglePick: this.togglePick })));
                     })))));
     }
 }
-RoundOf64.contextTypes = {
+RoundOf32.contextTypes = {
     db: React.PropTypes.instanceOf(RealmDB),
     currentUser: React.PropTypes.object,
     getCurrentUser: React.PropTypes.func,
     togglePick: React.PropTypes.func
 };
-RoundOf64.childContextTypes = {};
+RoundOf32.childContextTypes = {};
 //# sourceMappingURL=index.js.map

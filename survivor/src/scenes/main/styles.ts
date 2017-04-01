@@ -21,7 +21,31 @@ const styles = StyleSheet.create({
         justifyContent: "space-around" as React.FlexJustifyType,
         // borderWidth: 1,
     },
-
+wrapper: {
+  },
+  slide1: {
+    flex: 1,
+    justifyContent: 'center' as React.FlexJustifyType,
+    alignItems: 'center' as React.FlexAlignType,
+    backgroundColor: '#9DD6EB',
+  },
+  slide2: {
+    flex: 1,
+    justifyContent: 'center' as React.FlexJustifyType,
+    alignItems: 'center' as React.FlexAlignType,
+    backgroundColor: '#97CAE5',
+  },
+  slide3: {
+    flex: 1,
+    justifyContent: 'center' as React.FlexJustifyType,
+    alignItems: 'center' as React.FlexAlignType,
+    backgroundColor: '#92BBD9',
+  },
+  text: {
+    color: '#fff',
+    fontSize: 30,
+    fontWeight: 'bold' as 'bold',
+  }
 
 
 });

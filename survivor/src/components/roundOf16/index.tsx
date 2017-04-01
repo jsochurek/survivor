@@ -29,7 +29,7 @@ type Context = {
     getCurrentUser: () => {name: string, picks: string[]},
     togglePick: (team: string) => {}
 }
-export default class RoundOf64 extends React.Component<Props, State> {
+export default class RoundOf16 extends React.Component<Props, State> {
     context: Context;
 
     static contextTypes = {
@@ -82,7 +82,7 @@ export default class RoundOf64 extends React.Component<Props, State> {
             <ScrollView style={styles.container}>
                 <View style={styles.firstTwoRounds}>
                     <View style={styles.round}>
-                        {this.props.tournament2016.South.roundOf64.map((item, index) => {
+                        {this.props.tournament2016.South.roundOf16.map((item, index) => {
                             return(
                                 <View style={styles.gameView} key={index}>
                                     <GameComponent 
@@ -94,7 +94,7 @@ export default class RoundOf64 extends React.Component<Props, State> {
                             );
                         })
                         }
-                        {this.props.tournament2016.West.roundOf64.map((item, index) => {
+                        {this.props.tournament2016.West.roundOf16.map((item, index) => {
                             return(
                                 <View style={styles.gameView} key={index}>
                                     <GameComponent 
@@ -106,7 +106,7 @@ export default class RoundOf64 extends React.Component<Props, State> {
                             );
                         })
                         }
-                        {this.props.tournament2016.East.roundOf64.map((item, index) => {
+                        {this.props.tournament2016.East.roundOf16.map((item, index) => {
                             return(
                                 <View style={styles.gameView} key={index}>
                                     <GameComponent 
@@ -118,7 +118,7 @@ export default class RoundOf64 extends React.Component<Props, State> {
                             );
                         })
                         }
-                        {this.props.tournament2016.Midwest.roundOf64.map((item, index) => {
+                        {this.props.tournament2016.Midwest.roundOf16.map((item, index) => {
                             return(
                                 <View style={styles.gameView} key={index}>
                                     <GameComponent 
@@ -132,7 +132,7 @@ export default class RoundOf64 extends React.Component<Props, State> {
                         }
                     </View>
                     <View style={styles.round}>
-                        {this.props.tournament2016.South.roundOf32.map((item, index) => {
+                        {this.props.tournament2016.South.roundOf8.map((item, index) => {
                             return(
                                 <View style={styles.gameView} key={index}>
                                     <GameComponent 
@@ -144,7 +144,7 @@ export default class RoundOf64 extends React.Component<Props, State> {
                             );
                         })
                         }
-                        {this.props.tournament2016.West.roundOf32.map((item, index) => {
+                        {this.props.tournament2016.West.roundOf8.map((item, index) => {
                             return(
                                 <View style={styles.gameView} key={index}>
                                     <GameComponent 
@@ -156,7 +156,7 @@ export default class RoundOf64 extends React.Component<Props, State> {
                             );
                         })
                         }
-                        {this.props.tournament2016.East.roundOf32.map((item, index) => {
+                        {this.props.tournament2016.East.roundOf8.map((item, index) => {
                             return(
                                 <View style={styles.gameView} key={index}>
                                     <GameComponent 
@@ -168,7 +168,7 @@ export default class RoundOf64 extends React.Component<Props, State> {
                             );
                         })
                         }
-                        {this.props.tournament2016.Midwest.roundOf32.map((item, index) => {
+                        {this.props.tournament2016.Midwest.roundOf8.map((item, index) => {
                             return(
                                 <View style={styles.gameView} key={index}>
                                     <GameComponent 

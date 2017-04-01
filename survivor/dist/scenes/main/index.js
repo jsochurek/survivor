@@ -5,6 +5,12 @@ import { tournament } from '../../2016/tournament2016';
 import styles from './styles';
 import RealmDB from '../../database/index';
 import RoundOf64 from '../../components/roundOf64/index';
+import Swiper from 'react-native-swiper';
+import RoundOf32 from '../../components/roundOf32/index';
+import RoundOf16 from '../../components/roundOf16/index';
+import RoundOf8 from '../../components/roundOf8/index';
+import RoundOf4 from '../../components/roundOf4/index';
+import RoundOf2 from '../../components/roundOf2/index';
 export default class Main extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -36,8 +42,19 @@ export default class Main extends React.Component {
         return {};
     }
     render() {
-        return (React.createElement(View, { style: styles.container },
-            React.createElement(RoundOf64, { teams2016: this.state.teams2016, tournament2016: this.state.tournament2016, user: this.state.user })));
+        return (React.createElement(Swiper, { loop: false, showsPagination: true, showsButtons: true, index: 1 },
+            React.createElement(View, { style: styles.container },
+                React.createElement(RoundOf64, { teams2016: this.state.teams2016, tournament2016: this.state.tournament2016, user: this.state.user })),
+            React.createElement(View, { style: styles.container },
+                React.createElement(RoundOf32, { teams2016: this.state.teams2016, tournament2016: this.state.tournament2016, user: this.state.user })),
+            React.createElement(View, { style: styles.container },
+                React.createElement(RoundOf16, { teams2016: this.state.teams2016, tournament2016: this.state.tournament2016, user: this.state.user })),
+            React.createElement(View, { style: styles.container },
+                React.createElement(RoundOf8, { teams2016: this.state.teams2016, tournament2016: this.state.tournament2016, user: this.state.user })),
+            React.createElement(View, { style: styles.container },
+                React.createElement(RoundOf4, { teams2016: this.state.teams2016, tournament2016: this.state.tournament2016, user: this.state.user })),
+            React.createElement(View, { style: styles.container },
+                React.createElement(RoundOf2, { teams2016: this.state.teams2016, tournament2016: this.state.tournament2016, user: this.state.user }))));
     }
 }
 Main.contextTypes = {

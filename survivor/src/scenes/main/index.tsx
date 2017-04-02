@@ -89,16 +89,14 @@ export default class Main extends React.Component<Props, State> {
             
             <Swiper
                     loop={false}
-                    showsPagination={true}
+                    showsPagination={false}
                     showsButtons={true}
-                    index={1}>
-                        <View style={styles.container}> 
+                    index={0}>
                             <RoundOf64 
                                 teams2016={this.state.teams2016}
                                 tournament2016={this.state.tournament2016}    
                                 user={this.state.user}
                             />
-                        </View>
                         <View style={styles.container}> 
                             <RoundOf32 
                                 teams2016={this.state.teams2016}

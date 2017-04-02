@@ -42,9 +42,8 @@ export default class Main extends React.Component {
         return {};
     }
     render() {
-        return (React.createElement(Swiper, { loop: false, showsPagination: true, showsButtons: true, index: 1 },
-            React.createElement(View, { style: styles.container },
-                React.createElement(RoundOf64, { teams2016: this.state.teams2016, tournament2016: this.state.tournament2016, user: this.state.user })),
+        return (React.createElement(Swiper, { loop: false, showsPagination: false, showsButtons: true, index: 0 },
+            React.createElement(RoundOf64, { teams2016: this.state.teams2016, tournament2016: this.state.tournament2016, user: this.state.user }),
             React.createElement(View, { style: styles.container },
                 React.createElement(RoundOf32, { teams2016: this.state.teams2016, tournament2016: this.state.tournament2016, user: this.state.user })),
             React.createElement(View, { style: styles.container },

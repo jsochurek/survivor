@@ -15,6 +15,7 @@ import { tournament } from '../../2016/tournament2016';
 import styles from './styles';
 import RealmDB from '../../database/index';
 import TeamComponent from '../teamcomponent/index';
+import { User } from '../../database/schema';
 
 type Props = {
     teams2016: Team[],
@@ -22,7 +23,10 @@ type Props = {
     user: {name: string, picks: string[]}
 }
 type State = {
-    
+    winningTeam?: Team,
+    teams2016?: Team[],
+    tournament2016?: any,
+    user?: {name: string, picks: string[]}
 }
 type Context = {
     db: RealmDB,
@@ -47,9 +51,13 @@ export default class RoundOf2 extends React.Component<Props, State> {
         super(props, context);
         console.log("Main constructor");
         this.state = {
-            teams2016: teams,
-            tournament2016: tournament,
-            user: this.context.getCurrentUser()
+            teams2016: this.props.teams2016,
+            tournament2016: this.props.tournament2016,
+            user: this.context.getCurrentUser(),
+            winningTeam: this.props.tournament2016.FinalFour.roundOf2[0].winner === this.props.tournament2016.FinalFour.roundOf2[0].home.name ? 
+                this.props.tournament2016.FinalFour.roundOf2[0].home : 
+                (this.props.tournament2016.FinalFour.roundOf2[0].winner === this.props.tournament2016.FinalFour.roundOf2[0].away.name ? 
+                this.props.tournament2016.FinalFour.roundOf2[0].away : null)
         }
     }
 
@@ -85,7 +93,7 @@ export default class RoundOf2 extends React.Component<Props, State> {
     
     render() {
         return(
-            <ScrollView style={styles.container}>
+            <View style={styles.container}>
                 <View style={styles.firstTwoRounds}>
                     <View style={styles.round}>
                         {this.props.tournament2016.FinalFour.roundOf2.map((item, index) => {
@@ -101,23 +109,21 @@ export default class RoundOf2 extends React.Component<Props, State> {
                         })
                         }
                     </View>
-                    {/*
                     <View style={styles.round}>
-
-                                <View style={styles.gameView}>
-                                    <TeamComponent 
-                                        textStyle={styles.winnerText}
-                                        team={this.props.tournament2016.FinalFour.roundOf2.winner} 
-                                        picked={this.isPicked(this.props.tournament2016.FinalFour.roundOf2.winner)}
-                                        togglePick={this.togglePick}
-                                    />
-                                </View>
-                            
+                        {this.state.winningTeam !== null && 
+                            <View style={styles.gameView}>
+                                <TeamComponent 
+                                    textStyle={styles.winnerText}
+                                    team={this.state.winningTeam} 
+                                    picked={this.isPicked(this.props.tournament2016.FinalFour.roundOf2[0].winner)}
+                                    togglePick={this.togglePick}
+                                />
+                            </View>
+                        }
                     </View>
-                    */}
                 </View>
 
-            </ScrollView>
+            </View>
 
         );
     }

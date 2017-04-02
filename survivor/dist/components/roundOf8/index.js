@@ -1,6 +1,6 @@
 /// <reference path="../../../typings/index.d.ts" />
 import * as React from 'react';
-import { View, ScrollView } from 'react-native';
+import { View } from 'react-native';
 import { teams } from '../../2016/teams';
 import GameComponent from '../../components/gamecomponent/index';
 import { tournament } from '../../2016/tournament2016';
@@ -37,7 +37,7 @@ export default class RoundOf8 extends React.Component {
         return {};
     }
     render() {
-        return (React.createElement(ScrollView, { style: styles.container },
+        return (React.createElement(View, { style: styles.container },
             React.createElement(View, { style: styles.firstTwoRounds },
                 React.createElement(View, { style: styles.round },
                     this.props.tournament2016.South.roundOf8.map((item, index) => {

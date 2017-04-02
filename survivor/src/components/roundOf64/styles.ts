@@ -5,6 +5,8 @@ let {width, height} = Dimensions.get("window");
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        marginLeft: 20,
+        marginRight: 20
     },
     firstTwoRounds: {
         flexDirection: "row" as "row",
@@ -13,7 +15,9 @@ const styles = StyleSheet.create({
     },
     gameView: {
         marginLeft: 10,
-        marginRight: 10
+        marginRight: 10,
+        marginTop: 15,
+        marginBottom: 15
     },
     round: {
         flex: 1,
@@ -21,9 +25,6 @@ const styles = StyleSheet.create({
         justifyContent: "space-around" as React.FlexJustifyType,
         // borderWidth: 1,
     },
-
-
-
 });
 
 

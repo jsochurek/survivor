@@ -1,11 +1,10 @@
 /// <reference path="../../../typings/index.d.ts" />
 import * as React from 'react';
-import { View, ScrollView } from 'react-native';
-import { teams } from '../../2016/teams';
+import { View } from 'react-native';
 import GameComponent from '../../components/gamecomponent/index';
-import { tournament } from '../../2016/tournament2016';
 import styles from './styles';
 import RealmDB from '../../database/index';
+import TeamComponent from '../teamcomponent/index';
 export default class RoundOf2 extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -31,21 +30,28 @@ export default class RoundOf2 extends React.Component {
         };
         console.log("Main constructor");
         this.state = {
-            teams2016: teams,
-            tournament2016: tournament,
-            user: this.context.getCurrentUser()
+            teams2016: this.props.teams2016,
+            tournament2016: this.props.tournament2016,
+            user: this.context.getCurrentUser(),
+            winningTeam: this.props.tournament2016.FinalFour.roundOf2[0].winner === this.props.tournament2016.FinalFour.roundOf2[0].home.name ?
+                this.props.tournament2016.FinalFour.roundOf2[0].home :
+                (this.props.tournament2016.FinalFour.roundOf2[0].winner === this.props.tournament2016.FinalFour.roundOf2[0].away.name ?
+                    this.props.tournament2016.FinalFour.roundOf2[0].away : null)
         };
     }
     getChildContext() {
         return {};
     }
     render() {
-        return (React.createElement(ScrollView, { style: styles.container },
+        return (React.createElement(View, { style: styles.container },
             React.createElement(View, { style: styles.firstTwoRounds },
                 React.createElement(View, { style: styles.round }, this.props.tournament2016.FinalFour.roundOf2.map((item, index) => {
                     return (React.createElement(View, { style: styles.gameView, key: index },
                         React.createElement(GameComponent, { key: index, game: item, picks: this.context.getCurrentUser().picks, togglePick: this.togglePick })));
-                })))));
+                })),
+                React.createElement(View, { style: styles.round }, this.state.winningTeam !== null &&
+                    React.createElement(View, { style: styles.gameView },
+                        React.createElement(TeamComponent, { textStyle: styles.winnerText, team: this.state.winningTeam, picked: this.isPicked(this.props.tournament2016.FinalFour.roundOf2[0].winner), togglePick: this.togglePick }))))));
     }
 }
 RoundOf2.contextTypes = {

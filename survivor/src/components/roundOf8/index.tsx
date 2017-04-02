@@ -79,7 +79,7 @@ export default class RoundOf8 extends React.Component<Props, State> {
 
     render() {
         return(
-            <ScrollView style={styles.container}>
+            <View style={styles.container}>
                 <View style={styles.firstTwoRounds}>
                     <View style={styles.round}>
                         {this.props.tournament2016.South.roundOf8.map((item, index) => {
@@ -148,7 +148,7 @@ export default class RoundOf8 extends React.Component<Props, State> {
                     </View>
                 </View>
 
-            </ScrollView>
+            </View>
 
         );
     }

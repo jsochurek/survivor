@@ -3,6 +3,8 @@ let { width, height } = Dimensions.get("window");
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        marginLeft: 15,
+        marginRight: 15
     },
     firstTwoRounds: {
         flexDirection: "row",
@@ -11,7 +13,9 @@ const styles = StyleSheet.create({
     },
     gameView: {
         marginLeft: 10,
-        marginRight: 10
+        marginRight: 10,
+        marginTop: 15,
+        marginBottom: 15
     },
     round: {
         flex: 1,

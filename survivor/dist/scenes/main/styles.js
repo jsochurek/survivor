@@ -4,6 +4,8 @@ let { width, height } = Dimensions.get("window");
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        marginTop: 10,
+        marginBottom: 10
     },
     firstTwoRounds: {
         flexDirection: "row",

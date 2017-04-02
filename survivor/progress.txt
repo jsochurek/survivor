@@ -1,17 +1,19 @@
 WHERE I LEFT OFF
-
+-multiple users exist, and load on init
 -users picks are loaded properly on init
 -strikethrough toggling works properly, though we may want to limit picking both teams in a game
 -all regions and rounds inputted
--all regions and rounds displayed except champion
 -can swipe between regions
 
 
 TODO
--need to style each round
--need to make sure can't pick both teams in a matchup
+-maybe swipe vertically within a region (round of 64, 32, and 16)
 -need to make sure can't pick if you've lost
 -need to put blank data in for rounds that haven't happened yet
 -need to figure out server side
 -need to figure out how to update data when rounds are happening
 -need to lock games that have already happened (or games that day)
+-change user?
+-admin role
+-view all users picks
+-filter by years

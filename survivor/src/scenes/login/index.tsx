@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from "prop-types";
 import {
   Text,
   TextInput,
@@ -31,8 +32,8 @@ export default class Login extends React.Component<Props, State> {
     context: Context;
 
     static contextTypes = {
-        db: React.PropTypes.instanceOf(RealmDB),
-        setCurrentUser: React.PropTypes.func
+        db: PropTypes.instanceOf(RealmDB),
+        setCurrentUser: PropTypes.func
     };
     constructor(props: Props, context: Context) {
         super(props, context);

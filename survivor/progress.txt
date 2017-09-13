@@ -18,3 +18,8 @@ TODO
 -admin role
 -view all users picks
 -filter by years
+-NEED TO SIMULATE A TOURNAMENT by fixing date and going round by round and case by case
+-#####1 need to change picks to keyed array of objects. key is team name. "togglePick" doesn't work well without it
+-create "UserType" to pass around
+-check out state for all rounds, is it necessary, etc. 
+-move common functions to context

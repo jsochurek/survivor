@@ -1,5 +1,6 @@
 /// <reference path="../../../typings/index.d.ts" />
 import * as React from 'react';
+import PropTypes from "prop-types";
 import { View } from 'react-native';
 import GameComponent from '../../components/gamecomponent/index';
 import styles from './styles';
@@ -26,7 +27,13 @@ export default class RoundOf2 extends React.Component {
             this.setState({ user: user });
         };
         this.isPicked = (team) => {
-            return (this.context.getCurrentUser().picks.indexOf(team) > -1);
+            // return ( this.context.getCurrentUser().picks.indexOf(team) > -1 );
+            for (let i = 0; i < this.context.getCurrentUser().picks.length; i++) {
+                if (this.context.getCurrentUser().picks[i].team === team) {
+                    return true;
+                }
+            }
+            return false;
         };
         console.log("Main constructor");
         this.state = {
@@ -55,10 +62,10 @@ export default class RoundOf2 extends React.Component {
     }
 }
 RoundOf2.contextTypes = {
-    db: React.PropTypes.instanceOf(RealmDB),
-    currentUser: React.PropTypes.object,
-    getCurrentUser: React.PropTypes.func,
-    togglePick: React.PropTypes.func
+    db: PropTypes.instanceOf(RealmDB),
+    currentUser: PropTypes.object,
+    getCurrentUser: PropTypes.func,
+    togglePick: PropTypes.func
 };
 RoundOf2.childContextTypes = {};
 //# sourceMappingURL=index.js.map

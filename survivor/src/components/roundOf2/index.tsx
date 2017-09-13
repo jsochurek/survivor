@@ -1,5 +1,6 @@
 /// <reference path="../../../typings/index.d.ts" />
 import * as React from 'react';
+import PropTypes from "prop-types";
 import {
   AppRegistry,
   StyleSheet,
@@ -20,28 +21,28 @@ import { User } from '../../database/schema';
 type Props = {
     teams2016: Team[],
     tournament2016: any,
-    user: {name: string, picks: string[]}
+    user: {name: string, picks: {team: string, date: Date}[]}
 }
 type State = {
     winningTeam?: Team,
     teams2016?: Team[],
     tournament2016?: any,
-    user?: {name: string, picks: string[]}
+    user?: {name: string, picks: {team: string, date: Date}[]}
 }
 type Context = {
     db: RealmDB,
     // currentUser: {name: string, picks: string[]},
-    getCurrentUser: () => {name: string, picks: string[]},
+    getCurrentUser: () => {name: string, picks: {team: string, date: Date}[]},
     togglePick: (team: string) => {}
 }
 export default class RoundOf2 extends React.Component<Props, State> {
     context: Context;
 
     static contextTypes = {
-        db: React.PropTypes.instanceOf(RealmDB),
-        currentUser: React.PropTypes.object,
-        getCurrentUser: React.PropTypes.func,
-        togglePick: React.PropTypes.func
+        db: PropTypes.instanceOf(RealmDB),
+        currentUser: PropTypes.object,
+        getCurrentUser: PropTypes.func,
+        togglePick: PropTypes.func
     };
 
     static childContextTypes = {
@@ -77,7 +78,7 @@ export default class RoundOf2 extends React.Component<Props, State> {
         // this.setState({user: this.context.currentUser});
 
         this.context.togglePick(team);
-        let user: {name: string, picks: string[]} = this.context.getCurrentUser();
+        let user: {name: string, picks: {team: string, date: Date}[]} = this.context.getCurrentUser();
         this.setState({user: user});
     }
 
@@ -86,8 +87,14 @@ export default class RoundOf2 extends React.Component<Props, State> {
         };
     }
 
-    isPicked = (team: string) => {
-        return ( this.context.getCurrentUser().picks.indexOf(team) > -1 );
+    isPicked = (team: string): boolean => {
+        // return ( this.context.getCurrentUser().picks.indexOf(team) > -1 );
+        for (let i = 0; i < this.context.getCurrentUser().picks.length; i++) {
+            if (this.context.getCurrentUser().picks[i].team === team) {
+                return true;
+            }
+        }
+        return false;
     }
 
     

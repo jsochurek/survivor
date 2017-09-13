@@ -1,5 +1,6 @@
 /// <reference path="../../../typings/index.d.ts" />
 import * as React from "react";
+import PropTypes from "prop-types";
 import { View } from "react-native";
 import styles from "./styles";
 import RealmDB from '../../database/index';
@@ -17,12 +18,18 @@ export default class Wrapper extends React.Component {
         };
         this.togglePick = (team) => {
             let picks = this.state.currentUser.picks;
-            let index = picks.indexOf(team);
+            let index = -1; //picks.indexOf(team);
+            for (let i = 0; i < this.state.currentUser.picks.length; i++) {
+                if (this.state.currentUser.picks[i].team === team) {
+                    let index = i;
+                    break;
+                }
+            }
             if (index > -1) {
                 let spliced = picks.splice(index, 1);
             }
             else {
-                picks.push(team);
+                picks.push({ team, date: new Date() });
             }
             this.state.currentUser.picks = picks;
             this.setState({ currentUser: this.state.currentUser });
@@ -52,10 +59,10 @@ export default class Wrapper extends React.Component {
     }
 }
 Wrapper.childContextTypes = {
-    db: React.PropTypes.instanceOf(RealmDB),
-    setCurrentUser: React.PropTypes.func,
-    //   currentUser: React.PropTypes.shape({name: React.PropTypes.string, picks: React.PropTypes.arrayOf(React.PropTypes.string)}),
-    getCurrentUser: React.PropTypes.func,
-    togglePick: React.PropTypes.func
+    db: PropTypes.instanceOf(RealmDB),
+    setCurrentUser: PropTypes.func,
+    //   currentUser: PropTypes.shape({name: PropTypes.string, picks: PropTypes.arrayOf(PropTypes.string)}),
+    getCurrentUser: PropTypes.func,
+    togglePick: PropTypes.func
 };
 //# sourceMappingURL=index.js.map

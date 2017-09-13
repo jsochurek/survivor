@@ -1,5 +1,6 @@
 /// <reference path="../../../typings/index.d.ts" />
 import * as React from 'react';
+import PropTypes from "prop-types";
 import { View } from 'react-native';
 import { teams } from '../../2016/teams';
 import GameComponent from '../../components/gamecomponent/index';
@@ -76,10 +77,10 @@ export default class RoundOf16 extends React.Component {
     }
 }
 RoundOf16.contextTypes = {
-    db: React.PropTypes.instanceOf(RealmDB),
-    currentUser: React.PropTypes.object,
-    getCurrentUser: React.PropTypes.func,
-    togglePick: React.PropTypes.func
+    db: PropTypes.instanceOf(RealmDB),
+    currentUser: PropTypes.object,
+    getCurrentUser: PropTypes.func,
+    togglePick: PropTypes.func
 };
 RoundOf16.childContextTypes = {};
 //# sourceMappingURL=index.js.map

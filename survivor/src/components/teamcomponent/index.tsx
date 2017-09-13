@@ -1,5 +1,6 @@
 /// <reference path="../../../typings/index.d.ts" />
 import * as React from 'react';
+import PropTypes from "prop-types";
 import {
   AppRegistry,
   StyleSheet,
@@ -28,7 +29,7 @@ export default class TeamComponent extends React.Component<Props, State> {
     context: Context;
 
     static contextTypes = {
-        getCurrentUser: React.PropTypes.func
+        getCurrentUser: PropTypes.func
     };
     constructor(props: Props, context: Context) {
         super(props, context);

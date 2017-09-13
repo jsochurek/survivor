@@ -6,6 +6,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start --transformer node_modules/react-native-sm-transformer/index",
     "test": "jest",
     "build": "tsc -p ./ || echo Build Complete.",
+    "watch": "tsc -w -p ./",
     "adb-reverse": "adb reverse tcp:8081 tcp:8081",
     "dev-tools": "react-devtools"
   },

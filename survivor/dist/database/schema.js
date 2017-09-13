@@ -7,7 +7,14 @@ export const User = {
     primaryKey: "name",
     properties: {
         name: "string",
-        picks: { type: "list", objectType: "StringObject" }
+        picks: { type: "list", objectType: "Pick" }
+    }
+};
+export const Pick = {
+    name: "Pick",
+    properties: {
+        team: "string",
+        date: "string"
     }
 };
 // export const Map = {

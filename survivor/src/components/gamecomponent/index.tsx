@@ -1,5 +1,6 @@
 /// <reference path="../../../typings/index.d.ts" />
 import * as React from 'react';
+import PropTypes from "prop-types";
 import {
   AppRegistry,
   StyleSheet,
@@ -12,7 +13,7 @@ import {
 import {Team, Game} from '../../types';
 import TeamComponent from '../teamcomponent/index';
 import styles from './styles';
-
+import moment from "moment";
 
 type State = {
     awayStyle: TextStyle,
@@ -21,17 +22,17 @@ type State = {
 type Props = {
     // style?: ViewStyle,
     game: Game,
-    picks: string[],
+    picks: {team: string, date: Date}[],
     togglePick: (team: string) => void
 }
 type Context = {
-    getCurrentUser: () => {name: string, picks: string[]}
+    getCurrentUser: () => {name: string, picks: {team: string, date: Date}[]}
 }
 export default class GameComponent extends React.Component<Props, State> {
     context: Context;
 
     static contextTypes = {
-        getCurrentUser: React.PropTypes.func
+        getCurrentUser: PropTypes.func
     };
     constructor(props: Props, context: Context) {
         super(props, context);
@@ -52,8 +53,14 @@ export default class GameComponent extends React.Component<Props, State> {
         };
     }
 
-    isPicked = (team: string) => {
-        return ( this.context.getCurrentUser().picks.indexOf(team) > -1 );
+    isPicked = (team: string): boolean => {
+        for (let i = 0; i < this.context.getCurrentUser().picks.length; i++) {
+            if (this.context.getCurrentUser().picks[i].team === team) {
+                // return ( this.context.getCurrentUser().picks.indexOf(team) > -1 );
+                return true;
+            }
+        }
+        return false;
     }
 
     togglePick = (team: string) => {
@@ -62,6 +69,7 @@ export default class GameComponent extends React.Component<Props, State> {
     }
 
     render() {
+        let day: moment.Moment = moment(this.props.game.day);
         return(
             <View style={styles.game}>
                 <TeamComponent 
@@ -76,6 +84,7 @@ export default class GameComponent extends React.Component<Props, State> {
                     picked={this.isPicked(this.props.game.away.name)}
                     togglePick={this.togglePick}
                 />
+                <Text>{day.format("ddd MMM D")}</Text>
             </View>
         );
     }

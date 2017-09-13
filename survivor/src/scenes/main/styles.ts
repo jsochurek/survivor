@@ -1,5 +1,5 @@
 /// <reference path="../../../typings/index.d.ts" />
-import {StyleSheet, Dimensions} from "react-native";
+import {StyleSheet, Dimensions, FlexJustifyType, FlexAlignType} from "react-native";
 
 let {width, height} = Dimensions.get("window");
 const styles = StyleSheet.create({
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     },
     firstTwoRounds: {
         flexDirection: "row" as "row",
-        justifyContent: "center" as React.FlexJustifyType,
+        justifyContent: "center" as FlexJustifyType,
         flex: 1,
     },
     gameView: {
@@ -20,27 +20,27 @@ const styles = StyleSheet.create({
     round: {
         flex: 1,
         flexDirection: "column" as "column",
-        justifyContent: "space-around" as React.FlexJustifyType,
+        justifyContent: "space-around" as FlexJustifyType,
         // borderWidth: 1,
     },
 wrapper: {
   },
   slide1: {
     flex: 1,
-    justifyContent: 'center' as React.FlexJustifyType,
-    alignItems: 'center' as React.FlexAlignType,
+    justifyContent: 'center' as FlexJustifyType,
+    alignItems: 'center' as FlexAlignType,
     backgroundColor: '#9DD6EB',
   },
   slide2: {
     flex: 1,
-    justifyContent: 'center' as React.FlexJustifyType,
-    alignItems: 'center' as React.FlexAlignType,
+    justifyContent: 'center' as FlexJustifyType,
+    alignItems: 'center' as FlexAlignType,
     backgroundColor: '#97CAE5',
   },
   slide3: {
     flex: 1,
-    justifyContent: 'center' as React.FlexJustifyType,
-    alignItems: 'center' as React.FlexAlignType,
+    justifyContent: 'center' as FlexJustifyType,
+    alignItems: 'center' as FlexAlignType,
     backgroundColor: '#92BBD9',
   },
   text: {

@@ -1,5 +1,6 @@
 /// <reference path="../../../typings/index.d.ts" />
 import * as React from 'react';
+import PropTypes from "prop-types";
 import { Text, TouchableOpacity } from 'react-native';
 export default class TeamComponent extends React.Component {
     constructor(props, context) {
@@ -29,6 +30,6 @@ export default class TeamComponent extends React.Component {
     }
 }
 TeamComponent.contextTypes = {
-    getCurrentUser: React.PropTypes.func
+    getCurrentUser: PropTypes.func
 };
 //# sourceMappingURL=index.js.map

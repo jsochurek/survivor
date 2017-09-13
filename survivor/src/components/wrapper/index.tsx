@@ -1,6 +1,7 @@
 /// <reference path="../../../typings/index.d.ts" />
 
 import * as React from "react";
+import PropTypes from "prop-types";
 import { View, Text } from "react-native";
 import { Link, Pop, Router, RouterInterface} from "react-router-native";
 import styles from "./styles";
@@ -11,7 +12,7 @@ type Props = {
 };
 
 type State = {
-    currentUser?: {name: string, picks: string[]}
+    currentUser?: {name: string, picks: {team: string, date: Date}[]}
 }
 
 type Context = {
@@ -20,11 +21,11 @@ type Context = {
 export default class Wrapper extends React.Component<Props, State> {
     db: RealmDB;
   static childContextTypes = {
-      db: React.PropTypes.instanceOf(RealmDB),
-      setCurrentUser: React.PropTypes.func,
-    //   currentUser: React.PropTypes.shape({name: React.PropTypes.string, picks: React.PropTypes.arrayOf(React.PropTypes.string)}),
-      getCurrentUser: React.PropTypes.func,
-      togglePick: React.PropTypes.func
+      db: PropTypes.instanceOf(RealmDB),
+      setCurrentUser: PropTypes.func,
+    //   currentUser: PropTypes.shape({name: PropTypes.string, picks: PropTypes.arrayOf(PropTypes.string)}),
+      getCurrentUser: PropTypes.func,
+      togglePick: PropTypes.func
   };
 
   constructor(props: Props) {
@@ -52,25 +53,31 @@ export default class Wrapper extends React.Component<Props, State> {
   componentWillReceiveProps(nextProps) {
   }
 
-  setCurrentUser = (user: {name: string, picks: string[]}) => {
+  setCurrentUser = (user: {name: string, picks: {team: string, date: Date}[]}) => {
       console.log("setting current user to : ", user);
       this.setState({currentUser: user});
       //navigate to bracket
       this.props.router.replace("/main");
   }
 
-  getCurrentUser = () : {name: string, picks: string[]} => {
+  getCurrentUser = () : {name: string, picks: {team: string, date: Date}[]} => {
     return this.state.currentUser;
   }
 
   togglePick = (team: string) => {
-    let picks: string[] = this.state.currentUser.picks;
-    let index: number = picks.indexOf(team);
+    let picks: {team: string, date: Date}[] = this.state.currentUser.picks;
+    let index: number = -1;//picks.indexOf(team);
+    for (let i = 0; i < this.state.currentUser.picks.length; i++) {
+        if (this.state.currentUser.picks[i].team === team) {
+            let index = i;
+            break;
+        }
+    }
     if (index > -1) {
         let spliced = picks.splice(index, 1);
     }
     else {
-        picks.push(team);
+        picks.push({team, date: new Date()});
     }
     this.state.currentUser.picks = picks;
     this.setState({currentUser: this.state.currentUser});

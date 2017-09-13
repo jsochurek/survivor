@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from "prop-types";
 import { TextInput, View } from 'react-native';
 import styles from './styles';
 import RealmDB from '../../database/index';
@@ -33,7 +34,7 @@ export default class Login extends React.Component {
     }
 }
 Login.contextTypes = {
-    db: React.PropTypes.instanceOf(RealmDB),
-    setCurrentUser: React.PropTypes.func
+    db: PropTypes.instanceOf(RealmDB),
+    setCurrentUser: PropTypes.func
 };
 //# sourceMappingURL=index.js.map

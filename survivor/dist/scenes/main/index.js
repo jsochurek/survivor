@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from "prop-types";
 import { View } from 'react-native';
 import { teams } from '../../2016/teams';
 import { tournament } from '../../2016/tournament2016';
@@ -57,10 +58,10 @@ export default class Main extends React.Component {
     }
 }
 Main.contextTypes = {
-    db: React.PropTypes.instanceOf(RealmDB),
-    currentUser: React.PropTypes.object,
-    getCurrentUser: React.PropTypes.func,
-    togglePick: React.PropTypes.func
+    db: PropTypes.instanceOf(RealmDB),
+    currentUser: PropTypes.object,
+    getCurrentUser: PropTypes.func,
+    togglePick: PropTypes.func
 };
 Main.childContextTypes = {};
 //# sourceMappingURL=index.js.map

@@ -1,5 +1,5 @@
 import Realm from "realm";
-import { User, StringObject } from './schema';
+import { User, StringObject, Pick } from './schema';
 export default class RealmDB {
     // constructor(year: number) {
     constructor() {
@@ -29,7 +29,7 @@ export default class RealmDB {
             let dbObjects = this.realm.objects("User").filtered("name = $0", userID);
             if (dbObjects.length > 0) {
                 user = {
-                    name: dbObjects[0].name,
+                    name: dbObjects[0]["name"],
                     picks: this.convertPicks(dbObjects[0])
                 };
             }
@@ -38,8 +38,10 @@ export default class RealmDB {
         };
         this.convertPicks = (dbObject) => {
             let picks = [];
-            for (let i = 0; i < dbObject.picks.length; i++) {
-                picks.push(dbObject.picks[i].value);
+            for (let i = 0; i < dbObject["picks"].length; i++) {
+                let team = dbObject["picks"][i]["team"];
+                let date = new Date(dbObject["picks"][i]["date"]);
+                picks.push({ team, date });
             }
             return picks;
         };
@@ -48,7 +50,7 @@ export default class RealmDB {
             let dbObjects = this.realm.objects("User");
             for (let i = 0; i < dbObjects.length; i++) {
                 let user = {
-                    name: dbObjects[i].name,
+                    name: dbObjects[i]["name"],
                     picks: this.convertPicks(dbObjects[i])
                 };
                 users.push(user);
@@ -61,12 +63,12 @@ export default class RealmDB {
                 this.realm.delete(allUsers);
             });
         };
-        this.addPickToUser = (name, pick) => {
+        this.addPickToUser = (name, pick, date) => {
             try {
                 this.realm.write(() => {
                     let dbObjects = this.realm.objects("User").filtered("name = $0", name);
                     if (dbObjects.length > 0) {
-                        dbObjects[0].picks.push({ value: pick });
+                        dbObjects[0]["picks"].push({ team: pick, date: date.toISOString() });
                     }
                 });
             }
@@ -80,7 +82,7 @@ export default class RealmDB {
                     console.log("user", user);
                     let picks = [];
                     for (let i = 0; i < user.picks.length; i++) {
-                        picks.push({ value: user.picks[i] });
+                        picks.push({ team: user.picks[i].team, date: user.picks[i].date.toISOString() });
                     }
                     this.realm.create("User", { name: user.name, picks }, true);
                 });
@@ -92,8 +94,8 @@ export default class RealmDB {
         this.realm = new Realm({
             // path: `yr${year}.realm`,
             path: `yr2016.realm`,
-            schema: [User, StringObject],
-            schemaVersion: 2
+            schema: [User, StringObject, Pick],
+            schemaVersion: 3
         });
     }
 }

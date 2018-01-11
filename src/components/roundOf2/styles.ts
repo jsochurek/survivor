@@ -1,7 +1,5 @@
-import * as React from "react";
-import {StyleSheet, Dimensions, FlexJustifyType} from "react-native";
+import {StyleSheet} from "react-native";
 
-let {width, height} = Dimensions.get("window");
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -10,7 +8,7 @@ const styles = StyleSheet.create({
     },
     firstTwoRounds: {
         flexDirection: "row" as "row",
-        justifyContent: "center" as FlexJustifyType,
+        justifyContent: "center" as "center",
         flex: 1,
     },
     gameView: {
@@ -22,7 +20,7 @@ const styles = StyleSheet.create({
     round: {
         flex: 1,
         flexDirection: "column" as "column",
-        justifyContent: "space-around" as FlexJustifyType,
+        justifyContent: "space-around" as "space-around",
         // borderWidth: 1,
     },
     winnerText: {

@@ -1,13 +1,18 @@
-export type Team = {
+type Team = {
     name: string,
     region: string,
     seed: number
 };
 
-export type Game = {
+type Game = {
     id: number,
     home: Team,
     away: Team,
     winner: string,
     day: Date
+};
+
+type User = {
+    name: string, 
+    picks: {team: string, date: Date}[]
 };

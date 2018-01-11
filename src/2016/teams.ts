@@ -1,4 +1,3 @@
-import {Team} from '../types'; 
 
 export const teams:Team[] = [
         {

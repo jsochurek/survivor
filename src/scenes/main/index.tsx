@@ -1,27 +1,18 @@
-import * as React from 'react';
+import * as React from "react";
 import PropTypes from "prop-types";
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  ScrollView
-} from 'react-native';
+import {View} from "react-native";
 import {RouterInterface} from "react-router-native";
-import { teams } from '../../2016/teams';
-import { Team } from '../../types';
-import GameComponent from '../../components/gamecomponent/index';
-import { tournament } from '../../2016/tournament2016';
-import styles from './styles';
-import RealmDB from '../../database/index';
-import RoundOf64 from '../../components/roundOf64/index';
-import Swiper from 'react-native-swiper';
-import RoundOf32 from '../../components/roundOf32/index';
-import RoundOf16 from '../../components/roundOf16/index';
-import RoundOf8 from '../../components/roundOf8/index';
-import RoundOf4 from '../../components/roundOf4/index';
-import RoundOf2 from '../../components/roundOf2/index';
+import { teams } from "../../2016/teams";
+import { tournament } from "../../2016/tournament2016";
+import styles from "./styles";
+import RealmDB from "../../database/index";
+import RoundOf64 from "../../components/roundOf64/index";
+import Swiper from "react-native-swiper";
+import RoundOf32 from "../../components/roundOf32/index";
+import RoundOf16 from "../../components/roundOf16/index";
+import RoundOf8 from "../../components/roundOf8/index";
+import RoundOf4 from "../../components/roundOf4/index";
+import RoundOf2 from "../../components/roundOf2/index";
 
 type Props = {
     router: RouterInterface
@@ -29,12 +20,12 @@ type Props = {
 type State = {
     teams2016?: Team[],
     tournament2016?: any,
-    user?: {name: string, picks: {team: string, date: Date}[]}
+    user?: User
 }
 type Context = {
     db: RealmDB,
     // currentUser: {name: string, picks: string[]},
-    getCurrentUser: () => {name: string, picks: {team: string, date: Date}[]},
+    getCurrentUser: () => User,
     togglePick: (team: string) => {}
 }
 export default class Main extends React.Component<Props, State> {
@@ -76,7 +67,7 @@ export default class Main extends React.Component<Props, State> {
         // this.setState({user: this.context.currentUser});
 
         this.context.togglePick(team);
-        let user: {name: string, picks: {team: string, date: Date}[]} = this.context.getCurrentUser();
+        let user: User = this.context.getCurrentUser();
         this.setState({user: user});
     }
 

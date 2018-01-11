@@ -13,7 +13,7 @@ export default class RealmDB {
         });
     }
 
-    addUser = (user: {name: string, picks: {team: string, date: Date}[]}) => {
+    addUser = (user: User) => {
         console.log("adding user", user);
         let dbObjects = this.realm.objects("User").filtered("name = $0", user.name);
         if (dbObjects.length > 0) {
@@ -35,8 +35,8 @@ export default class RealmDB {
         }
     }
 
-    getUser = (userID: string): {name: string, picks: {team: string, date: Date}[]} => {
-        let user: {name: string, picks: {team: string, date: Date}[]} = null;
+    getUser = (userID: string): User => {
+        let user: User = null;
         let dbObjects = this.realm.objects("User").filtered("name = $0", userID);
         if (dbObjects.length > 0) {
             user = {
@@ -58,8 +58,8 @@ export default class RealmDB {
         return picks;
     }
 
-    getUsers = (): {name: string, picks: {team: string, date: Date}[]}[] => {
-        let users: {name: string, picks: {team: string, date: Date}[]}[] = [];
+    getUsers = (): User[] => {
+        let users: User[] = [];
         let dbObjects = this.realm.objects("User");
         for (let i = 0; i < dbObjects.length; i++) {
             let user = {
@@ -92,7 +92,7 @@ export default class RealmDB {
         }
     }
 
-    updateUserPicks = (user: {name: string, picks: {team: string, date: Date}[]}) => {
+    updateUserPicks = (user: User) => {
         try {
             this.realm.write( () => {
                 console.log("user", user);

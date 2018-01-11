@@ -1,19 +1,7 @@
 import * as React from 'react';
 import PropTypes from "prop-types";
-import {
-  Text,
-  TextInput,
-  View,
-  TouchableOpacity,
-  ScrollView,
-  ListView,
-  ListViewDataSource
-} from 'react-native';
+import {TextInput, View, ListViewDataSource} from 'react-native';
 import {RouterInterface} from "react-router-native";
-import { teams } from '../../2016/teams';
-import { Team } from '../../types';
-import GameComponent from '../../components/gamecomponent/index';
-import { tournament } from '../../2016/tournament2016';
 import styles from './styles';
 import RealmDB from '../../database/index';
 
@@ -21,12 +9,12 @@ type Props = {
     router: RouterInterface
 }
 type State = {
-    users?: {name: string, picks: string[]}[],
+    users?: User[],
     dataSource?: ListViewDataSource,
 }
 type Context = {
     db: RealmDB, 
-    setCurrentUser: (user: {name: string, picks: string[]}) => void
+    setCurrentUser: (user: User) => void
 }
 export default class Login extends React.Component<Props, State> {
     context: Context;
@@ -45,7 +33,7 @@ export default class Login extends React.Component<Props, State> {
 
     submitNewUser = (e: any) => {
         console.log("e", e.nativeEvent.text);
-        let user : {name: string, picks: string[]} = this.context.db.getUser(e.nativeEvent.text);
+        let user: User = this.context.db.getUser(e.nativeEvent.text);
         if (!user) {
             user = {
                 name: e.nativeEvent.text,

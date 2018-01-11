@@ -7,7 +7,7 @@ WHERE I LEFT OFF
 
 
 TODO
--UPDATE NAVIGATION/NAVIGATOR (see lassie)
+-UPDATE NAVIGATION/NAVIGATOR (see lassie) to react-navigation
 -maybe swipe vertically within a region (round of 64, 32, and 16)
 -need to make sure can't pick if you've lost
 -need to put blank data in for rounds that haven't happened yet

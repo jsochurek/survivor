@@ -1,7 +1,5 @@
-/// <reference path="../typings/index.d.ts" />
 import * as React from "react";
-import {BackAndroid} from "react-native";
-import { Route, StackRoute, TabsRoute, Router, nativeHistory, IndexRoute, withRouter} from "react-router-native";
+import { Route, Router, nativeHistory, withRouter} from "react-router-native";
 import Main from './scenes/main/index';
 import Wrapper from './components/wrapper/index';
 import Login from './scenes/login/index';

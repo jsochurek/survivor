@@ -1,17 +1,6 @@
-/// <reference path="../../../typings/index.d.ts" />
 import * as React from 'react';
 import PropTypes from "prop-types";
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  ViewStyle,
-  TextStyle,
-  TouchableOpacity
-} from 'react-native';
-import {Team} from '../../types';
+import {Text, TextStyle, TouchableOpacity} from 'react-native';
 type State = {
     strikethrough?: boolean
 }
@@ -54,13 +43,17 @@ export default class TeamComponent extends React.Component<Props, State> {
 
     render() {
         // let textStyle = this.props.picked == true ? [this.props.textStyle, {textDecorationLine: "line-through"}] : [this.props.textStyle, {textDecorationLine: "none"}];
-        let textStyle = this.context.getCurrentUser().picks.indexOf(this.props.team.name) > -1 == true ? 
-            [this.props.textStyle, {textDecorationLine: "line-through"}] : 
-            [this.props.textStyle, {textDecorationLine: "none"}];
+        // let textStyle = this.context.getCurrentUser().picks.indexOf(this.props.team.name) > -1 == true ? 
+            // [this.props.textStyle, {textDecorationLine: "line-through"}] : 
+            // [this.props.textStyle, {textDecorationLine: "none"}];
         // console.log(`${this.props.team.name} is picked? ${this.props.picked}`);
         return(
             <TouchableOpacity onPress={this.onPress}>
-                <Text style={textStyle}>{`${this.formatSeed()}  ${this.props.team.name}`}</Text>
+                <Text style={
+                    this.context.getCurrentUser().picks.indexOf(this.props.team.name) > -1 == true ? 
+                        [this.props.textStyle, {textDecorationLine: "line-through"}] : 
+                        [this.props.textStyle, {textDecorationLine: "none"}]
+                }>{`${this.formatSeed()}  ${this.props.team.name}`}</Text>
             </TouchableOpacity>
         );
     }

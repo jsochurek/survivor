@@ -1,6 +1,5 @@
 {
-    "compilerOptions":
-    {
+    "compilerOptions": {
         "module": "es6",
         "jsx": "react",
         "target": "es6",
@@ -9,17 +8,16 @@
         "allowJs": false,
         "preserveConstEnums": true,
         "experimentalDecorators": true,
-        "project": "./",
         "pretty": true,
         "allowSyntheticDefaultImports": true,
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "noUnusedLocals": true
     },
     "include": [
         "src/**/*.tsx",
         "src/**/*.ts"
     ],
-    "exclude":
-    [
+    "exclude": [
         "node_modules/**",
         "typings/*"
     ]

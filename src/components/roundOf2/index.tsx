@@ -1,38 +1,26 @@
-/// <reference path="../../../typings/index.d.ts" />
 import * as React from 'react';
 import PropTypes from "prop-types";
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  ScrollView
-} from 'react-native';
-import { teams } from '../../2016/teams';
-import { Team } from '../../types';
+import {View} from 'react-native';
 import GameComponent from '../../components/gamecomponent/index';
-import { tournament } from '../../2016/tournament2016';
 import styles from './styles';
 import RealmDB from '../../database/index';
 import TeamComponent from '../teamcomponent/index';
-import { User } from '../../database/schema';
 
 type Props = {
     teams2016: Team[],
     tournament2016: any,
-    user: {name: string, picks: {team: string, date: Date}[]}
+    user: User
 }
 type State = {
     winningTeam?: Team,
     teams2016?: Team[],
     tournament2016?: any,
-    user?: {name: string, picks: {team: string, date: Date}[]}
+    user?: User
 }
 type Context = {
     db: RealmDB,
     // currentUser: {name: string, picks: string[]},
-    getCurrentUser: () => {name: string, picks: {team: string, date: Date}[]},
+    getCurrentUser: () => User,
     togglePick: (team: string) => {}
 }
 export default class RoundOf2 extends React.Component<Props, State> {
@@ -78,7 +66,7 @@ export default class RoundOf2 extends React.Component<Props, State> {
         // this.setState({user: this.context.currentUser});
 
         this.context.togglePick(team);
-        let user: {name: string, picks: {team: string, date: Date}[]} = this.context.getCurrentUser();
+        let user: User = this.context.getCurrentUser();
         this.setState({user: user});
     }
 

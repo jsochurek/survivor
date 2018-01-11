@@ -1,4 +1,3 @@
-/// <reference path="../../../typings/index.d.ts" />
 import {StyleSheet} from "react-native";
 
 const styles = StyleSheet.create({

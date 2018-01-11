@@ -1,9 +1,7 @@
-/// <reference path="../../../typings/index.d.ts" />
-
 import * as React from "react";
 import PropTypes from "prop-types";
-import { View, Text } from "react-native";
-import { Link, Pop, Router, RouterInterface} from "react-router-native";
+import { View, } from "react-native";
+import { RouterInterface} from "react-router-native";
 import styles from "./styles";
 import RealmDB from '../../database/index';
 
@@ -12,11 +10,9 @@ type Props = {
 };
 
 type State = {
-    currentUser?: {name: string, picks: {team: string, date: Date}[]}
+    currentUser?: User
 }
 
-type Context = {
-};
 
 export default class Wrapper extends React.Component<Props, State> {
     db: RealmDB;
@@ -53,14 +49,14 @@ export default class Wrapper extends React.Component<Props, State> {
   componentWillReceiveProps(nextProps) {
   }
 
-  setCurrentUser = (user: {name: string, picks: {team: string, date: Date}[]}) => {
+  setCurrentUser = (user: User) => {
       console.log("setting current user to : ", user);
       this.setState({currentUser: user});
       //navigate to bracket
       this.props.router.replace("/main");
   }
 
-  getCurrentUser = () : {name: string, picks: {team: string, date: Date}[]} => {
+  getCurrentUser = () : User => {
     return this.state.currentUser;
   }
 
@@ -69,12 +65,12 @@ export default class Wrapper extends React.Component<Props, State> {
     let index: number = -1;//picks.indexOf(team);
     for (let i = 0; i < this.state.currentUser.picks.length; i++) {
         if (this.state.currentUser.picks[i].team === team) {
-            let index = i;
+            index = i;
             break;
         }
     }
     if (index > -1) {
-        let spliced = picks.splice(index, 1);
+        picks.splice(index, 1);
     }
     else {
         picks.push({team, date: new Date()});

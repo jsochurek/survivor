@@ -1,16 +1,7 @@
 /// <reference path="../../../typings/index.d.ts" />
 import * as React from 'react';
 import PropTypes from "prop-types";
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  ViewStyle,
-  TextStyle
-} from 'react-native';
-import {Team, Game} from '../../types';
+import {Text, View, TextStyle} from 'react-native';
 import TeamComponent from '../teamcomponent/index';
 import styles from './styles';
 import moment from "moment";
@@ -26,7 +17,7 @@ type Props = {
     togglePick: (team: string) => void
 }
 type Context = {
-    getCurrentUser: () => {name: string, picks: {team: string, date: Date}[]}
+    getCurrentUser: () => User
 }
 export default class GameComponent extends React.Component<Props, State> {
     context: Context;

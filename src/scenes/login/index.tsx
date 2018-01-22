@@ -1,12 +1,11 @@
 import * as React from 'react';
 import PropTypes from "prop-types";
 import {TextInput, View, ListViewDataSource} from 'react-native';
-import {RouterInterface} from "react-router-native";
 import styles from './styles';
 import RealmDB from '../../database/index';
 
 type Props = {
-    router: RouterInterface
+    navigation?: any
 }
 type State = {
     users?: User[],
@@ -17,6 +16,9 @@ type Context = {
     setCurrentUser: (user: User) => void
 }
 export default class Login extends React.Component<Props, State> {
+    static navigationOptions = {
+        title: 'Login',
+      };
     context: Context;
 
     static contextTypes = {
@@ -31,7 +33,7 @@ export default class Login extends React.Component<Props, State> {
         }
     }
 
-    submitNewUser = (e: any) => {
+    submitNewUser = async (e: any) => {
         console.log("e", e.nativeEvent.text);
         let user: User = this.context.db.getUser(e.nativeEvent.text);
         if (!user) {
@@ -46,8 +48,10 @@ export default class Login extends React.Component<Props, State> {
         }
 
         console.log("current users", this.context.db.getUsers());
-        this.setState({users: this.context.db.getUsers()});
         this.context.setCurrentUser(user);
+        this.setState({users: this.context.db.getUsers()}, () => {
+            this.props.navigation.navigate("Main");
+        });
     }
 
     render() {

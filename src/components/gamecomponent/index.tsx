@@ -1,7 +1,7 @@
 /// <reference path="../../../typings/index.d.ts" />
 import * as React from 'react';
 import PropTypes from "prop-types";
-import {Text, View, TextStyle} from 'react-native';
+import {Text, View, TextStyle} from "react-native";
 import TeamComponent from '../teamcomponent/index';
 import styles from './styles';
 import moment from "moment";

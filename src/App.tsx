@@ -1,26 +1,31 @@
 import * as React from "react";
-import { Route, Router, nativeHistory, withRouter} from "react-router-native";
 import Main from './scenes/main/index';
 import Wrapper from './components/wrapper/index';
 import Login from './scenes/login/index';
+import {StackNavigator, TabNavigator} from "react-navigation";
 
 
-const handleHardwareBackPress = (router, exit) => {
-  if(router.getCurrentLocation() !== "/"){
-    router.pop();
-  }
-  return true;
-}
+export const Tabs = TabNavigator({
+  Login: {
+    screen: Login,
+  },
+  Main: {
+    screen: Main,
+  },
+});
 
-export default class Routes extends React.Component <{}, {}>{
-  render(){
+
+const SurvivorApp = StackNavigator({
+  Login: { screen: Login },
+  Main: { screen: Main }
+});
+
+export default class App extends React.Component{
+  render() {
     return (
-      <Router history={nativeHistory} onHardwareBackPress={handleHardwareBackPress}>
-        <Route path="wrapper" component={withRouter(Wrapper)}>
-          <Route path="/" component={Login}/>
-          <Route path="/main" component={Main}/>
-        </Route>
-      </Router>
-    );
+      <Wrapper>
+        <SurvivorApp />
+      </Wrapper>
+    )
   }
 }

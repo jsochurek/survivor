@@ -1,7 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import {View} from "react-native";
-import {RouterInterface} from "react-router-native";
 import { teams } from "../../2016/teams";
 import { tournament } from "../../2016/tournament2016";
 import styles from "./styles";
@@ -15,7 +14,7 @@ import RoundOf4 from "../../components/roundOf4/index";
 import RoundOf2 from "../../components/roundOf2/index";
 
 type Props = {
-    router: RouterInterface
+    navigation?: any
 }
 type State = {
     teams2016?: Team[],
@@ -29,6 +28,9 @@ type Context = {
     togglePick: (team: string) => {}
 }
 export default class Main extends React.Component<Props, State> {
+    static navigationOptions = {
+        title: 'Main',
+      };
     context: Context;
 
     static contextTypes = {

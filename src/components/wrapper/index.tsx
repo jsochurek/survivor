@@ -18,9 +18,16 @@ export default class Wrapper extends React.Component<Props, State> {
   static childContextTypes = {
       db: PropTypes.instanceOf(RealmDB),
       setCurrentUser: PropTypes.func,
-    //   currentUser: PropTypes.shape({name: PropTypes.string, picks: PropTypes.arrayOf(PropTypes.string)}),
+      currentUser: PropTypes.shape({
+        name: PropTypes.string,
+        picks: PropTypes.arrayOf(PropTypes.shape({
+            team: PropTypes.string,
+            date: PropTypes.date
+        }))
+      }),
       getCurrentUser: PropTypes.func,
       togglePick: PropTypes.func
+    //   currentUser: PropTypes.shape(User)
   };
 
   constructor(props: Props) {
@@ -38,6 +45,7 @@ export default class Wrapper extends React.Component<Props, State> {
         setCurrentUser: this.setCurrentUser,
         // currentUser: this.state.currentUser,
         getCurrentUser: this.getCurrentUser,
+        currentUser: this.state.currentUser,
         togglePick: this.togglePick,
     };
   }
@@ -58,10 +66,12 @@ export default class Wrapper extends React.Component<Props, State> {
   }
 
   togglePick = (team: string) => {
-    let picks: {team: string, date: Date}[] = this.state.currentUser.picks;
+    console.log("this.state.currentUser", this.state.currentUser);
+    let user: User = this.state.currentUser;
+    let picks: {team: string, date: Date}[] = user.picks;
     let index: number = -1;//picks.indexOf(team);
-    for (let i = 0; i < this.state.currentUser.picks.length; i++) {
-        if (this.state.currentUser.picks[i].team === team) {
+    for (let i = 0; i < user.picks.length; i++) {
+        if (user.picks[i].team === team) {
             index = i;
             break;
         }
@@ -72,9 +82,10 @@ export default class Wrapper extends React.Component<Props, State> {
     else {
         picks.push({team, date: new Date()});
     }
-    this.state.currentUser.picks = picks;
-    this.setState({currentUser: this.state.currentUser});
-    this.db.updateUserPicks({name: this.state.currentUser.name, picks});
+    user.picks = picks;
+    
+    this.setState({currentUser: user}, () => console.log("user", user));
+    this.db.updateUserPicks(user);
   }
 
   render() {

@@ -110,7 +110,6 @@ export default class RoundOf2 extends React.Component<Props, State> {
                                 <TeamComponent 
                                     textStyle={styles.winnerText}
                                     team={this.state.winningTeam} 
-                                    picked={this.isPicked(this.props.tournament2016.FinalFour.roundOf2[0].winner)}
                                     togglePick={this.togglePick}
                                 />
                             </View>

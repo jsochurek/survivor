@@ -1,6 +1,6 @@
-import * as React from 'react';
+import * as React from "react";
 import PropTypes from "prop-types";
-import {Text, TextStyle, TouchableOpacity} from 'react-native';
+import {Text, TextStyle, TouchableOpacity} from "react-native";
 type State = {
     strikethrough?: boolean
 }
@@ -8,23 +8,46 @@ type Props = {
     // style: ViewStyle,
     textStyle: TextStyle,
     team: Team,
-    picked: boolean,
     togglePick: (team: string) => void
 }
 type Context = {
-    getCurrentUser: () => {name: string, picks: string[]}
+    getCurrentUser: () => User,
+    currentUser: any
 }
 export default class TeamComponent extends React.Component<Props, State> {
     context: Context;
 
     static contextTypes = {
-        getCurrentUser: PropTypes.func
+        getCurrentUser: PropTypes.func,
+        currentUser: PropTypes.shape({
+            name: PropTypes.string,
+            picks: PropTypes.arrayOf(PropTypes.shape({
+                team: PropTypes.string,
+                date: PropTypes.date
+            }))
+        })
     };
     constructor(props: Props, context: Context) {
         super(props, context);
+        console.log("cons currentUser", context);
         this.state = {
-
+            strikethrough: false
         };
+    }
+
+    componentDidMount() {
+        console.log("didmoutn currentUser", this.context);
+        if (this.context.currentUser) {
+            this.setState({strikethrough: this.isTeamPicked(this.context.currentUser.picks)});
+        }
+    }
+
+    componentWillReceiveProps(nextProps: Props, nextContext: Context) {
+        console.log("nextContext", nextContext);
+        if (nextContext.currentUser.picks !== this.context.currentUser.picks) {
+            console.log("current, next", this.context.currentUser, nextContext.currentUser)
+            this.setState({strikethrough: this.isTeamPicked(nextContext.currentUser.picks)});
+        }
     }
 
     formatSeed = () => {
@@ -41,16 +64,24 @@ export default class TeamComponent extends React.Component<Props, State> {
         this.props.togglePick(this.props.team.name);
     }
 
+    isTeamPicked = (picks: {team: string, date: Date}[]): boolean => {
+        for (let pick in picks) {
+            if (pick) {
+                console.log("isteampicked", picks[pick].team, this.props.team.name);
+                if (picks[pick].team === this.props.team.name) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     render() {
-        // let textStyle = this.props.picked == true ? [this.props.textStyle, {textDecorationLine: "line-through"}] : [this.props.textStyle, {textDecorationLine: "none"}];
-        // let textStyle = this.context.getCurrentUser().picks.indexOf(this.props.team.name) > -1 == true ? 
-            // [this.props.textStyle, {textDecorationLine: "line-through"}] : 
-            // [this.props.textStyle, {textDecorationLine: "none"}];
-        // console.log(`${this.props.team.name} is picked? ${this.props.picked}`);
+
         return(
             <TouchableOpacity onPress={this.onPress}>
                 <Text style={
-                    this.context.getCurrentUser().picks.indexOf(this.props.team.name) > -1 == true ? 
+                    this.state.strikethrough === true ? 
                         [this.props.textStyle, {textDecorationLine: "line-through"}] : 
                         [this.props.textStyle, {textDecorationLine: "none"}]
                 }>{`${this.formatSeed()}  ${this.props.team.name}`}</Text>

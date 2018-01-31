@@ -95,7 +95,6 @@ export default class RealmDB {
     updateUserPicks = (user: User) => {
         try {
             this.realm.write( () => {
-                console.log("user", user);
                 let picks: {team: string, date: string}[] = [];
                 for (let i = 0; i < user.picks.length; i++) {
                     picks.push({team: user.picks[i].team, date: user.picks[i].date.toISOString()});

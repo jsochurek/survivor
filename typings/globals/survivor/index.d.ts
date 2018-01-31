@@ -9,7 +9,9 @@ type Game = {
     home: Team,
     away: Team,
     winner: string,
-    day: Date
+    day: Date | string,
+    region?: string,
+    round?: number
 };
 
 type User = {

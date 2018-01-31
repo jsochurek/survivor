@@ -38,7 +38,6 @@ export default class RoundOf2 extends React.Component<Props, State> {
 
     constructor(props: Props, context: Context) {
         super(props, context);
-        console.log("Main constructor");
         this.state = {
             teams2016: this.props.teams2016,
             tournament2016: this.props.tournament2016,

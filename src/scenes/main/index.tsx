@@ -1,17 +1,10 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import {View} from "react-native";
+import {View, TouchableOpacity, Text} from "react-native";
 import { teams } from "../../2016/teams";
 import { tournament } from "../../2016/tournament2016";
 import styles from "./styles";
 import RealmDB from "../../database/index";
-import RoundOf64 from "../../components/roundOf64/index";
-import Swiper from "react-native-swiper";
-import RoundOf32 from "../../components/roundOf32/index";
-import RoundOf16 from "../../components/roundOf16/index";
-import RoundOf8 from "../../components/roundOf8/index";
-import RoundOf4 from "../../components/roundOf4/index";
-import RoundOf2 from "../../components/roundOf2/index";
 
 type Props = {
     navigation?: any
@@ -45,7 +38,6 @@ export default class Main extends React.Component<Props, State> {
 
     constructor(props: Props, context: Context) {
         super(props, context);
-        console.log("Main constructor");
         this.state = {
             teams2016: teams,
             tournament2016: tournament,
@@ -81,52 +73,14 @@ export default class Main extends React.Component<Props, State> {
     render() {
         return(
             
-            <Swiper
-                    loop={false}
-                    showsPagination={false}
-                    showsButtons={true}
-                    index={0}>
-                            <RoundOf64 
-                                teams2016={this.state.teams2016}
-                                tournament2016={this.state.tournament2016}    
-                                user={this.state.user}
-                            />
-                        <View style={styles.container}> 
-                            <RoundOf32 
-                                teams2016={this.state.teams2016}
-                                tournament2016={this.state.tournament2016}    
-                                user={this.state.user}
-                            />
-                        </View>
-                        <View style={styles.container}> 
-                            <RoundOf16 
-                                teams2016={this.state.teams2016}
-                                tournament2016={this.state.tournament2016}    
-                                user={this.state.user}
-                            />
-                        </View>
-                        <View style={styles.container}> 
-                            <RoundOf8
-                                teams2016={this.state.teams2016}
-                                tournament2016={this.state.tournament2016}    
-                                user={this.state.user}
-                            />
-                        </View>
-                        <View style={styles.container}> 
-                            <RoundOf4
-                                teams2016={this.state.teams2016}
-                                tournament2016={this.state.tournament2016}    
-                                user={this.state.user}
-                            />
-                        </View>
-                        <View style={styles.container}> 
-                            <RoundOf2
-                                teams2016={this.state.teams2016}
-                                tournament2016={this.state.tournament2016}    
-                                user={this.state.user}
-                            />
-                        </View>
-                </Swiper>
+            <View style={styles.container}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate("Bracket")}>
+                    <Text>View Bracket</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate("MakePick", {day: new Date('2016-03-17')})}>
+                    <Text>Make Today's Pick</Text>
+                </TouchableOpacity>
+            </View>
 
         );
     }

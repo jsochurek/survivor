@@ -36,7 +36,6 @@ export default class RoundOf64 extends React.Component<Props, State> {
 
     constructor(props: Props, context: Context) {
         super(props, context);
-        console.log("Main constructor");
         this.state = {
             teams2016: teams,
             tournament2016: tournament,

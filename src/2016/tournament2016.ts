@@ -14,7 +14,9 @@ export const tournament = {
                         seed: 16
                     },
                     winner: "Kansas",
-                    day: '2016-03-17'
+                    day: '2016-03-17',
+                    region: "South",
+                    round: 64
                 },
                 {
                     id: 2,
@@ -29,7 +31,9 @@ export const tournament = {
                         seed: 9
                     },
                     winner: "Colorado",
-                    day: '2016-03-17'
+                    day: '2016-03-17',
+                    region: "South",
+                    round: 64
                 },
                 {
                     id: 3,
@@ -44,7 +48,9 @@ export const tournament = {
                         seed: 12
                     },
                     winner: "Maryland",
-                    day: '2016-03-18'
+                    day: '2016-03-18',
+                    region: "South",
+                    round: 64
                 },
                 {
                     id: 4,
@@ -59,7 +65,9 @@ export const tournament = {
                         seed: 13
                     },
                     winner: "Hawaii",
-                    day: '2016-03-18'
+                    day: '2016-03-18',
+                    region: "South",
+                    round: 64
                 },
                 {
                     id: 5,
@@ -74,7 +82,9 @@ export const tournament = {
                         seed: 13
                     },
                     winner: "Wichita State",
-                    day: '2016-03-17'
+                    day: '2016-03-17',
+                    region: "South",
+                    round: 64
                 },
                 {
                     id: 6,
@@ -89,7 +99,9 @@ export const tournament = {
                         seed: 13
                     },
                     winner: "Miami (FL",
-                    day: '2016-03-17'
+                    day: '2016-03-17',
+                    region: "South",
+                    round: 64
                 },
                 {
                     id: 7,
@@ -104,7 +116,9 @@ export const tournament = {
                         seed: 10
                     },
                     winner: "Iowa",
-                    day: '2016-03-18'
+                    day: '2016-03-18',
+                    region: "South",
+                    round: 64
                 },
                 {
                     id: 8,
@@ -119,7 +133,9 @@ export const tournament = {
                         seed: 15
                     },
                     winner: "Villanova",
-                    day: '2016-03-18'
+                    day: '2016-03-18',
+                    region: "South",
+                    round: 64
                 },
             ],
         roundOf32:[
@@ -136,7 +152,9 @@ export const tournament = {
                     seed: 9
                 },
                 winner: "Kansas",
-                day: '2016-03-19'
+                day: '2016-03-19',
+                region: "South",
+                round: 32
             },
             {
                 id: 10,
@@ -151,7 +169,9 @@ export const tournament = {
                     seed: 13
                 },
                 winner: "Maryland",
-                day: '2016-03-19'
+                day: '2016-03-19',
+                region: "South",
+                round: 32
             },
             {
                 id: 11,
@@ -166,7 +186,9 @@ export const tournament = {
                     seed: 3
                 },
                 winner: "Miami (FL",
-                day: '2016-03-20'
+                day: '2016-03-20',
+                region: "South",
+                round: 32
             },
             {
                 id: 12,
@@ -181,7 +203,9 @@ export const tournament = {
                     seed: 2
                 },
                 winner: "Villanova",
-                day: '2016-03-20'
+                day: '2016-03-20',
+                region: "South",
+                round: 32
             },
         ],
         roundOf16:[
@@ -198,7 +222,9 @@ export const tournament = {
                     seed: 5
                 },
                 winner: "Kansas",
-                day: '2016-03-24'
+                day: '2016-03-24',
+                region: "South",
+                round: 16
             },
             {
                 id: 14,
@@ -213,7 +239,9 @@ export const tournament = {
                     seed: 2
                 },
                 winner: "Villanova",
-                day: '2016-03-24'
+                day: '2016-03-24',
+                region: "South",
+                round: 16
             },
         ],
         roundOf8:[
@@ -230,7 +258,9 @@ export const tournament = {
                     seed: 2
                 },
                 winner: "Villanova",
-                day: '2016-03-26'
+                day: '2016-03-26',
+                region: "South",
+                round: 8
             },
         ]
     },
@@ -250,7 +280,9 @@ export const tournament = {
                     seed: 16
                 },
                 winner: "Oregon",
-                day: '2016-03-18'
+                day: '2016-03-18',
+                region: "West",
+                round: 64
             },
             {
                 id: 2,
@@ -265,7 +297,9 @@ export const tournament = {
                     seed: 9
                 },
                 winner: "Saint Joseph's",
-                day: '2016-03-18'
+                day: '2016-03-18',
+                region: "West",
+                round: 64
             },
             {
                 id: 3,
@@ -280,7 +314,9 @@ export const tournament = {
                     seed: 12
                 },
                 winner: "Yale",
-                day: '2016-03-17'
+                day: '2016-03-17',
+                region: "West",
+                round: 64
             },
             {
                 id: 4,
@@ -295,7 +331,9 @@ export const tournament = {
                     seed: 13
                 },
                 winner: "Duke",
-                day: '2016-03-17'
+                day: '2016-03-17',
+                region: "West",
+                round: 64
             },
             {
                 id: 5,
@@ -310,7 +348,9 @@ export const tournament = {
                     seed: 13
                 },
                 winner: "Northern Iowa",
-                day: '2016-03-18'
+                day: '2016-03-18',
+                region: "West",
+                round: 64
             },
             {
                 id: 6,
@@ -325,7 +365,9 @@ export const tournament = {
                     seed: 13
                 },
                 winner: "Texas A&M",
-                day: '2016-03-18'
+                day: '2016-03-18',
+                region: "West",
+                round: 64
             },
             {
                 id: 7,
@@ -340,7 +382,9 @@ export const tournament = {
                     seed: 10
                 },
                 winner: "VCU",
-                day: '2016-03-18'
+                day: '2016-03-18',
+                region: "West",
+                round: 64
             },
             {
                 id: 8,
@@ -355,7 +399,9 @@ export const tournament = {
                     seed: 15
                 },
                 winner: "Oklahoma",
-                day: '2016-03-18'
+                day: '2016-03-18',
+                region: "West",
+                round: 64
             }
         ],
         roundOf32: [
@@ -372,7 +418,9 @@ export const tournament = {
                     seed: 8
                 },
                 winner: "Oregon",
-                day: '2016-03-20'
+                day: '2016-03-20',
+                region: "West",
+                round: 32
             },
             {
                 id: 2,
@@ -387,7 +435,9 @@ export const tournament = {
                     seed: 4
                 },
                 winner: "Duke",
-                day: '2016-03-19'
+                day: '2016-03-19',
+                region: "West",
+                round: 32
             },
             {
                 id: 3,
@@ -402,7 +452,9 @@ export const tournament = {
                     seed: 3
                 },
                 winner: "Texas A&M",
-                day: '2016-03-20'
+                day: '2016-03-20',
+                region: "West",
+                round: 32
             },
             {
                 id: 4,
@@ -417,7 +469,9 @@ export const tournament = {
                     seed: 2
                 },
                 winner: "Oklahoma",
-                day: '2016-03-20'
+                day: '2016-03-20',
+                region: "West",
+                round: 32
             }
         ],
         roundOf16:[
@@ -434,7 +488,9 @@ export const tournament = {
                     seed: 4
                 },
                 winner: "Oregon",
-                day: '2016-03-24'
+                day: '2016-03-24',
+                region: "West",
+                round: 16
             },
             {
                 id: 14,
@@ -449,7 +505,9 @@ export const tournament = {
                     seed: 2
                 },
                 winner: "Oklahoma",
-                day: '2016-03-24'
+                day: '2016-03-24',
+                region: "West",
+                round: 16
             },
         ],
         roundOf8:[
@@ -466,7 +524,9 @@ export const tournament = {
                     seed: 2
                 },
                 winner: "Oklahoma",
-                day: '2016-03-26'
+                day: '2016-03-26',
+                region: "West",
+                round: 8
             },
         ]
     },
@@ -488,7 +548,9 @@ export const tournament = {
                         seed: 16
                     },
                     winner: "North Carolina",
-                    day: '2016-03-17'
+                    day: '2016-03-17',
+                    region: "East",
+                    round: 64
                 },
                 {
                     id: 2,
@@ -503,7 +565,9 @@ export const tournament = {
                         seed: 9
                     },
                     winner: "Providence",
-                    day: '2016-03-17'
+                    day: '2016-03-17',
+                    region: "East",
+                    round: 64
                 },
                 {
                     id: 3,
@@ -518,7 +582,9 @@ export const tournament = {
                         seed: 12
                     },
                     winner: "Indiana",
-                    day: '2016-03-17'
+                    day: '2016-03-17',
+                    region: "East",
+                    round: 64
                 },
                 {
                     id: 4,
@@ -533,7 +599,9 @@ export const tournament = {
                         seed: 13
                     },
                     winner: "Kentucky",
-                    day: '2016-03-17'
+                    day: '2016-03-17',
+                    region: "East",
+                    round: 64
                 },
                 {
                     id: 5,
@@ -548,7 +616,9 @@ export const tournament = {
                         seed: 11
                     },
                     winner: "Notre Dame",
-                    day: '2016-03-18'
+                    day: '2016-03-18',
+                    region: "East",
+                    round: 64
                 },
                 {
                     id: 6,
@@ -563,7 +633,9 @@ export const tournament = {
                         seed: 14
                     },
                     winner: "Stephen F. Austin",
-                    day: '2016-03-18'
+                    day: '2016-03-18',
+                    region: "East",
+                    round: 64
                 },
                 {
                     id: 7,
@@ -578,7 +650,9 @@ export const tournament = {
                         seed: 10
                     },
                     winner: "Wisconsin",
-                    day: '2016-03-18'
+                    day: '2016-03-18',
+                    region: "East",
+                    round: 64
                 },
                 {
                     id: 8,
@@ -593,7 +667,9 @@ export const tournament = {
                         seed: 15
                     },
                     winner: "Xavier",
-                    day: '2016-03-18'
+                    day: '2016-03-18',
+                    region: "East",
+                    round: 64
                 },
             ],
         roundOf32:[
@@ -610,7 +686,9 @@ export const tournament = {
                     seed: 9
                 },
                 winner: "North Carolina",
-                day: '2016-03-19'
+                day: '2016-03-19',
+                region: "East",
+                round: 32
             },
             {
                 id: 10,
@@ -625,7 +703,9 @@ export const tournament = {
                     seed: 4
                 },
                 winner: "Indiana",
-                day: '2016-03-19'
+                day: '2016-03-19',
+                region: "East",
+                round: 32
             },
             {
                 id: 11,
@@ -640,7 +720,9 @@ export const tournament = {
                     seed: 3
                 },
                 winner: "Notre Dame",
-                day: '2016-03-19'
+                day: '2016-03-19',
+                region: "East",
+                round: 32
             },
             {
                 id: 12,
@@ -655,7 +737,9 @@ export const tournament = {
                     seed: 2
                 },
                 winner: "Wisconsin",
-                day: '2016-03-20'
+                day: '2016-03-20',
+                region: "East",
+                round: 32
             },
         ],
         roundOf16:[
@@ -672,7 +756,9 @@ export const tournament = {
                     seed: 5
                 },
                 winner: "North Carolina",
-                day: '2016-03-25'
+                day: '2016-03-25',
+                region: "East",
+                round: 16
             },
             {
                 id: 14,
@@ -687,7 +773,9 @@ export const tournament = {
                     seed: 7
                 },
                 winner: "Notre Dame",
-                day: '2016-03-25'
+                day: '2016-03-25',
+                region: "East",
+                round: 16
             },
         ],
         roundOf8:[
@@ -704,7 +792,9 @@ export const tournament = {
                     seed: 6
                 },
                 winner: "North Carolina",
-                day: '2016-03-27'
+                day: '2016-03-27',
+                region: "East",
+                round: 8
             },
         ]
     },
@@ -725,7 +815,9 @@ export const tournament = {
                         seed: 16
                     },
                     winner: "Virginia",
-                    day: '2016-03-17'
+                    day: '2016-03-17',
+                    region: "Midwest",
+                    round: 64
                 },
                 {
                     id: 2,
@@ -740,7 +832,9 @@ export const tournament = {
                         seed: 9
                     },
                     winner: "Butler",
-                    day: '2016-03-17'
+                    day: '2016-03-17',
+                    region: "Midwest",
+                    round: 64
                 },
                 {
                     id: 3,
@@ -755,7 +849,9 @@ export const tournament = {
                         seed: 12
                     },
                     winner: "Little Rock",
-                    day: '2016-03-17'
+                    day: '2016-03-17',
+                    region: "Midwest",
+                    round: 64
                 },
                 {
                     id: 4,
@@ -770,7 +866,9 @@ export const tournament = {
                         seed: 13
                     },
                     winner: "Iowa State",
-                    day: '2016-03-17'
+                    day: '2016-03-17',
+                    region: "Midwest",
+                    round: 64
                 },
                 {
                     id: 5,
@@ -785,7 +883,9 @@ export const tournament = {
                         seed: 11
                     },
                     winner: "Gonzaga",
-                    day: '2016-03-17'
+                    day: '2016-03-17',
+                    region: "Midwest",
+                    round: 64
                 },
                 {
                     id: 6,
@@ -800,7 +900,9 @@ export const tournament = {
                         seed: 14
                     },
                     winner: "Utah",
-                    day: '2016-03-17'
+                    day: '2016-03-17',
+                    region: "Midwest",
+                    round: 64
                 },
                 {
                     id: 7,
@@ -815,7 +917,9 @@ export const tournament = {
                         seed: 10
                     },
                     winner: "Syracuse",
-                    day: '2016-03-18'
+                    day: '2016-03-18',
+                    region: "Midwest",
+                    round: 64
                 },
                 {
                     id: 8,
@@ -830,7 +934,9 @@ export const tournament = {
                         seed: 15
                     },
                     winner: "Middle Tennessee State",
-                    day: '2016-03-18'
+                    day: '2016-03-18',
+                    region: "Midwest",
+                    round: 64
                 },
             ],
         roundOf32:[
@@ -847,7 +953,9 @@ export const tournament = {
                     seed: 9
                 },
                 winner: "Butler",
-                day: '2016-03-19'
+                day: '2016-03-19',
+                region: "Midwest",
+                round: 32
             },
             {
                 id: 10,
@@ -862,7 +970,9 @@ export const tournament = {
                     seed: 4
                 },
                 winner: "Iowa State",
-                day: '2016-03-19'
+                day: '2016-03-19',
+                region: "Midwest",
+                round: 32
             },
             {
                 id: 11,
@@ -877,7 +987,9 @@ export const tournament = {
                     seed: 3
                 },
                 winner: "Gonzaga",
-                day: '2016-03-19'
+                day: '2016-03-19',
+                region: "Midwest",
+                round: 32
             },
             {
                 id: 12,
@@ -892,7 +1004,9 @@ export const tournament = {
                     seed: 15
                 },
                 winner: "Syracuse",
-                day: '2016-03-20'
+                day: '2016-03-20',
+                region: "Midwest",
+                round: 32
             },
         ],
         roundOf16:[
@@ -909,7 +1023,9 @@ export const tournament = {
                     seed: 4
                 },
                 winner: "Virginia",
-                day: '2016-03-25'
+                day: '2016-03-25',
+                region: "Midwest",
+                round: 16
             },
             {
                 id: 14,
@@ -924,7 +1040,9 @@ export const tournament = {
                     seed: 10
                 },
                 winner: "Syracuse",
-                day: '2016-03-25'
+                day: '2016-03-25',
+                region: "Midwest",
+                round: 16
             },
         ],
         roundOf8:[
@@ -941,7 +1059,9 @@ export const tournament = {
                     seed: 10
                 },
                 winner: "Syracuse",
-                day: '2016-03-27'
+                day: '2016-03-27',
+                region: "Midwest",
+                round: 8
             },
         ]
     },
@@ -978,7 +1098,9 @@ export const tournament = {
                         seed: 10
                     },
                     winner: "North Carolina",
-                    day: '2016-04-02'
+                    day: '2016-04-02',
+                    region: "Final Four",
+                    round: 4
                 },
         ],
         roundOf2: [
@@ -995,7 +1117,9 @@ export const tournament = {
                         seed: 2
                     },
                     winner: "Villanova",
-                    day: '2016-04-04'
+                    day: '2016-04-04',
+                    region: "Championship",
+                    round: 2
                 },
         ]
     }

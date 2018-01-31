@@ -84,7 +84,7 @@ export default class Wrapper extends React.Component<Props, State> {
     }
     user.picks = picks;
     
-    this.setState({currentUser: user}, () => console.log("user", user));
+    this.setState({currentUser: user});
     this.db.updateUserPicks(user);
   }
 

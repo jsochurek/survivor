@@ -7,8 +7,10 @@ import styles from './styles';
 import moment from "moment";
 
 type State = {
-    awayStyle: TextStyle,
-    homeStyle: TextStyle
+    awayStyle?: TextStyle,
+    homeStyle?: TextStyle,
+    homePicked?: boolean,
+    awayPicked?: boolean
 }
 type Props = {
     // style?: ViewStyle,
@@ -29,7 +31,7 @@ export default class GameComponent extends React.Component<Props, State> {
         super(props, context);
         let awayStyle: TextStyle;
         let homeStyle: TextStyle;
-        if (this.props.game.winner === this.props.game.away.name) {
+        if (props.game.winner === props.game.away.name) {
             awayStyle = styles.winnerText;
             homeStyle = styles.loserText;
         }
@@ -40,13 +42,33 @@ export default class GameComponent extends React.Component<Props, State> {
 
         this.state = {
              awayStyle,
-             homeStyle
+             homeStyle,
+             awayPicked: this.isTeamPicked(props.game.away.name, props.picks),
+             homePicked: this.isTeamPicked(props.game.home.name, props.picks)
         };
     }
 
     togglePick = (team: string) => {
         //TODO need checks on rounds, whether can still change pick
         this.props.togglePick(team);
+
+        if (team === this.props.game.home.name) {
+            this.setState({homePicked: !this.state.homePicked});
+        }
+        else {
+            this.setState({awayPicked: !this.state.awayPicked});
+        }
+    }
+
+    isTeamPicked = (team: string, picks: {team: string, date: Date}[]): boolean => {
+        for (let pick in picks) {
+            if (pick) {
+                if (pick === picks[pick].team) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     render() {
@@ -57,11 +79,15 @@ export default class GameComponent extends React.Component<Props, State> {
                     textStyle={this.state.homeStyle}
                     team={this.props.game.home} 
                     togglePick={this.togglePick}
+                    picked={this.state.homePicked}
+                    picks={this.props.picks}
                 />
                 <TeamComponent 
                     textStyle={this.state.awayStyle}
                     team={this.props.game.away} 
                     togglePick={this.togglePick}
+                    picked={this.state.awayPicked}
+                    picks={this.props.picks}
                 />
                 <Text>{day.format("ddd MMM D")}</Text>
             </View>

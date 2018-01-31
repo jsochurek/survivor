@@ -1,19 +1,23 @@
-import * as React from 'react';
+import * as React from "react";
 import PropTypes from "prop-types";
-import {View} from 'react-native';
-import { teams } from '../../2016/teams';
+import {View, ScrollView} from "react-native";
+import { teams } from "../../2016/teams";
+import { tournament } from "../../2016/tournament2016";
+import { tournamentGames2016 } from "../../2016/games2016";
+import styles from "./styles";
+import RealmDB from "../../database/index";
+import moment from "moment";
 import GameComponent from '../../components/gamecomponent/index';
-import { tournament } from '../../2016/tournament2016';
-import styles from './styles';
-import RealmDB from '../../database/index';
 
 type Props = {
-    teams2016: Team[],
-    tournament2016: any,
-    user: User
+    navigation?: any,
+    pickDate?: Date
 }
 type State = {
-    
+    teams2016?: Team[],
+    tournament2016?: any,
+    user?: User,
+    todaysGames?: Game[]
 }
 type Context = {
     db: RealmDB,
@@ -21,7 +25,10 @@ type Context = {
     getCurrentUser: () => User,
     togglePick: (team: string) => {}
 }
-export default class RoundOf4 extends React.Component<Props, State> {
+export default class MakePick extends React.Component<Props, State> {
+    static navigationOptions = {
+        title: 'MakePick',
+      };
     context: Context;
 
     static contextTypes = {
@@ -31,15 +38,15 @@ export default class RoundOf4 extends React.Component<Props, State> {
         togglePick: PropTypes.func
     };
 
-    static childContextTypes = {
-    };
+   
 
     constructor(props: Props, context: Context) {
         super(props, context);
         this.state = {
             teams2016: teams,
             tournament2016: tournament,
-            user: this.context.getCurrentUser()
+            user: this.context.getCurrentUser(),
+            todaysGames: this.getTodaysGames(props.navigation.state.params.day)
         }
     }
 
@@ -63,17 +70,26 @@ export default class RoundOf4 extends React.Component<Props, State> {
         this.setState({user: user});
     }
 
-    getChildContext(): Object {
-        return {
-        };
+    getTodaysGames = (day: Date): Game[] => {
+        let games: Game[] = [];
+        let momToday: moment.Moment = moment(day);
+        for (let g = 0; g < tournamentGames2016.length; g++) {
+            // TODO need to change the Game type to take date always
+            let momGame: moment.Moment = moment(new Date(tournamentGames2016[g].day));
+            if (momGame.isSame(momToday, "day")) {
+                games.push(tournamentGames2016[g]);
+            }
+        }
+
+        return games;
     }
 
     render() {
         return(
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <View style={styles.firstTwoRounds}>
                     <View style={styles.round}>
-                        {this.props.tournament2016.FinalFour.roundOf4.map((item, index) => {
+                        {this.state.todaysGames.map((item, index) => {
                             return(
                                 <View style={styles.gameView} key={index}>
                                     <GameComponent 
@@ -85,26 +101,12 @@ export default class RoundOf4 extends React.Component<Props, State> {
                             );
                         })
                         }
-                        
                     </View>
-                    <View style={styles.round}>
-                        {this.props.tournament2016.FinalFour.roundOf2.map((item, index) => {
-                            return(
-                                <View style={styles.gameView} key={index}>
-                                    <GameComponent 
-                                        key={index}
-                                        game={item}
-                                        picks={this.context.getCurrentUser().picks}
-                                        togglePick={this.togglePick}/>
-                                </View>
-                            );
-                        })
-                        }
-                        
-                    </View>
+                    
                 </View>
 
-            </View>
+            </ScrollView>
+            
 
         );
     }

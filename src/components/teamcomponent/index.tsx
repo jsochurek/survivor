@@ -38,7 +38,7 @@ export default class TeamComponent extends React.Component<Props, State> {
     }
 
     componentDidMount() {
-        console.log("didmoutn currentUser", this.context);
+        // console.log("didmoutn currentUser", this.context);
         if (this.context.currentUser) {
             this.setState({strikethrough: this.isTeamPicked(this.context.currentUser.picks)});
         }

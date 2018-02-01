@@ -15,7 +15,8 @@ type State = {
     winningTeam?: Team,
     teams2016?: Team[],
     tournament2016?: any,
-    user?: User
+    user?: User,
+    winningTeamPicked?: boolean
 }
 type Context = {
     db: RealmDB,
@@ -38,14 +39,16 @@ export default class RoundOf2 extends React.Component<Props, State> {
 
     constructor(props: Props, context: Context) {
         super(props, context);
+        let winningTeam: Team = props.tournament2016.FinalFour.roundOf2[0].winner === props.tournament2016.FinalFour.roundOf2[0].home.name ? 
+        props.tournament2016.FinalFour.roundOf2[0].home : 
+        (props.tournament2016.FinalFour.roundOf2[0].winner === props.tournament2016.FinalFour.roundOf2[0].away.name ? 
+        props.tournament2016.FinalFour.roundOf2[0].away : null);
         this.state = {
-            teams2016: this.props.teams2016,
-            tournament2016: this.props.tournament2016,
-            user: this.context.getCurrentUser(),
-            winningTeam: this.props.tournament2016.FinalFour.roundOf2[0].winner === this.props.tournament2016.FinalFour.roundOf2[0].home.name ? 
-                this.props.tournament2016.FinalFour.roundOf2[0].home : 
-                (this.props.tournament2016.FinalFour.roundOf2[0].winner === this.props.tournament2016.FinalFour.roundOf2[0].away.name ? 
-                this.props.tournament2016.FinalFour.roundOf2[0].away : null)
+            teams2016: props.teams2016,
+            tournament2016: props.tournament2016,
+            user: context.getCurrentUser(),
+            winningTeam,
+            winningTeamPicked: this.isPicked(winningTeam.name, props.user.picks)
         }
     }
 
@@ -74,10 +77,10 @@ export default class RoundOf2 extends React.Component<Props, State> {
         };
     }
 
-    isPicked = (team: string): boolean => {
-        // return ( this.context.getCurrentUser().picks.indexOf(team) > -1 );
-        for (let i = 0; i < this.context.getCurrentUser().picks.length; i++) {
-            if (this.context.getCurrentUser().picks[i].team === team) {
+    isPicked = (team: string, picks?: {team: string, date: Date}[]): boolean => {
+        let userPicks: {team: string, date: Date}[] = picks? picks : this.state.user.picks;
+        for (let i = 0; i < userPicks.length; i++) {
+            if (userPicks[i].team === team) {
                 return true;
             }
         }
@@ -96,7 +99,7 @@ export default class RoundOf2 extends React.Component<Props, State> {
                                     <GameComponent 
                                         key={index}
                                         game={item} 
-                                        picks={this.context.getCurrentUser().picks}
+                                        picks={this.state.user.picks}
                                         togglePick={this.togglePick}/>
                                 </View>
                             );
@@ -110,6 +113,7 @@ export default class RoundOf2 extends React.Component<Props, State> {
                                     textStyle={styles.winnerText}
                                     team={this.state.winningTeam} 
                                     togglePick={this.togglePick}
+                                    picked={this.state.winningTeamPicked}
                                 />
                             </View>
                         }

@@ -9,8 +9,7 @@ type Props = {
     textStyle: TextStyle,
     team: Team,
     togglePick: (team: string) => void,
-    picked: boolean,
-    picks: {team: string, date: Date}[],
+    picked: boolean
 }
 type Context = {
     getCurrentUser: () => User,
@@ -44,17 +43,6 @@ export default class TeamComponent extends React.Component<Props, State> {
         }
     }
 
-    componentWillReceiveProps(nextProps: Props, nextContext: Context) {
-        // console.log("nextContext", nextContext);
-        if (nextContext.currentUser.picks !== this.context.currentUser.picks) {
-            console.log("current, next", this.context.currentUser, nextContext.currentUser)
-            this.setState({strikethrough: this.isTeamPicked(nextContext.currentUser.picks)});
-        }
-        if (nextProps.picks !== this.props.picks) {
-            console.log("picks are different!!");
-        }
-    }
-
     formatSeed = () => {
         let sd: string = this.props.team.seed.toString();
         if (this.props.team.seed < 10) {
@@ -72,7 +60,7 @@ export default class TeamComponent extends React.Component<Props, State> {
     isTeamPicked = (picks: {team: string, date: Date}[]): boolean => {
         for (let pick in picks) {
             if (pick) {
-                console.log("isteampicked", picks[pick].team, this.props.team.name);
+                // console.log("isteampicked", picks[pick].team, this.props.team.name);
                 if (picks[pick].team === this.props.team.name) {
                     return true;
                 }
@@ -92,5 +80,7 @@ export default class TeamComponent extends React.Component<Props, State> {
                 }>{`${this.formatSeed()}  ${this.props.team.name}`}</Text>
             </TouchableOpacity>
         );
+
+
     }
 }

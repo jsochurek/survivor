@@ -66,7 +66,7 @@ export default class Wrapper extends React.Component<Props, State> {
   }
 
   togglePick = (team: string) => {
-    console.log("this.state.currentUser", this.state.currentUser);
+    // console.log("this.state.currentUser", this.state.currentUser);
     let user: User = this.state.currentUser;
     let picks: {team: string, date: Date}[] = user.picks;
     let index: number = -1;//picks.indexOf(team);

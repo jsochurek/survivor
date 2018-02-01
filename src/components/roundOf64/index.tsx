@@ -1,9 +1,9 @@
 import * as React from 'react';
 import PropTypes from "prop-types";
 import {View, ScrollView} from 'react-native';
-import { teams } from '../../2016/teams';
+// import { teams } from '../../2016/teams';
 import GameComponent from '../../components/gamecomponent/index';
-import { tournament } from '../../2016/tournament2016';
+// import { tournament } from '../../2016/tournament2016';
 import styles from './styles';
 import RealmDB from '../../database/index';
 
@@ -13,6 +13,7 @@ type Props = {
     user: User
 }
 type State = {
+    user?: User
     
 }
 type Context = {
@@ -37,9 +38,9 @@ export default class RoundOf64 extends React.Component<Props, State> {
     constructor(props: Props, context: Context) {
         super(props, context);
         this.state = {
-            teams2016: teams,
-            tournament2016: tournament,
-            user: this.context.getCurrentUser()
+            // teams2016: teams,
+            // tournament2016: tournament,
+            user: props.user
         }
     }
 
@@ -79,7 +80,7 @@ export default class RoundOf64 extends React.Component<Props, State> {
                                     <GameComponent 
                                         key={index}
                                         game={item} 
-                                        picks={this.context.getCurrentUser().picks}
+                                        picks={this.state.user.picks}
                                         togglePick={this.togglePick}/>
                                 </View>
                             );
@@ -91,7 +92,7 @@ export default class RoundOf64 extends React.Component<Props, State> {
                                     <GameComponent 
                                         key={index}
                                         game={item} 
-                                        picks={this.context.getCurrentUser().picks}
+                                        picks={this.state.user.picks}
                                         togglePick={this.togglePick}/>
                                 </View>
                             );
@@ -103,7 +104,7 @@ export default class RoundOf64 extends React.Component<Props, State> {
                                     <GameComponent 
                                         key={index}
                                         game={item} 
-                                        picks={this.context.getCurrentUser().picks}
+                                        picks={this.state.user.picks}
                                         togglePick={this.togglePick}/>
                                 </View>
                             );
@@ -115,7 +116,7 @@ export default class RoundOf64 extends React.Component<Props, State> {
                                     <GameComponent 
                                         key={index}
                                         game={item} 
-                                        picks={this.context.getCurrentUser().picks}
+                                        picks={this.state.user.picks}
                                         togglePick={this.togglePick}/>
                                 </View>
                             );
@@ -129,7 +130,7 @@ export default class RoundOf64 extends React.Component<Props, State> {
                                     <GameComponent 
                                         key={index}
                                         game={item}
-                                        picks={this.context.getCurrentUser().picks}
+                                        picks={this.state.user.picks}
                                         togglePick={this.togglePick}/>
                                 </View>
                             );
@@ -141,7 +142,7 @@ export default class RoundOf64 extends React.Component<Props, State> {
                                     <GameComponent 
                                         key={index}
                                         game={item}
-                                        picks={this.context.getCurrentUser().picks}
+                                        picks={this.state.user.picks}
                                         togglePick={this.togglePick}/>
                                 </View>
                             );
@@ -153,7 +154,7 @@ export default class RoundOf64 extends React.Component<Props, State> {
                                     <GameComponent 
                                         key={index}
                                         game={item}
-                                        picks={this.context.getCurrentUser().picks}
+                                        picks={this.state.user.picks}
                                         togglePick={this.togglePick}/>
                                 </View>
                             );
@@ -165,7 +166,7 @@ export default class RoundOf64 extends React.Component<Props, State> {
                                     <GameComponent 
                                         key={index}
                                         game={item}
-                                        picks={this.context.getCurrentUser().picks}
+                                        picks={this.state.user.picks}
                                         togglePick={this.togglePick}/>
                                 </View>
                             );

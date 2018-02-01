@@ -9,8 +9,8 @@ import moment from "moment";
 type State = {
     awayStyle?: TextStyle,
     homeStyle?: TextStyle,
-    homePicked?: boolean,
-    awayPicked?: boolean
+    awayPicked?: boolean,
+    homePicked?: boolean
 }
 type Props = {
     // style?: ViewStyle,
@@ -19,13 +19,11 @@ type Props = {
     togglePick: (team: string) => void
 }
 type Context = {
-    getCurrentUser: () => User
 }
 export default class GameComponent extends React.Component<Props, State> {
     context: Context;
 
     static contextTypes = {
-        getCurrentUser: PropTypes.func
     };
     constructor(props: Props, context: Context) {
         super(props, context);
@@ -48,22 +46,33 @@ export default class GameComponent extends React.Component<Props, State> {
         };
     }
 
-    togglePick = (team: string) => {
-        //TODO need checks on rounds, whether can still change pick
-        this.props.togglePick(team);
-
-        if (team === this.props.game.home.name) {
-            this.setState({homePicked: !this.state.homePicked});
-        }
-        else {
-            this.setState({awayPicked: !this.state.awayPicked});
+    componentWillReceiveProps(nextProps: Props, nextContext: Context) {
+        if (this.props.picks.length !== nextProps.picks.length) {
+            console.log("game componentwillreceiveprops");
+            this.setState({
+                awayPicked: this.isTeamPicked(this.props.game.away.name, nextProps.picks),
+                homePicked: this.isTeamPicked(this.props.game.home.name, nextProps.picks)
+            });
         }
     }
 
-    isTeamPicked = (team: string, picks: {team: string, date: Date}[]): boolean => {
-        for (let pick in picks) {
+    togglePick = (team: string) => {
+        if (!this.isTeamPicked(this.props.game.home.name) && team === this.props.game.away.name) {
+            this.props.togglePick(team);
+            this.setState({awayPicked: !this.state.awayPicked});
+        }
+        else if (!this.isTeamPicked(this.props.game.away.name) && team === this.props.game.home.name) {
+            this.props.togglePick(team);
+            this.setState({homePicked: !this.state.homePicked});
+        }
+
+    }
+
+    isTeamPicked = (team: string, picks?: {team: string, date: Date}[]): boolean => {
+        let userPicks: {team: string, date: Date}[] = picks ? picks : this.props.picks;
+        for (let pick in userPicks) {
             if (pick) {
-                if (pick === picks[pick].team) {
+                if (pick === userPicks[pick].team) {
                     return true;
                 }
             }
@@ -80,14 +89,12 @@ export default class GameComponent extends React.Component<Props, State> {
                     team={this.props.game.home} 
                     togglePick={this.togglePick}
                     picked={this.state.homePicked}
-                    picks={this.props.picks}
                 />
                 <TeamComponent 
                     textStyle={this.state.awayStyle}
                     team={this.props.game.away} 
                     togglePick={this.togglePick}
                     picked={this.state.awayPicked}
-                    picks={this.props.picks}
                 />
                 <Text>{day.format("ddd MMM D")}</Text>
             </View>

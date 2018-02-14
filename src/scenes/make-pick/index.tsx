@@ -142,7 +142,11 @@ export default class MakePick extends React.Component<Props, State> {
 
     handleDayPickerChange = (itemValue, itemIndex) => {
         console.log("itemValue", itemValue, itemIndex)
-        this.setState({selectedDay: itemValue, todaysGames: this.getTodaysGames(itemValue)});
+        this.setState({
+            selectedDay: itemValue, 
+            todaysGames: this.getTodaysGames(itemValue),
+            picks: this.context.getCurrentUser().picks
+        });
     }
 
     isTeamPicked = (team: string): boolean => {

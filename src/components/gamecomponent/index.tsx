@@ -1,6 +1,6 @@
 /// <reference path="../../../typings/index.d.ts" />
 import * as React from 'react';
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import {Text, View, TextStyle} from "react-native";
 import TeamComponent from '../teamcomponent/index';
 import styles from './styles';
@@ -16,7 +16,9 @@ type Props = {
     // style?: ViewStyle,
     game: Game,
     picks: {team: string, date: Date}[],
-    togglePick: (team: string) => void
+    togglePick: (team: string) => void,
+    awayPicked?: boolean,
+    homePicked?: boolean
 }
 type Context = {
 }
@@ -41,8 +43,8 @@ export default class GameComponent extends React.Component<Props, State> {
         this.state = {
              awayStyle,
              homeStyle,
-             awayPicked: this.isTeamPicked(props.game.away.name, props.picks),
-             homePicked: this.isTeamPicked(props.game.home.name, props.picks)
+             awayPicked: props.awayPicked,
+             homePicked: props.homePicked
         };
     }
 
@@ -57,11 +59,11 @@ export default class GameComponent extends React.Component<Props, State> {
     }
 
     togglePick = (team: string) => {
-        if (!this.isTeamPicked(this.props.game.home.name) && team === this.props.game.away.name) {
+        if (!this.state.homePicked && team === this.props.game.away.name) {
             this.props.togglePick(team);
             this.setState({awayPicked: !this.state.awayPicked});
         }
-        else if (!this.isTeamPicked(this.props.game.away.name) && team === this.props.game.home.name) {
+        else if (!this.state.awayPicked && team === this.props.game.home.name) {
             this.props.togglePick(team);
             this.setState({homePicked: !this.state.homePicked});
         }

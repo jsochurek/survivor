@@ -77,7 +77,7 @@ export default class Main extends React.Component<Props, State> {
                 <TouchableOpacity onPress={() => this.props.navigation.navigate("Bracket")}>
                     <Text>View Bracket</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate("MakePick", {day: new Date('2016-03-17')})}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate("MakePick", {savePicks: ()=>{}})}>
                     <Text>Make Today's Pick</Text>
                 </TouchableOpacity>
             </View>

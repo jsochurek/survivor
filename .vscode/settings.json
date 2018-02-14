@@ -1,4 +1,6 @@
 // Place your settings in this file to overwrite default and user settings.
 {
     "editor.fontSize": 18,
+    "editor.formatOnSave": false,
+    "tslint.autoFixOnSave": true
 }

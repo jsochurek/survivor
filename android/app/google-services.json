@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "638722860942",
+    "firebase_url": "https://survivr-cfd9e.firebaseio.com",
+    "project_id": "survivr-cfd9e",
+    "storage_bucket": "survivr-cfd9e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:638722860942:android:59a1c7a5e947c84e",
+        "android_client_info": {
+          "package_name": "com.survivor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "638722860942-i2llesu87kvdcklgh210ao09mdddsuot.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjxIqdAw40gNlztzi56xyGpaBtj24ssVg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

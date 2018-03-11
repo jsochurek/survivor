@@ -1,5 +1,5 @@
 import * as React from "react";
-import {View, Text, Image} from "react-native";
+import {View, Text} from "react-native";
 import styles from "./styles";
 const pkg = require("../../../package.json");
 

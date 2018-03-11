@@ -5,7 +5,7 @@ import * as GlobalStyles from "../../util/styles";
 import TextInput from "../../components/text-input";
 import TextButton from "../../components/text-button";
 import styles from "./styles";
-import ResponsiveImage from "react-native-responsive-image";
+// import ResponsiveImage from "react-native-responsive-image";
 import LoadingIndicator from "../../components/loading-indicator";
 
 type Props = {

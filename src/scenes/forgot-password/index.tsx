@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
-import {View, Text, TouchableOpacity, StatusBar, KeyboardAvoidingView, Alert, FlexAlignType, TextInput, ScrollView} from "react-native";
-import ResponsiveImage from "react-native-responsive-image";
+import {View, Text, StatusBar, KeyboardAvoidingView, Alert, FlexAlignType, TextInput, ScrollView} from "react-native";
+// import ResponsiveImage from "react-native-responsive-image";
 import * as GlobalStyles from "../../util/styles";
 import TextButton from "../../components/text-button";
 import Icon from "react-native-vector-icons/Ionicons";

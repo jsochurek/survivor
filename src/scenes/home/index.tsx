@@ -1,9 +1,9 @@
 import * as React from "react";
-import {View, Text, StatusBar, TouchableOpacity, Alert, Modal, Dimensions} from "react-native";
+import {View, Text, StatusBar, Dimensions} from "react-native";
 import * as PropTypes from "prop-types";
 import Icon from "react-native-vector-icons/Ionicons";
 import IconButton from "../../components/icon-button";
-import TextButton from "../../components/text-button";
+// import TextButton from "../../components/text-button";
 import styles from "./styles";
 import * as GlobalStyles from "../../util/styles";
 // import RunList from "../../components/run-list";

@@ -1,10 +1,10 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
-import {Text, View, AsyncStorage, ActivityIndicator, StatusBar, Platform, NativeModules} from "react-native";
+import {StatusBar, Platform} from "react-native";
 // import Main from './scenes/main/index';
 // import Wrapper from './components/wrapper/index';
 import { ForgotPassword, Login, SignUp } from "./scenes";
-import {StackNavigator, TabNavigator, TabBarBottom, DrawerNavigator} from "react-navigation";
+import {StackNavigator} from "react-navigation";
 import AuthenticatedDrawer from "./navigators/MainDrawer";
 import * as GlobalStyles from "./util/styles";
 import LoadingIndicator from "./components/loading-indicator";
@@ -42,11 +42,11 @@ const UnAuthenticatedWrapper = StackNavigator({
   initialRouteName: "Login"
 });
 
-const AuthenticatedWrapper = StackNavigator({
-  Home: {screen: AuthenticatedDrawer}
-}, {
-  headerMode: "screen"
-});
+// const AuthenticatedWrapper = StackNavigator({
+//   Home: {screen: AuthenticatedDrawer}
+// }, {
+//   headerMode: "screen"
+// });
 
 
 // const SurvivorApp = StackNavigator({

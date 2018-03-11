@@ -81,7 +81,7 @@ export default class App extends React.Component{
     loading: true,
     authenticated: false,
     user: null,
-    subscriptionValid: false,
+    subscriptionValid: true,
     // verifyingSubscription: true
   };
   getChildContext() {
@@ -173,13 +173,14 @@ export default class App extends React.Component{
         asArray: false
       })
       .then(u => {
-        // if (u.subscriptionStatus) {
-        //   let shouldBypassCheck = shouldBypassSubscriptionCheck(u.subscriptionStatus);
-        //   this.setState({verifyingSubscription: false, subscriptionValid: shouldBypassCheck});
-        // }
-        // else {
-        //   console.log("user has no status");
-        // }
+        if (u.subscriptionStatus) {
+          let shouldBypassCheck = true; // shouldBypassSubscriptionCheck(u.subscriptionStatus);
+          // this.setState({verifyingSubscription: false, subscriptionValid: shouldBypassCheck});
+          this.setState({subscriptionValid: shouldBypassCheck});
+        }
+        else {
+          console.log("user has no status");
+        }
         if (u && JSON.stringify(u) !== JSON.stringify({})) {
           DB.update(`users/${user.uid}`, {
             data: {
@@ -235,19 +236,19 @@ export default class App extends React.Component{
       );
     }
     else {
-      if (this.state.user !== null && this.state.user.emailVerified && this.state.subscriptionValid) {
+      if (this.state.user !== null && this.state.user.emailVerified) {
         console.log("render app authenticateddrawer");
         if (Platform.OS === "android") {
           StatusBar.setBackgroundColor(GlobalStyles.Colors.red);
         }
         return (<AuthenticatedDrawer onNavigationStateChange={null}/>);
       }
-      else if (!this.state.subscriptionValid && this.state.user !== null && this.state.user.emailVerified) {
-        console.log("render app unauthenticateddrawer");
-        return (
-          <UnAuthenticatedWrapper />
-        );
-      }
+      // else if (this.state.user !== null && this.state.user.emailVerified) {
+      //   console.log("render app unauthenticateddrawer");
+      //   return (
+      //     <UnAuthenticatedWrapper />
+      //   );
+      // }
       else {
         console.log("app.tsx else")
         return (<UnAuthenticatedWrapper/>);

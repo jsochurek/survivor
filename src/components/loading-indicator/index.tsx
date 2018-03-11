@@ -14,7 +14,6 @@ export default class LoadingIndicator extends React.Component<Props, {}> {
         type: "full-screen"
     };
     render() {
-        console.log("render loadingindicator");
         if (this.props.type === "overlay" && !this.props.show) {
             return (<View />);
         }

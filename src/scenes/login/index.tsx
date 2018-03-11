@@ -71,9 +71,10 @@ export class Login extends React.Component<Props, State> {
                     }}
                 ]);
             }
-            // else {
-            //     this.props.navigation.navigate("Authenticated");
-            // }
+            else {
+                // this.props.navigation.navigate("Main");
+                // console.log("User email not verified");
+            }
         })
         .catch(error => {
             // Error Handling

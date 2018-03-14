@@ -63,6 +63,7 @@ type State = {
   loading?: boolean,
   authenticated?: boolean,
   user?: any,
+  currentGroup?: string,
   subscriptionValid?: boolean,
   // verifyingSubscription?: boolean
 };
@@ -75,14 +76,17 @@ export default class App extends React.Component{
     user: PropTypes.any,
     toggleLoading: PropTypes.func,
     subscriptionValid: PropTypes.bool,
-    updateSubscriptionStatus: PropTypes.func
+    updateSubscriptionStatus: PropTypes.func,
+    currentGroup: PropTypes.string,
+    changeGroup: PropTypes.func
   };
   state = {
     loading: true,
     authenticated: false,
     user: null,
     subscriptionValid: true,
-    // verifyingSubscription: true
+    // verifyingSubscription: true,
+    currentGroup: "-L7WybDmt0bl5rFxRH6f" //TODO store the most recently joined group in async storage
   };
   getChildContext() {
     return {
@@ -92,8 +96,14 @@ export default class App extends React.Component{
       user: this.state.user,
       toggleLoading: this.toggleLoading,
       subscriptionValid: this.state.subscriptionValid,
-      updateSubscriptionStatus: this.updateSubscriptionStatus
+      updateSubscriptionStatus: this.updateSubscriptionStatus,
+      changeGroup: this.changeGroup,
+      currentGroup: this.state.currentGroup
     };
+  }
+  changeGroup = (group: string) => {
+    console.log("changing current group to ", group);
+    this.setState({currentGroup: group});
   }
   updateSubscriptionStatus = (status: boolean) => {
     this.setState({subscriptionValid: status});

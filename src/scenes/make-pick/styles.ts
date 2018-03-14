@@ -43,12 +43,36 @@ wrapper: {
     backgroundColor: '#92BBD9',
   },
   text: {
-    color: '#fff',
-    fontSize: 30,
-    fontWeight: 'bold' as 'bold',
+    color: 'black',
+    fontSize: 20,
+    // fontWeight: 'bold' as 'bold'
+  },
+  textLinethrough: {
+    color: 'black',
+    fontSize: 20,
+    // fontWeight: 'bold' as 'bold',
+    textDecorationLine: "line-through"
+  },
+
+  teamContainer: {
+    marginLeft: 15,
+    marginRight: 15,
+    marginBottom: 5
+  },
+  button: {
+    backgroundColor: "#f44336",
+    borderRadius: 3,
+    paddingVertical: 8,
+    alignSelf: "stretch" as FlexAlignType,
+    marginBottom: 8,
+    marginTop: 24
+  },
+  buttonText: {
+    color: "#f9f9f9",
+    fontSize: 15,
+    fontWeight: "700" as "700",
+    textAlign: "center" as "center"
   }
-
-
 });
 
 

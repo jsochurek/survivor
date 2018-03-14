@@ -1,8 +1,8 @@
 import * as React from "react";
 import {Alert} from "react-native";
 import * as PropTypes from "prop-types";
-import {DrawerNavigator, StackNavigator, TabNavigator, TabBarBottom} from "react-navigation";
-import {HomeScreen, Feedback} from "../scenes";
+import {DrawerNavigator, StackNavigator, TabNavigator, TabBarBottom } from "react-navigation";
+import {HomeScreen, Feedback, CreateGroup, GroupMembers, MakePicks } from "../scenes";
 import Drawer from "../components/drawer/index";
 import DrawerItem from "../components/drawer/item/index";
 import * as GlobalStyles from "../util/styles/index";
@@ -10,7 +10,9 @@ import * as GlobalStyles from "../util/styles/index";
 
 const TabsWrapper = TabNavigator({
     Home: {screen: HomeScreen},
-    // Weather: {screen: WeatherScreen}
+    CreateGroup: {screen: CreateGroup},
+    GroupMembers: {screen: GroupMembers},
+    MakePicks: {screen: MakePicks}
   }, {
     tabBarComponent: props => <TabBarBottom {...props}/>,
     animationEnabled: false,

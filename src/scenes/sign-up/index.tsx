@@ -90,7 +90,7 @@ export class SignUp extends React.Component<Props, State> {
                 email: user.email,
                 emailVerified: user.emailVerified,
                 creationTime: user.metadata.creationTime,
-                lastSignInTime: user.metadata.lastSignInTime
+                lastSignInTime: user.metadata.lastSignInTime,
             }
         });
     }

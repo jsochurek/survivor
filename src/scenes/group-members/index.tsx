@@ -55,7 +55,8 @@ export class GroupMembers extends React.Component<Props, State> {
     StatusBar.setBarStyle("light-content");
 
     this.state = {
-        members: []
+        members: [],
+        loading: false
     };
   }
   componentDidMount() {
@@ -73,15 +74,13 @@ export class GroupMembers extends React.Component<Props, State> {
 
   getMembers = () => {
     console.log("current group", this.context.currentGroup);
-    this.context.firebaseDB.fetch(`groups/${this.context.currentGroup}`, {
-        context: this,
-        asArray: false
-    })
-    .then (g => {
-      console.log("g", g);
-        let memberIds: string[] = g.members;
+    if (this.context.group !== null) {
+        let memberIds: string[] = this.context.group.members;
         this.getMemberNamesFromIds(memberIds);
-    });
+    }
+    else {
+      this.setState({members: [], loading: false});
+    }
   }
 
   getMemberNamesFromIds = (memberIds: string[]) => {
@@ -108,19 +107,28 @@ export class GroupMembers extends React.Component<Props, State> {
     console.log("Render GroupMembers");
     const {width} = Dimensions.get("window");
     if (!this.state.loading) {
-      return (
-        <View style={[styles.container, {maxWidth: width}]}>
-          <Text style={styles.header}>{this.context.group.name}</Text>
-            {this.state.members.map((name: string, index: number) => {
-                return (
-                    <Text key={index} style={styles.text}>{name}</Text>
-                );
-            })
+      if (this.context.group !== null) {
+        return (
+          <View style={[styles.container, {maxWidth: width}]}>
+            <Text style={styles.header}>{this.context.group.name}</Text>
+              {this.state.members.map((name: string, index: number) => {
+                  return (
+                      <Text key={index} style={styles.text}>{name}</Text>
+                  );
+              })
 
-            }
+              }
 
-        </View>    
-      );
+          </View>    
+        );
+      }
+      else {
+        return (
+          <View style={[styles.container, {maxWidth: width}]}>
+            <Text style={styles.header}>Load a group from the Home screen to display members.</Text>
+          </View>
+        );
+      }
     }
     else {
       return (

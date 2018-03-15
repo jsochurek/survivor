@@ -49,7 +49,7 @@ const UnAuthenticatedWrapper = StackNavigator({
 // });
 
 
-// const SurvivorApp = StackNavigator({
+// const SurvivrApp = StackNavigator({
 //   Login: { screen: Login },
 //   Main: { screen: Main },
 //   Bracket: { screen: Bracket },
@@ -88,7 +88,7 @@ export default class App extends React.Component{
     user: null,
     subscriptionValid: true,
     // verifyingSubscription: true,
-    currentGroup: "-L7XBwzq9wt5-s95AxFv", //TODO store the most recently joined group in async storage,
+    currentGroup: null, // "-L7XBwzq9wt5-s95AxFv", //TODO store the most recently joined group in async storage,
     group: null
   };
   getChildContext() {
@@ -119,7 +119,7 @@ export default class App extends React.Component{
     // DEBUG ONLY
     // this.setState({verifyingSubscription: false, subscriptionValid: false});
     // this.syncFirebaseToState();
-    this.syncFirebaseGroupToState();
+    // this.syncFirebaseGroupToState();
   }
   // checkSubscription = () => {
   //   if (Platform.OS === "ios") {

@@ -53,7 +53,7 @@ export default class CustomTextInput extends React.Component<Props, State> {
                     multiline={this.props.multiLine}
                     keyboardType={this.props.keyboardType}
                     onSubmitEditing={this.handleSubmit}
-                    tintColor={GlobalStyles.Colors.red}
+                    tintColor={GlobalStyles.Colors.basketballOrange}
                     style={this.props.inputStyle}
                     autoFocus={this.props.autoFocus}
                 />

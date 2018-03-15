@@ -32,7 +32,7 @@ export class Feedback extends React.Component<Props, State> {
         title: "Feedback",
         headerStyle: GlobalStyles.Styles.defaultHeader,
         headerTitleStyle: GlobalStyles.Styles.defaultHeaderTitle,
-        headerTintColor: GlobalStyles.Colors.red,
+        headerTintColor: GlobalStyles.Colors.basketballOrange,
         headerLeft: <IconButton onPress={() => navigation.goBack()} icon="ios-arrow-back" iconColor={GlobalStyles.Colors.white} />,
         headerRight: null
     })

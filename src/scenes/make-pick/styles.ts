@@ -60,7 +60,7 @@ wrapper: {
     marginBottom: 5
   },
   button: {
-    backgroundColor: "#f44336",
+    backgroundColor: "#FA8320",
     borderRadius: 3,
     paddingVertical: 8,
     alignSelf: "stretch" as FlexAlignType,

@@ -35,7 +35,7 @@ export default class DrawerItem extends React.Component<Props, {}> {
                 underlayColor={GlobalStyles.Colors.white}
             >
             <View style={styles.content}>
-              <Icon name={icon} size={30} color={GlobalStyles.Colors.red}/>
+              <Icon name={icon} size={30} color={GlobalStyles.Colors.basketballOrange}/>
               <Text style={styles.text}>{this.props.route.routeName}</Text>
             </View>
             </TouchableHighlight>

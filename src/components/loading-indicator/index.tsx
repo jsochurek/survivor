@@ -24,7 +24,7 @@ export default class LoadingIndicator extends React.Component<Props, {}> {
                         animating={this.props.show}
                         style={styles.indicator}
                         size="large"
-                        color={GlobalStyles.Colors.red}
+                        color={GlobalStyles.Colors.basketballOrange}
                     />
                 </View>
             );

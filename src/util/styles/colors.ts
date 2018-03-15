@@ -7,5 +7,6 @@ export const Colors = {
     grayBorder: "#d6d6d6",
     offWhite: "#f9f9f9",
     green: "#75f988",
-    medGreen: "#49C95F"
+    medGreen: "#49C95F",
+    basketballOrange: "#FA8320"
 };

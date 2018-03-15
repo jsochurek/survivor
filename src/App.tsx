@@ -65,7 +65,8 @@ type State = {
   user?: any,
   currentGroup?: string,
   subscriptionValid?: boolean,
-  // verifyingSubscription?: boolean
+  // verifyingSubscription?: boolean,
+  group?: any
 };
 
 export default class App extends React.Component{
@@ -78,7 +79,8 @@ export default class App extends React.Component{
     subscriptionValid: PropTypes.bool,
     updateSubscriptionStatus: PropTypes.func,
     currentGroup: PropTypes.string,
-    changeGroup: PropTypes.func
+    changeGroup: PropTypes.func,
+    group: PropTypes.any
   };
   state = {
     loading: true,
@@ -86,7 +88,8 @@ export default class App extends React.Component{
     user: null,
     subscriptionValid: true,
     // verifyingSubscription: true,
-    currentGroup: "-L7WybDmt0bl5rFxRH6f" //TODO store the most recently joined group in async storage
+    currentGroup: "-L7XBwzq9wt5-s95AxFv", //TODO store the most recently joined group in async storage,
+    group: null
   };
   getChildContext() {
     return {
@@ -98,12 +101,13 @@ export default class App extends React.Component{
       subscriptionValid: this.state.subscriptionValid,
       updateSubscriptionStatus: this.updateSubscriptionStatus,
       changeGroup: this.changeGroup,
-      currentGroup: this.state.currentGroup
+      currentGroup: this.state.currentGroup,
+      group: this.state.group
     };
   }
   changeGroup = (group: string) => {
     console.log("changing current group to ", group);
-    this.setState({currentGroup: group});
+    this.setState({currentGroup: group}, () => this.syncFirebaseGroupToState());
   }
   updateSubscriptionStatus = (status: boolean) => {
     this.setState({subscriptionValid: status});
@@ -114,6 +118,8 @@ export default class App extends React.Component{
     console.log("User in CDM: ", this.state.user);
     // DEBUG ONLY
     // this.setState({verifyingSubscription: false, subscriptionValid: false});
+    // this.syncFirebaseToState();
+    this.syncFirebaseGroupToState();
   }
   // checkSubscription = () => {
   //   if (Platform.OS === "ios") {
@@ -176,6 +182,7 @@ export default class App extends React.Component{
   //   }
   // }
   authListener = (user: any) => {
+    console.log("authlistener", user);
     if (user) {
       this.toggleLoading(true);
       DB.fetch(`users/${user.uid}`, {
@@ -192,6 +199,7 @@ export default class App extends React.Component{
           console.log("user has no status");
         }
         if (u && JSON.stringify(u) !== JSON.stringify({})) {
+          console.log("DB.update");
           DB.update(`users/${user.uid}`, {
             data: {
               emailVerified: user.emailVerified,
@@ -199,10 +207,13 @@ export default class App extends React.Component{
             }
           })
           .then(() => {
+            this.syncFirebaseUserToState(user.uid);
             this.toggleLoading(false);
           })
         }
         else {
+          // This is a new user to add to DB
+          console.log("app db.post");
           DB.post(`users/${user.uid}`, {
             data: {
               id: user.uid,
@@ -215,6 +226,7 @@ export default class App extends React.Component{
             }
           })
           .then(() => {
+            this.syncFirebaseUserToState(user.uid);
             this.toggleLoading(false);
           })
         }
@@ -224,11 +236,16 @@ export default class App extends React.Component{
       })
     }
     else {
+      console.log("authlistener user is no good");
+      this.setState({
+        user: user
+      });
       this.toggleLoading(false);
     }
-    this.setState({
-      user
-    });
+    // console.log("setting state.user", user.uid, user.picks)
+    // this.setState({
+    //   user
+    // });
   }
   logout = () => {
     app.auth().signOut();
@@ -236,6 +253,28 @@ export default class App extends React.Component{
   toggleLoading = (loading: boolean) => {
     this.setState({loading});
   }
+
+  syncFirebaseUserToState = (uid: string) => {
+    this.setState({loading: true}, () => {
+      DB.syncState(`users/${uid}`, {
+        context: this,
+        state: "user",
+        asArray: false,
+        then: () => this.setState({loading: false})
+      });
+    });
+  }
+  syncFirebaseGroupToState = () => {
+    this.setState({loading: true}, () => {
+      DB.syncState(`groups/${this.state.currentGroup}`, {
+        context: this,
+        state: "group",
+        asArray: false,
+        then: () => this.setState({loading: false})
+      });
+    });
+  }
+
   render() {
     console.log("render app");
     StatusBar.setBarStyle("dark-content");
@@ -249,7 +288,7 @@ export default class App extends React.Component{
       if (this.state.user !== null && this.state.user.emailVerified) {
         console.log("render app authenticateddrawer");
         if (Platform.OS === "android") {
-          StatusBar.setBackgroundColor(GlobalStyles.Colors.red);
+          StatusBar.setBackgroundColor(GlobalStyles.Colors.basketballOrange);
         }
         return (<AuthenticatedDrawer onNavigationStateChange={null}/>);
       }
@@ -260,7 +299,7 @@ export default class App extends React.Component{
       //   );
       // }
       else {
-        console.log("app.tsx else")
+        console.log("render app UnAuthenticatedWrapper")
         return (<UnAuthenticatedWrapper/>);
       }
     }

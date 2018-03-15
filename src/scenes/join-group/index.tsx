@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Text, StatusBar, Dimensions, TextInput, Button } from 'react-native';
+import { View, Text, StatusBar, Dimensions, TextInput, Button, Alert } from 'react-native';
 import * as PropTypes from "prop-types";
 import Icon from "react-native-vector-icons/Ionicons";
 import IconButton from "../../components/icon-button";
@@ -17,7 +17,8 @@ type Props = {
 type State = {
   loading?: boolean,
   name?: string,
-  password?: string
+  password?: string,
+  displayError?: boolean
 };
 type Context = {
   firebaseDB: any,
@@ -26,7 +27,7 @@ type Context = {
   changeGroup: (group: string) => void
 };
 
-export class CreateGroup extends React.Component<Props, State> {
+export class JoinGroup extends React.Component<Props, State> {
   context: Context;
   static contextTypes = {
     firebaseDB: PropTypes.any,
@@ -35,17 +36,17 @@ export class CreateGroup extends React.Component<Props, State> {
     changeGroup: PropTypes.func
   };
   static navigationOptions = ({navigation})  => ({
-    title: "Create A New Group",
+    title: "Join An Existing Group",
     headerStyle: GlobalStyles.Styles.defaultHeader,
     headerTitleStyle: GlobalStyles.Styles.defaultHeaderTitle,
     headerTintColor: GlobalStyles.Colors.basketballOrange,
     headerLeft: navigation.state.params ? navigation.state.params.left : null,
     headerRight: navigation.state.params ? navigation.state.params.right : null,
-    tabBarLabel: "New Group",
-    drawerLabel: "Group",
+    tabBarLabel: "Join Group",
+    drawerLabel: "Join Group",
     tabBarIcon: ({tintColor}) => (
       <Icon
-        name="ios-people-outline"
+        name="ios-add-circle-outline"
         size={28}
         color={tintColor}
       />
@@ -57,7 +58,8 @@ export class CreateGroup extends React.Component<Props, State> {
     this.state = {
       loading: false,
       name: "",
-      password: ""
+      password: "",
+      displayError: false
     };
   }
   componentDidMount() {
@@ -83,40 +85,57 @@ export class CreateGroup extends React.Component<Props, State> {
 //     });
 //   }
   handleGroupChange = (text: string) => {
-    this.setState({name: text});
+    this.setState({name: text, displayError: false});
   }
   handlePasswordChange = (text: string) => {
-    this.setState({password: text});
+    this.setState({password: text, displayError:false});
   }
   handleButtonPress = () => {
-    this.context.firebaseDB.push(`groups`, {
-      data: {
-        commish: this.context.user.id,
-        name: this.state.name,
-        password: this.state.password,
-        creationTime: new Date().toUTCString(),
-        members: [this.context.user.id],
-        year: new Date().getFullYear().toString()
-      }
+    this.context.firebaseDB.fetch(`groups`, {
+      context: this,
+      asArray: false
     })
-    .then((g) => {
-      this.toggleLoading(false);
-      this.context.changeGroup(g.key);
-      let {groups} = this.context.user;
+    .then (groups => {
       console.log("groups", groups);
-      if (groups == undefined) {
-        groups = [];
-      }
-      if (groups.indexOf(g.key) < 0) {
-        groups.push(g.key);
-      }
-      this.context.firebaseDB.update(`users/${this.context.user.id}`, {
-        data: {
-          groups: groups
+      let found: boolean = false;
+      Object.keys(groups).forEach(key => {
+        let group = groups[key];
+        if (this.state.name === group.name && this.state.password === group.password) {
+          console.log("found a match");
+          if (group.members.indexOf(this.context.user.id) > -1) {
+            console.log("user already in group");
+          }
+          else {
+            let members = group.members;
+            members.push(this.context.user.id);
+            this.context.firebaseDB.update(`groups/${key}`, {
+              data: {
+                  members: members
+              }
+            });
+            let userGroups = this.context.user.groups;
+            if (userGroups == undefined) {
+              userGroups = [];
+            }
+            if (userGroups.indexOf(key) < 0) {
+              userGroups.push(key);
+            }
+            this.context.firebaseDB.update(`users/${this.context.user.id}`, {
+              data: {
+                groups: userGroups
+              }
+            });
+          }
+          this.setState({displayError: false});
+          this.props.navigation.navigate("GroupMembers");
         }
       });
-      this.props.navigation.navigate("GroupMembers");
-    })
+      if (!found) {
+        this.setState({displayError: true});
+      }
+    });
+    // Alert.alert("No Group Found", "No group was found with this username and password. Please check your inputs.");
+
   }
 
   toggleLoading = (loading: boolean) => {
@@ -124,7 +143,7 @@ export class CreateGroup extends React.Component<Props, State> {
   }
 
   render() {
-    console.log("Render Create Group");
+    console.log("Render Join Group");
     const {width} = Dimensions.get("window");
     if (!this.state.loading) {
       return (
@@ -136,9 +155,12 @@ export class CreateGroup extends React.Component<Props, State> {
             <Button 
               color="#FA8320"
               onPress={this.handleButtonPress}
-              title="Create Group"
+              title="Join Group"
               disabled={this.state.name === "" || this.state.password === ""}
             />
+            {this.state.displayError === true && 
+              <Text>No group found with this name/password. Please check your entry.</Text>
+            }
         </View>    
       );
     }

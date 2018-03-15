@@ -3,7 +3,7 @@ import {Colors} from "./colors";
 
 export const Styles = StyleSheet.create({
     defaultHeader: {
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.basketballOrange,
         shadowColor: Colors.black,
         shadowRadius: 2,
         shadowOpacity: .3,
@@ -17,7 +17,7 @@ export const Styles = StyleSheet.create({
         backgroundColor: Colors.white
     },
     flatHeader: {
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.basketballOrange,
         paddingHorizontal: 16,
         shadowRadius: 0,
         shadowOpacity: 0,
@@ -47,7 +47,7 @@ export const Styles = StyleSheet.create({
         fontWeight: "700" as "700"
     },
     defaultTabBarTop: {
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.basketballOrange,
         shadowColor: Colors.black,
         shadowRadius: 2,
         shadowOpacity: .3,

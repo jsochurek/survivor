@@ -19,14 +19,14 @@ export default StyleSheet.create({
     },
     clearFilterButton: {
         backgroundColor: "transparent",
-        borderColor: Colors.red,
+        borderColor: Colors.basketballOrange,
         borderWidth: 2,
         paddingVertical: 5,
         paddingHorizontal: 8,
         borderRadius: 3
     },
     clearFilterButtonText: {
-        color: Colors.red,
+        color: Colors.basketballOrange,
         fontSize: 16,
         fontWeight: "500" as "500"
     },
@@ -34,7 +34,7 @@ export default StyleSheet.create({
         width: 8
     },
     button: {
-        backgroundColor: "#f44336",
+        backgroundColor: "#FA8320",
         borderRadius: 3,
         paddingVertical: 8,
         flex: 1,
@@ -49,5 +49,16 @@ export default StyleSheet.create({
     },
     rightIcon: {
         textAlign: "right" as "right"
+    },
+    header: {
+        fontSize: 20,
+        marginLeft: 10,
+        fontWeight: "700" as "700",
+        marginTop: 10
+    },
+    text: {
+        fontSize: 15,
+        marginLeft: 20,
+
     }
 });

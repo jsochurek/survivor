@@ -2,7 +2,7 @@ import * as React from "react";
 import {Alert} from "react-native";
 import * as PropTypes from "prop-types";
 import {DrawerNavigator, StackNavigator, TabNavigator, TabBarBottom } from "react-navigation";
-import {HomeScreen, Feedback, CreateGroup, GroupMembers, MakePicks } from "../scenes";
+import {HomeScreen, Feedback, CreateGroup, GroupMembers, MakePicks, JoinGroup } from "../scenes";
 import Drawer from "../components/drawer/index";
 import DrawerItem from "../components/drawer/item/index";
 import * as GlobalStyles from "../util/styles/index";
@@ -11,6 +11,7 @@ import * as GlobalStyles from "../util/styles/index";
 const TabsWrapper = TabNavigator({
     Home: {screen: HomeScreen},
     CreateGroup: {screen: CreateGroup},
+    JoinGroup: {screen: JoinGroup},
     GroupMembers: {screen: GroupMembers},
     MakePicks: {screen: MakePicks}
   }, {
@@ -19,7 +20,7 @@ const TabsWrapper = TabNavigator({
     swipeEnabled: false,
     tabBarPosition: "bottom",
     tabBarOptions: {
-      activeTintColor: "#f44336",
+      activeTintColor: "#FA8320",
       style: GlobalStyles.Styles.defaultTabBar
     }
   });
@@ -107,7 +108,7 @@ const MainDrawerNavigator = DrawerNavigator({
     initialRouteName: "Home",
     contentComponent: props => <DrawerContentComponent {...props} />,
     contentOptions: {
-        activeTintColor: GlobalStyles.Colors.red,
+        activeTintColor: GlobalStyles.Colors.basketballOrange,
         inactiveTintColor: GlobalStyles.Colors.gray,
         style: GlobalStyles.Styles.defaultDrawerItem,
         labelStyle: GlobalStyles.Styles.defaultDrawerLabel,

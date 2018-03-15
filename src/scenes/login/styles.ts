@@ -19,7 +19,7 @@ export default StyleSheet.create({
         
     },
     button: {
-        backgroundColor: GlobalStyles.Colors.red,
+        backgroundColor: GlobalStyles.Colors.basketballOrange,
         alignItems: "center" as FlexAlignType,
         justifyContent: "center" as "center",
         paddingVertical: 8,
@@ -64,14 +64,14 @@ export default StyleSheet.create({
     },
     signUpButton: {
         backgroundColor: "transparent",
-        borderColor: GlobalStyles.Colors.red,
+        borderColor: GlobalStyles.Colors.basketballOrange,
         borderWidth: 2,
         paddingVertical: 4,
         paddingHorizontal: 8,
         borderRadius: 2
     },
     signUpButtonText: {
-        color: GlobalStyles.Colors.red,
+        color: GlobalStyles.Colors.basketballOrange,
         fontSize: 12
     }
 });

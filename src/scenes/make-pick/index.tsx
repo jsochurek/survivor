@@ -1,12 +1,11 @@
 import * as React from "react";
-import { View, Text, StatusBar, Dimensions, ScrollView, Picker, TouchableOpacity } from 'react-native';
+import { View, Text, StatusBar, ScrollView, Picker, TouchableOpacity } from 'react-native';
 import * as PropTypes from "prop-types";
 import Icon from "react-native-vector-icons/Ionicons";
 import IconButton from "../../components/icon-button";
 // import TextButton from "../../components/text-button";
 import styles from "./styles";
 import * as GlobalStyles from "../../util/styles";
-import LoadingIndicator from "../../components/loading-indicator";
 import TextButton from '../../components/text-button/index';
 
 type Props = {
@@ -25,7 +24,8 @@ type Context = {
   firebaseDB: any,
   logout: () => void,
   user: any,
-  currentGroup: string
+  currentGroup: string,
+  group: any
 };
 
 export class MakePicks extends React.Component<Props, State> {
@@ -34,20 +34,21 @@ export class MakePicks extends React.Component<Props, State> {
     firebaseDB: PropTypes.any,
     logout: PropTypes.func,
     user: PropTypes.any,
-    currentGroup: PropTypes.string
+    currentGroup: PropTypes.string,
+    group: PropTypes.any
   };
   static navigationOptions = ({navigation})  => ({
     title: "Make Picks",
     headerStyle: GlobalStyles.Styles.defaultHeader,
     headerTitleStyle: GlobalStyles.Styles.defaultHeaderTitle,
-    headerTintColor: GlobalStyles.Colors.red,
+    headerTintColor: GlobalStyles.Colors.basketballOrange,
     headerLeft: navigation.state.params ? navigation.state.params.left : null,
     headerRight: navigation.state.params ? navigation.state.params.right : null,
     tabBarLabel: "Picks",
     drawerLabel: "Picks",
     tabBarIcon: ({tintColor}) => (
       <Icon
-        name="ios-stopwatch-outline"
+        name="ios-checkmark-circle-outline"
         size={28}
         color={tintColor}
       />
@@ -56,7 +57,7 @@ export class MakePicks extends React.Component<Props, State> {
   constructor(props: Props, context: Context) {
     super(props, context);
     StatusBar.setBarStyle("light-content");
-
+    console.log("user", context.user.uid, context.user.picks);
     this.state = {
         teams: [],
         selectedDay: null,
@@ -139,38 +140,52 @@ export class MakePicks extends React.Component<Props, State> {
     this.setState({picks});
   }
 
-  handleSavePicks = () => {
-      let {name, picks} = this.context.user;
-      console.log("Handle Save Picks", this.context.user);
-      if (picks === undefined) {
-        picks = {};
-      }
-      if (this.context.user.picks) {
-          picks = this.context.user.picks;
-      }
-      console.log("picks", picks);
-      if (picks[new Date().getFullYear().toString()] == undefined) {
-        picks[new Date().getFullYear().toString()] = {};
-      }
-      if (picks[new Date().getFullYear().toString()][this.context.currentGroup] == undefined) {
-        picks[new Date().getFullYear().toString()][this.context.currentGroup] = {};
-      }
-      if (picks[new Date().getFullYear().toString()][this.context.currentGroup][this.state.selectedDay] == undefined) {
-        picks[new Date().getFullYear().toString()][this.context.currentGroup][this.state.selectedDay] = {};
-      }
-      picks[new Date().getFullYear().toString()][this.context.currentGroup][this.state.selectedDay] = this.state.picks;
-
-      this.context.firebaseDB.update(`users/${this.context.user.uid}`, {
-        data: {
-            picks: picks
+    handleSavePicks = () => {
+        let {picks} = this.context.user;
+        console.log("Handle Save Picks", this.context.user);
+        if (picks === undefined) {
+            picks = {};
         }
-    });
-  }
+        if (this.context.user.picks) {
+            picks = this.context.user.picks;
+        }
+        console.log("picks", picks);
+        let year: string = new Date().getFullYear().toString();
+        if (picks[year] == undefined) {
+            picks[year] = {};
+            console.log("adding year", picks);
+        }
+        if (picks[year][this.context.currentGroup] == undefined) {
+            picks[year][this.context.currentGroup] = {};
+            console.log("adding group", picks);
+        }
+        if (picks[year][this.context.currentGroup][this.state.selectedDay] == undefined) {
+            picks[year][this.context.currentGroup][this.state.selectedDay] = {};
+            console.log("adding day", picks);
+        }
+        picks[year][this.context.currentGroup][this.state.selectedDay] = this.state.picks;
+        console.log("added picks", picks);
+        this.context.firebaseDB.update(`users/${this.context.user.id}`, {
+            data: {
+                picks: picks
+            }
+        });
+        let groupPicks = this.context.group.picks;
+        if (groupPicks == undefined) {
+            groupPicks = {};
+        }
+        groupPicks[this.context.user.id] = picks[year][this.context.currentGroup];
+        this.context.firebaseDB.update(`groups/${this.context.currentGroup}`, {
+            data: {
+                picks: groupPicks
+            }
+        });
+        
+    }
 
   render() {
     let keys: string[] = [""];
     keys = keys.concat(Object.keys(this.state.data));
-    const {width} = Dimensions.get("window");
     let teams: JSX.Element;
     teams = this.state.data[this.state.selectedDay] ? (
         <View>

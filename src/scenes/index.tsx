@@ -1,5 +1,6 @@
 export { GroupMembers } from './group-members';
 export { CreateGroup } from "./create-group";
+export { JoinGroup } from "./join-group";
 // export {WeatherScreen} from "./weather";
 export {HomeScreen} from "./home";
 // export {AddRun, RunDetails as AddRunDetails, Conditions as AddConditions, TimeSlip as AddTimeSlip} from "./add-run";

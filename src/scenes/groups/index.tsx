@@ -18,37 +18,33 @@ type State = {
 };
 type Context = {
   firebaseDB: any,
-  logout: () => void,
   user: any,
-  currentGroup: string,
-  group: any
+  currentGroup: string
 };
 
-export class GroupMembers extends React.Component<Props, State> {
+export class Groups extends React.Component<Props, State> {
   context: Context;
   static contextTypes = {
     firebaseDB: PropTypes.any,
-    logout: PropTypes.func,
     user: PropTypes.any,
-    currentGroup: PropTypes.string,
-    group: PropTypes.any
+    currentGroup: PropTypes.string
   };
   static navigationOptions = ({navigation})  => ({
-    title: "Group Members",
+    title: "My Groups",
     headerStyle: GlobalStyles.Styles.defaultHeader,
     headerTitleStyle: GlobalStyles.Styles.defaultHeaderTitle,
     headerTintColor: GlobalStyles.Colors.basketballOrange,
     headerLeft: navigation.state.params ? navigation.state.params.left : null,
     headerRight: navigation.state.params ? navigation.state.params.right : null,
-    tabBarLabel: "Members",
-    drawerLabel: "Members",
-    tabBarIcon: ({tintColor}) => (
-      <Icon
-        name="ios-list-outline"
-        size={28}
-        color={tintColor}
-      />
-    )
+    // tabBarLabel: "My Groups",
+    drawerLabel: "My Groups",
+    // tabBarIcon: ({tintColor}) => (
+    //   <Icon
+    //     name="ios-people-outline"
+    //     size={28}
+    //     color={tintColor}
+    //   />
+    // )
   })
   constructor(props: Props, context: Context) {
     super(props, context);
@@ -110,10 +106,9 @@ export class GroupMembers extends React.Component<Props, State> {
     if (!this.state.loading) {
       return (
         <View style={[styles.container, {maxWidth: width}]}>
-          <Text style={styles.header}>{this.context.group.name}</Text>
             {this.state.members.map((name: string, index: number) => {
                 return (
-                    <Text key={index} style={styles.text}>{name}</Text>
+                    <Text key={index}>{name}</Text>
                 );
             })
 

@@ -2,7 +2,7 @@ import {StyleSheet, FlexAlignType} from "react-native";
 
 export default StyleSheet.create({
     button: {
-        backgroundColor: "#f44336",
+        backgroundColor: "#FA8320",
         borderRadius: 3,
         paddingVertical: 8,
         alignSelf: "stretch" as FlexAlignType,

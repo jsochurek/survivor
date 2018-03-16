@@ -6,6 +6,7 @@ import App from './dist/App';
 export default class Survivor extends React.Component {
   constructor() {
     super();
+    console.log("index.js");
   }
 
   render() {

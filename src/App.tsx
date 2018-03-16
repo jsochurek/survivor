@@ -105,6 +105,10 @@ export default class App extends React.Component{
       group: this.state.group
     };
   }
+  constructor(props: Props) {
+    super(props);
+    console.log("APPPP CONSTRUCTOR");
+  }
   changeGroup = (group: string) => {
     console.log("changing current group to ", group);
     this.setState({currentGroup: group}, () => this.syncFirebaseGroupToState());
